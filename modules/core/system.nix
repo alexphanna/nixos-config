@@ -27,6 +27,11 @@
       flake-registry = "";
     };
   };
+  nixpkgs = {
+    overlays = [
+      inputs.nur.overlay
+    ];
+  };
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";

@@ -39,12 +39,5 @@
     nodejs
     dconf
     python3
-
-    # fonts
-    material-icons
-    fira-code
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
   ];
 }

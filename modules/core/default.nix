@@ -8,5 +8,7 @@
     ++ [ (import ./pipewire.nix) ]
     ++ [ (import ./programs.nix) ]
     ++ [ (import ./system.nix) ]
+    ++ [ (import ./fonts.nix) ]
+    ++ [ (import ./services.nix) ]
     ++ [ (import ./xserver.nix) ];
 }

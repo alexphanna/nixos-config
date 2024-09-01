@@ -6,7 +6,7 @@
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs username host; };
     users.${username} = {
-      imports = [ ./../homes/default.nix ];
+      imports = [ ./../home/default.nix ];
       home.username = "${username}";
       home.homeDirectory = lib.mkForce "/home/${username}";
       home.stateVersion = "24.05";
@@ -45,9 +45,9 @@
     };
   };
 
-  users.users.alex = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "alex";
+    description = "${username}";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
