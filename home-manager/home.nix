@@ -46,6 +46,11 @@
     homeDirectory = "/home/alex";
   };
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+  };
+
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -99,6 +104,7 @@
 
   programs.firefox = {
     enable = true;
+
     profiles."Alex" = {
       name = "Alex";
       id = 0;
@@ -109,10 +115,7 @@
         "extensions.pocket.enabled" = false;
         "services.sync.enabled" = false;
 
-
-        # new tab
-        "browser.newtabpage.activity-stream.feeds.system.topstories" = false;
-        "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.toolbars.bookmarks.visibility" = "never"
       };
 
       extensions = with pkgs; [
@@ -164,6 +167,10 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
+    initExtra = ''
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
+    '';
   };
 
 

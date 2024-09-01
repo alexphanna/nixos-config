@@ -7,6 +7,9 @@
   pkgs,
   ...
 }: {
+  #silent boot
+  disabledModules = ["system/boot/stage-2.nix" "system/boot/stage-1.nix" "system/etc/etc.nix"];  
+
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -17,6 +20,11 @@
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
+    ./silent-boot/stage-2-silent.nix
+    ./silent-boot/stage-1-silent.nix
+    ./silent-boot/etc-silent.nix
+    ./silent-boot/boot.nix    
+
     ./hardware-configuration.nix
   ];
 
@@ -66,6 +74,28 @@
     "quiet"
     "splash"
   ];
+
+  fileSystems."/mnt/disk" = {
+    device = "/dev/disk/by-uuid/600511bd-0cbd-4a86-8f7d-d4d38f3f8805";
+    fsType = "ext4";
+    options = [ # If you don't have this options attribute, it'll default to "defaults" 
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "x-gvfs-show"
+    ];
+  };
+
+  fileSystems."/mnt/sata" = {
+    device = "/dev/disk/by-uuid/3078e682-8819-470e-8073-b83ff2f353da";
+    fsType = "ext4";
+    options = [ # If you don't have this options attribute, it'll default to "defaults" 
+      # boot options for fstab. Search up fstab mount options you can use
+      "users" # Allows any user to mount and unmount
+      "nofail" # Prevent system from failing if this drive doesn't mount
+      "x-gvfs-show"
+    ];
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -173,12 +203,21 @@
   environment.systemPackages = with pkgs; [
     discord
     spotify
+    gpodder
+    obsidian
+    (mpv.override {
+      scripts = [
+        pkgs.mpvScripts.uosc
+      ];
+    })
+    galculator
+    aria2
+
     git
     xcompmgr
     feh
     bc
     vscode
-    obsidian
     nodejs
     dconf
     (st.overrideAttrs (oldAttrs: rec {
