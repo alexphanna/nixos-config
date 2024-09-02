@@ -39,5 +39,6 @@
     nodejs
     dconf
     python3
+    scrot
   ];
 }

@@ -1,22 +1,35 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [ inputs.arkenfox.hmModules.default ];
   programs.firefox = {
     enable = true;
+    arkenfox = {
+      enable = true;
+      version = "128.0";
+    };
 
     profiles."Alex" = {
       name = "Alex";
       id = 0;
       isDefault = true;
 
+      search = {
+        force = true;
+        default = "DuckDuckGo";
+      };
+
+      arkenfox = {
+        enable = true;
+        enableAllSections = true;
+
+        "0900".enable = false; # passwords
+        "2800".enable = false; # shutdown & sanitizing
+        "4500".enable = false; # optional rfp
+      };
+
       settings = {
-        "extensions.pocket.enabled" = false;
-        "services.sync.enabled" = false;
-        "extensions.autoDisableScopes" = 0;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "identity.fxaccounts.toolbar.defaultVisible" = false;
-        "browser.startup.homepage" = "about:blank";
-        "browser.toolbars.bookmarks.visibility" = "never";
-        "browser.display.background_color.dark" = "#181818";
+        "extensions.pocket.enabled" = false;
       };
 
       userChrome = ''

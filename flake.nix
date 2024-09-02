@@ -11,6 +11,12 @@
 
     # NUR
     nur.url = "github:nix-community/NUR";
+
+
+    arkenfox = {
+      url = "github:dwarfmaster/arkenfox-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
