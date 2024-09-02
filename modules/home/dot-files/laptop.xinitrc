@@ -1,5 +1,5 @@
 while true; do
-	brightness=" $(~/scripts/xbacklight-log.py -get)%"
+	# brightness=" $(~/scripts/xbacklight-log.py -get)%"
 	
 	battery="$(printf "%.0f" $(echo "($(cat /sys/class/power_supply/BAT0/energy_now) + $(cat /sys/class/power_supply/BAT1/energy_now)) / ($(cat /sys/class/power_supply/BAT0/energy_full) + $(cat /sys/class/power_supply/BAT1/energy_full))* 100" | bc -l))"
 	if [ "$(cat /sys/class/power_supply/BAT1/status)" == "Charging" ] || [ "$(cat /sys/class/power_supply/BAT1/status)" == "Charging" ]; then
@@ -39,13 +39,13 @@ while true; do
 
 	date=$(date "+%-m/%-d/%Y")
 	time=$(date "+%-I:%M %p")
-	xsetroot -name "$brightness  $battery  $volume  $date  $time "
+	xsetroot -name "$battery  $volume  $date  $time "
 done &
 
 feh --bg-fill .wallpaper.jpg
 
 xcompmgr &
 
-xrandr --output HDMI-0 --mode 1920x1080 --rate 74.97
+# xrandr --output HDMI-0 --mode 1920x1080 --rate 74.97
 
 exec dwm
