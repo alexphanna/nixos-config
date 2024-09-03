@@ -42,5 +42,6 @@
     scrot
     tesseract
     xclip
+    gnome.gucharmap
   ];
 }

@@ -1,5 +1,5 @@
 while true; do
-	# brightness=" $(~/scripts/xbacklight-log.py -get)%"
+	brightness=" $(xbacklight -perceived -get)%"
 	
 	battery0="$(cat /sys/class/power_supply/BAT0/capacity)"
 	if [ "$(cat /sys/class/power_supply/BAT0/status)" == "Charging" ]; then
@@ -62,7 +62,7 @@ while true; do
 
 	date=$(date "+%-m/%-d/%Y")
 	time=$(date "+%-I:%M %p")
-	xsetroot -name "$battery0 $battery1  $volume  $date  $time "
+	xsetroot -name "$brightness $battery0 $battery1  $volume  $date  $time "
 done &
 
 feh --bg-fill .wallpaper.jpg
