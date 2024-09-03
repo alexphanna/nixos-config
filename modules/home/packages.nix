@@ -40,5 +40,7 @@
     dconf
     python3
     scrot
+    tesseract
+    xclip
   ];
 }

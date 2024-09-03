@@ -39,9 +39,9 @@
       # FIXME replace with your hostname
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { host="laptop"; inherit self inputs username ; };
+        specialArgs = { host="desktop"; inherit self inputs username ; };
         # > Our main nixos configuration file <
-        modules = [ (import ./hosts/laptop) ];
+        modules = [ (import ./hosts/desktop) ];
       };
     };
   };
