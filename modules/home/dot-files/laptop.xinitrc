@@ -1,26 +1,49 @@
 while true; do
 	# brightness=" $(~/scripts/xbacklight-log.py -get)%"
 	
-	battery="$(printf "%.0f" $(echo "($(cat /sys/class/power_supply/BAT0/energy_now) + $(cat /sys/class/power_supply/BAT1/energy_now)) / ($(cat /sys/class/power_supply/BAT0/energy_full) + $(cat /sys/class/power_supply/BAT1/energy_full))* 100" | bc -l))"
-	if [ "$(cat /sys/class/power_supply/BAT1/status)" == "Charging" ] || [ "$(cat /sys/class/power_supply/BAT1/status)" == "Charging" ]; then
-		battery=" $battery%"
+	battery0="$(cat /sys/class/power_supply/BAT0/capacity)"
+	if [ "$(cat /sys/class/power_supply/BAT0/status)" == "Charging" ]; then
+		battery0=" $battery0%"
 	else	
-		if (($battery >= 100)); then
-			battery=" $battery%"
-		elif (($battery >= 86)); then
-			battery=" $battery%"
-		elif (($battery >= 71)); then
-			battery=" $battery%"
-		elif (($battery >= 57)); then
-			battery=" $battery%"
-		elif (($battery >= 43)); then
-			battery=" $battery%"
-		elif (($battery >= 29)); then
-			battery=" $battery%"
-		elif (($battery >= 14)); then
-			battery=" $battery%"
+		if (($battery0 >= 100)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 86)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 71)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 57)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 43)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 29)); then
+			battery0=" $battery0%"
+		elif (($battery0 >= 14)); then
+			battery0=" $battery0%"
 		else
-			battery=" $battery%"
+			battery0=" $battery0%"
+		fi
+	fi
+	
+	battery1="$(cat /sys/class/power_supply/BAT1/capacity)"
+	if [ "$(cat /sys/class/power_supply/BAT1/status)" == "Charging" ]; then
+		battery1=" $battery1%"
+	else	
+		if (($battery1 >= 100)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 86)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 71)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 57)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 43)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 29)); then
+			battery1=" $battery1%"
+		elif (($battery1 >= 14)); then
+			battery1=" $battery1%"
+		else
+			battery1=" $battery1%"
 		fi
 	fi
 
@@ -39,7 +62,7 @@ while true; do
 
 	date=$(date "+%-m/%-d/%Y")
 	time=$(date "+%-I:%M %p")
-	xsetroot -name "$battery  $volume  $date  $time "
+	xsetroot -name "$battery0 $battery1  $volume  $date  $time "
 done &
 
 feh --bg-fill .wallpaper.jpg
