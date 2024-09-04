@@ -3,7 +3,7 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      material-icons
+      material-symbols
       fira-code
       noto-fonts
       noto-fonts-cjk

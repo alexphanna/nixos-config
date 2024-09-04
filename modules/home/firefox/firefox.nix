@@ -33,7 +33,7 @@
       };
 
       userChrome = ''
-        @import "/home/alex/Documents/nix-config/modules/home/firefox/chrome/userChrome.css";
+        @import "/home/alex/Documents/nixos-config/modules/home/firefox/chrome/userChrome.css";
       '';
 
       userContent = ''

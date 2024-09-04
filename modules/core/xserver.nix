@@ -15,8 +15,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "alexphanna";
           repo = "dwm";
-          rev = "0f3607ba53517f0a39bd42efc060835cd84fd528";
-          hash = "sha256-lOkL9v+W//ObsWQ9/txe2rE48guWZaEK1FNhPsZSxrg=";
+          rev = "19206b8584bc9eb712131cbdf4e97a49a6c05916";
+          hash = "sha256-99rriMBjGea2L16Ag1ZHi/b4NRrKwY97/Vf2NtDgNNs=";
         };
       };
     };
