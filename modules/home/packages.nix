@@ -43,5 +43,6 @@
     tesseract
     xclip
     gnome.gucharmap
+    nix-prefetch-git
   ];
 }
