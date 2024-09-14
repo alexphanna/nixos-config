@@ -35,7 +35,7 @@ in
     enable = true;
     arkenfox = {
       enable = true;
-      version = "128.0";
+      version = "master";
     };
 
     profiles.default = {
@@ -58,7 +58,7 @@ in
         {
           name = "Canvas";
           keyword = "canvas";
-          url = "https://rutgers.instructure.com";
+          url = "https://rutgers.instructure.com/login/saml/";
         }
       ];
 
@@ -75,6 +75,7 @@ in
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "extensions.autoDisableScopes" = 0;
+        "media.videocontrols.picture-in-picture.enabled" = false
       };
 
       userChrome = ''

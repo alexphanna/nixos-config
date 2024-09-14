@@ -3,16 +3,39 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    # basic apps
     discord
     spotify
     gpodder
     obsidian
+    galculator
+    gnome.gucharmap
+    gimp
+
+    # utils
+    aria2
+    git
+    xcompmgr
+    feh
+    bc
+    dconf
+    scrot
+    tesseract
+    xclip
+    unzip
+    nix-prefetch-git
+
+    # programming
+    nodejs
+    python3
+    jdk22
+
+    # custom packages
     (mpv.override {
       scripts = [
         pkgs.mpvScripts.uosc
       ];
     })
-    galculator
     (st.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
         owner = "alexphanna";
@@ -29,20 +52,5 @@
         hash = "sha256-+vRMPhYKb8SSvC3XvNXDLubcviRVIluLwP7uP2U6OO0=";
       };
     }))
-
-    # linux-y stuff
-    aria2
-    git
-    xcompmgr
-    feh
-    bc
-    nodejs
-    dconf
-    python3
-    scrot
-    tesseract
-    xclip
-    gnome.gucharmap
-    nix-prefetch-git
   ];
 }
