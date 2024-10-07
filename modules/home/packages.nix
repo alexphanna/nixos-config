@@ -11,6 +11,8 @@
     galculator
     gnome.gucharmap
     gimp
+    liferea
+    chromium
 
     # utils
     aria2
@@ -24,6 +26,9 @@
     xclip
     unzip
     nix-prefetch-git
+    yt-dlp
+    fastfetch
+    p7zip
 
     # programming
     nodejs
@@ -31,11 +36,6 @@
     jdk22
 
     # custom packages
-    (mpv.override {
-      scripts = [
-        pkgs.mpvScripts.uosc
-      ];
-    })
     (st.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
         owner = "alexphanna";

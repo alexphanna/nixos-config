@@ -4,8 +4,8 @@ let
   cascadeRepo = pkgs.fetchFromGitHub {
     owner = "alexphanna";
     repo = "cascade";
-    rev = "fcf25b54cb37d90fe1c0a16eea945f44b8db9bb2";
-    sha256 = "6kYtoC/StiC/MbOSYld5JHMJvCoPLv90aZD1GaduUiE=";
+    rev = "95d9b16767f198e282aedeecceae27e3f77316f5";
+    sha256 = "+A5LvuMmyBVFtigkeyFMdQ6hLqv+OKIbikmxl1GstWo=";
   };
 
   # Derive a package from the repository
@@ -41,7 +41,7 @@ in
     profiles.default = {
       search = {
         force = true;
-        default = "DuckDuckGo";
+        default = "Google";
       };
 
       bookmarks = [
@@ -75,7 +75,7 @@ in
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "extensions.autoDisableScopes" = 0;
-        "media.videocontrols.picture-in-picture.enabled" = false
+        "full-screen-api.ignore-widgets" = true;
       };
 
       userChrome = ''
@@ -93,7 +93,7 @@ in
       extensions = with pkgs; [
         nur.repos.rycee.firefox-addons.ublock-origin
         nur.repos.rycee.firefox-addons.sponsorblock
-        nur.repos.rycee.firefox-addons.languagetool
+        nur.repos.rycee.firefox-addons.grammarly
       ];
     };
   };
