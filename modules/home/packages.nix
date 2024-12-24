@@ -9,12 +9,20 @@
     gpodder
     obsidian
     galculator
-    gnome.gucharmap
+    gucharmap
     gimp
     liferea
     chromium
+    streamlink
+    
+    # gaming
+    snes9x
+    cemu
+    prismlauncher
+    protonup
 
     # utils
+    zip
     aria2
     git
     xcompmgr
@@ -24,16 +32,18 @@
     scrot
     tesseract
     xclip
+    xcolor
     unzip
     nix-prefetch-git
     yt-dlp
     fastfetch
     p7zip
+    discordchatexporter-cli
 
     # programming
     nodejs
-    python3
-    jdk22
+    python3Full
+    jdk23
 
     # custom packages
     (st.overrideAttrs (oldAttrs: rec {

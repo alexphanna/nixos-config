@@ -38,6 +38,20 @@ in
       version = "master";
     };
 
+    policies = {
+      Cookies = {
+        Allow = [
+          "https://accounts.google.com"
+          "https://www.youtube.com"
+          "https://www.github.com"
+
+          # school
+          "https://cas.rutgers.edu"
+          "https://rutgers.instructure.com/"
+        ];
+      }; 
+    };
+
     profiles.default = {
       search = {
         force = true;
@@ -67,7 +81,6 @@ in
         enableAllSections = true;
 
         "0900".enable = false; # passwords
-        "2800".enable = false; # shutdown & sanitizing
         "4500".enable = false; # optional rfp
       };
 
@@ -78,22 +91,22 @@ in
         "full-screen-api.ignore-widgets" = true;
       };
 
-      userChrome = ''
+      /*userChrome = ''
         @import url("cascade/chrome/userChrome.css");
-      '';
+      '';*/
 
       userContent = ''
         @-moz-document url-prefix("about:") { 
           html, body, window {
-            background-color: #181818 !important;
+            background-color: #565656 !important;
           }
         }
       '';
 
-      extensions = with pkgs; [
-        nur.repos.rycee.firefox-addons.ublock-origin
-        nur.repos.rycee.firefox-addons.sponsorblock
-        nur.repos.rycee.firefox-addons.grammarly
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        ublock-origin
+        sponsorblock
+        grammarly
       ];
     };
   };

@@ -9,7 +9,6 @@
     ];
     config = {
       save-position-on-quit = true;
-      
     };
   };
 }
