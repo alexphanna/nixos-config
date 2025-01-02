@@ -1,35 +1,6 @@
 { pkgs, inputs, ... }:
-let
-  # Fetch the GitHub repository
-  cascadeRepo = pkgs.fetchFromGitHub {
-    owner = "alexphanna";
-    repo = "cascade";
-    rev = "95d9b16767f198e282aedeecceae27e3f77316f5";
-    sha256 = "+A5LvuMmyBVFtigkeyFMdQ6hLqv+OKIbikmxl1GstWo=";
-  };
-
-  # Derive a package from the repository
-  cascadePackage = pkgs.stdenv.mkDerivation {
-    name = "cascade";
-    src = cascadeRepo;
-
-    installPhase = ''
-      mkdir -p $out
-      cp -r * $out
-    '';
-  };
-
-
-  # Path to the desired file in the repository
-  cascadeFilePath = "${cascadePackage}";  # Update with actual path in repo
-in
 {
   imports = [ inputs.arkenfox.hmModules.default ];
-
-  home.file."cascade" = {
-    target = ".mozilla/firefox/default/chrome/cascade";
-    source = cascadeFilePath;
-  };
 
   programs.firefox = {
     enable = true;
@@ -44,6 +15,7 @@ in
           "https://accounts.google.com"
           "https://www.youtube.com"
           "https://www.github.com"
+          "https://www.twitch.tv"
 
           # school
           "https://cas.rutgers.edu"
@@ -88,12 +60,7 @@ in
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "extensions.autoDisableScopes" = 0;
-        "full-screen-api.ignore-widgets" = true;
       };
-
-      /*userChrome = ''
-        @import url("cascade/chrome/userChrome.css");
-      '';*/
 
       userContent = ''
         @-moz-document url-prefix("about:") { 
@@ -107,6 +74,8 @@ in
         ublock-origin
         sponsorblock
         grammarly
+        return-youtube-dislikes
+        # ttv-lol not in repo
       ];
     };
   };

@@ -39,6 +39,8 @@
     fastfetch
     p7zip
     discordchatexporter-cli
+    qdirstat
+    openrgb-with-all-plugins
 
     # programming
     nodejs
