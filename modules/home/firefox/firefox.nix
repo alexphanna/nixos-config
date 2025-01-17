@@ -16,10 +16,13 @@
           "https://www.youtube.com"
           "https://www.github.com"
           "https://www.twitch.tv"
+          "https://www.reddit.com"
 
           # school
-          "https://cas.rutgers.edu"
-          "https://rutgers.instructure.com/"
+          "https://rutgers.edu"
+          "https://instructure.com/"
+          "https://duosecurity.com/"
+          "https://canvaslms.com/"
         ];
       }; 
     };

@@ -11,13 +11,12 @@
     galculator
     gucharmap
     gimp
-    liferea
     chromium
     streamlink
+    obs-studio
+    ffmpeg
     
     # gaming
-    snes9x
-    cemu
     prismlauncher
     protonup
 
