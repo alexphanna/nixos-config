@@ -38,6 +38,11 @@
   nixpkgs = {
     overlays = [
       inputs.nur.overlay
+      (final: prev: {
+        mydwm = prev.dwm.overrideAttrs (previousAttrs: {
+        src = /home/alex/Documents/dwm;
+      });
+    })
     ];
   };
 

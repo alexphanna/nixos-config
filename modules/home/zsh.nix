@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      code = "code --wait";
+      code = "code --wait --new-window";
     };
     history = {
       size = 10000;

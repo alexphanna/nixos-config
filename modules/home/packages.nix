@@ -15,6 +15,7 @@
     streamlink
     obs-studio
     ffmpeg
+    davinci-resolve
     
     # gaming
     prismlauncher
@@ -59,8 +60,8 @@
       src = fetchFromGitHub {
         owner = "alexphanna";
         repo = "dmenu";
-        rev = "5ab97d0c8a38e4aed7f9353eb8c573ee5f48be70";
-        hash = "sha256-+vRMPhYKb8SSvC3XvNXDLubcviRVIluLwP7uP2U6OO0=";
+        rev = "19ee02a32e581a443bafea5177d17d03285fb50d";
+        hash = "sha256-J9RIOiLEYAlbQhnt8IHznIur4dixExsPMVYr6EEXKiQ=";
       };
     }))
   ];

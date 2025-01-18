@@ -17,8 +17,8 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "code --wait";
-    SUDO_EDITOR = "code --wait";
-    VISUAL = "code --wait";
+    EDITOR = "code --wait --new-window";
+    SUDO_EDITOR = "code --wait --new-window";
+    VISUAL = "code --wait --new-window";
   };
 }
