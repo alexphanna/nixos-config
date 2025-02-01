@@ -1,4 +1,4 @@
-{ self, pkgs, lib, inputs, ... }:
+{ self, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     wget
@@ -34,16 +34,6 @@
       experimental-features = "nix-command flakes";
       flake-registry = "";
     };
-  };
-  nixpkgs = {
-    overlays = [
-      inputs.nur.overlay
-      (final: prev: {
-        mydwm = prev.dwm.overrideAttrs (previousAttrs: {
-        src = /home/alex/Documents/dwm;
-      });
-    })
-    ];
   };
 
   nixpkgs.config.allowUnfree = true;

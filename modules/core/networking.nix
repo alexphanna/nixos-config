@@ -3,7 +3,7 @@
   networking = {
     hostName = "${host}";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 25565 ]; # port for mc
+    firewall.enable = false;
   };
 
   environment.systemPackages = with pkgs; [

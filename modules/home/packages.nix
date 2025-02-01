@@ -13,13 +13,14 @@
     gimp
     chromium
     streamlink
-    obs-studio
     ffmpeg
     davinci-resolve
     
     # gaming
     prismlauncher
     protonup
+    moonlight-qt
+    lutris
 
     # utils
     zip
@@ -46,6 +47,8 @@
     nodejs
     python3Full
     jdk23
+    typescript
+    texlive.combined.scheme-full
 
     # custom packages
     (st.overrideAttrs (oldAttrs: rec {
@@ -64,5 +67,8 @@
         hash = "sha256-J9RIOiLEYAlbQhnt8IHznIur4dixExsPMVYr6EEXKiQ=";
       };
     }))
+
+    # unstable
+    unstable.quickemu
   ];
 }

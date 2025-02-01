@@ -2,12 +2,13 @@
 {
   programs.vscode = {
     enable = true;
-    # package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack
       bbenoist.nix
       ms-python.python
       ms-vscode-remote.remote-ssh
+      esbenp.prettier-vscode
+      james-yu.latex-workshop
     ];
 
     userSettings = {
@@ -16,6 +17,9 @@
       "files.autoSave" = "afterDelay";
       "workbench.statusBar.visible" = false;
       "editor.minimap.enabled" = false;
+      "editor.formatOnSave" = true;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "update.mode" = "none";
     };
   };
 

@@ -4,13 +4,14 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # NUR
+    nur.url = "github:nix-community/NUR";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # NUR
-    nur.url = "github:nix-community/NUR";
 
     arkenfox = {
       url = "github:dwarfmaster/arkenfox-nixos";
@@ -21,11 +22,19 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
+    nur,
     ...
   } @ inputs: let
     username = "alex";
     system = "x86_64-linux";
+    overlay-unstable = final: prev: {
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -41,7 +50,15 @@
         inherit system;
         specialArgs = { host="desktop"; inherit self inputs username ; };
         # > Our main nixos configuration file <
-        modules = [ (import ./hosts/desktop) ];
+        modules = [ 
+          (import ./hosts/desktop)
+          {
+            nixpkgs.overlays = [
+              nur.overlay
+              overlay-unstable
+            ];
+          }
+        ];
       };
     };
   };
