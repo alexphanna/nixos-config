@@ -17,11 +17,15 @@ while true; do
 	xsetroot -name "$brightness  $battery  $volume  $date  $time "
 done &
 
-feh --bg-fill .wallpaper.jpg
+#feh --bg-fill .wallpaper.jpg
 
 # xcompmgr &
 picom &
 
+xwinwrap -ov -g 1920x1080+0+0 -- mpv -wid WID ~/cyberpunk.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings --scripts=disable uosc.lua &
+
 xrandr --output HDMI-0 --mode 1920x1080 --rate 74.97
 
 exec dwm
+
+

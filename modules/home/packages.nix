@@ -17,9 +17,8 @@
     davinci-resolve
     
     # gaming
-    prismlauncher
+    (prismlauncher.override { jdks = [ jdk8 jdk21 ]; })
     protonup
-    moonlight-qt
     lutris
 
     # utils
@@ -35,6 +34,7 @@
     xclip
     xcolor
     unzip
+    unrar
     nix-prefetch-git
     yt-dlp
     fastfetch
@@ -42,6 +42,9 @@
     discordchatexporter-cli
     qdirstat
     openrgb-with-all-plugins
+    xwinwrap
+    xarchiver
+    killall
 
     # programming
     nodejs
@@ -49,6 +52,7 @@
     jdk23
     typescript
     texlive.combined.scheme-full
+    vim
 
     # custom packages
     (st.overrideAttrs (oldAttrs: rec {
@@ -63,12 +67,10 @@
       src = fetchFromGitHub {
         owner = "alexphanna";
         repo = "dmenu";
-        rev = "19ee02a32e581a443bafea5177d17d03285fb50d";
-        hash = "sha256-J9RIOiLEYAlbQhnt8IHznIur4dixExsPMVYr6EEXKiQ=";
+        rev = "13f7ee4ffe42088fd43ccd771707c777848da294";
+        hash = "sha256-KV8HPF910BUI3frfULR0WX3NaViR9mgLa6TsdNbtO6U=";
       };
+      # src = /home/alex/Documents/dmenu;
     }))
-
-    # unstable
-    unstable.quickemu
   ];
 }

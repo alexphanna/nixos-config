@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -16,12 +16,19 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d1d2e3e8-d86c-4502-9f89-83c362d74e6c";
       fsType = "ext4";
+      options = [ "x-gvfs-show" ];
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/C9B1-6DC2";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/home/alex/sata" =
+    { device = "/dev/disk/by-uuid/600511bd-0cbd-4a86-8f7d-d4d38f3f8805";
+      fsType = "ext4";
+      options = [ "x-gvfs-show" "defaults" ];
     };
 
   swapDevices =

@@ -65,7 +65,7 @@ while true; do
 	xsetroot -name "$brightness $battery0 $battery1  $volume  $date  $time "
 done &
 
-feh --bg-fill .wallpaper.jpg
+# feh --bg-fill .wallpaper.jpg
 
 # xcompmgr &
 picom &

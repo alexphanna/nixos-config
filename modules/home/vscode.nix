@@ -4,6 +4,7 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack
+      redhat.java
       bbenoist.nix
       ms-python.python
       ms-vscode-remote.remote-ssh
