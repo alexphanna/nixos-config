@@ -1,6 +1,36 @@
 { pkgs, inputs, ... }:
+let
+  # Fetch the GitHub repository
+  cascadeRepo = pkgs.fetchFromGitHub {
+    owner = "alexphanna";
+    repo = "cascade";
+    rev = "c247468156ae49a395880ef3c5e2faad4544ce7f";
+    sha256 = "sha256-n3G1iLWZFk3T8oX8DuKzlzHND5wXphgtAso141wvgVQ=";
+  };
+
+  # Derive a package from the repository
+  cascadePackage = pkgs.stdenv.mkDerivation {
+    name = "cascade";
+    src = cascadeRepo;
+
+    installPhase = ''
+      mkdir -p $out
+      cp -r * $out
+      rm $out/chrome/includes/cascade-colours.css
+    '';
+  };
+
+
+  # Path to the desired file in the repository
+  cascadeFilePath = "${cascadePackage}";  # Update with actual path in repo
+in
 {
   imports = [ inputs.arkenfox.hmModules.default ];
+
+  home.file."cascade" = {
+    target = ".mozilla/firefox/default/chrome/cascade";
+    source = cascadeFilePath;
+  };
 
   programs.firefox = {
     enable = true;
@@ -65,12 +95,8 @@
         "extensions.autoDisableScopes" = 0;
       };
 
-      userContent = ''
-        @-moz-document url-prefix("about:") { 
-          html, body, window {
-            background-color: #565656 !important;
-          }
-        }
+      userChrome = ''
+        @import url("cascade/chrome/userChrome.css");
       '';
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -78,6 +104,7 @@
         sponsorblock
         grammarly
         return-youtube-dislikes
+        adaptive-tab-bar-colour
         # ttv-lol not in repo
       ];
     };
