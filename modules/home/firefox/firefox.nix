@@ -32,6 +32,10 @@ in
     source = cascadeFilePath;
   };
 
+  home.packages = with pkgs; [
+    librewolf
+  ];
+
   programs.firefox = {
     enable = true;
     arkenfox = {
@@ -53,6 +57,7 @@ in
           "https://instructure.com/"
           "https://duosecurity.com/"
           "https://canvaslms.com/"
+          "https://gradescope.com/"
         ];
       }; 
     };

@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     # basic apps
     discord
+    discord-canary
     spotify
     gpodder
     obsidian
@@ -17,7 +18,7 @@
     davinci-resolve
     
     # gaming
-    (prismlauncher.override { jdks = [ jdk8 jdk21 ]; })
+    (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
     protonup
     lutris
 
@@ -45,6 +46,11 @@
     xwinwrap
     xarchiver
     killall
+    neofetch
+    protonvpn-gui
+    qbittorrent
+    libnatpmp
+    mkvtoolnix
 
     # programming
     nodejs
@@ -67,8 +73,8 @@
       src = fetchFromGitHub {
         owner = "alexphanna";
         repo = "dmenu";
-        rev = "13f7ee4ffe42088fd43ccd771707c777848da294";
-        hash = "sha256-KV8HPF910BUI3frfULR0WX3NaViR9mgLa6TsdNbtO6U=";
+        rev = "19ee02a32e581a443bafea5177d17d03285fb50d";
+        hash = "sha256-J9RIOiLEYAlbQhnt8IHznIur4dixExsPMVYr6EEXKiQ=";
       };
       # src = /home/alex/Documents/dmenu;
     }))

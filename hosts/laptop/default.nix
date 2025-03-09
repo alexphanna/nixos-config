@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     acpilight
     powertop
+    moonlight-qt
   ];
 
   services.udev.extraRules = ''

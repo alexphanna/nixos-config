@@ -10,5 +10,6 @@
     ++ [ (import ./fonts.nix) ]
     ++ [ (import ./services.nix) ]
     ++ [ (import ./programs.nix) ]
+    ++ [ (import ./jellyfin.nix) ]
     ++ [ (import ./xserver.nix) ];
 }

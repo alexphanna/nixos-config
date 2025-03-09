@@ -25,7 +25,7 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/home/alex/sata" =
+  fileSystems."/mnt/sata" =
     { device = "/dev/disk/by-uuid/600511bd-0cbd-4a86-8f7d-d4d38f3f8805";
       fsType = "ext4";
       options = [ "x-gvfs-show" "defaults" ];
