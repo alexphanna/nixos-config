@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     # basic apps
     discord
-    discord-canary
     spotify
     gpodder
     obsidian
@@ -20,7 +19,6 @@
     # gaming
     (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
     protonup
-    lutris
 
     # utils
     zip
