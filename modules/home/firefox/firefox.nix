@@ -32,10 +32,6 @@ in
     source = cascadeFilePath;
   };
 
-  home.packages = with pkgs; [
-    librewolf
-  ];
-
   programs.firefox = {
     enable = true;
     arkenfox = {
