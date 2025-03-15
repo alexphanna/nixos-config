@@ -54,6 +54,7 @@ in
           "https://duosecurity.com/"
           "https://canvaslms.com/"
           "https://gradescope.com/"
+          "https://piazza.com/"
         ];
       }; 
     };

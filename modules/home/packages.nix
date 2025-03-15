@@ -14,10 +14,11 @@
     chromium
     streamlink
     ffmpeg
-    davinci-resolve
+    # davinci-resolve
+    nicotine-plus
     
     # gaming
-    (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
+    (prismlauncher.override { jdks = [ jdk8 /*jdk17 jdk21*/ ]; })
     protonup
 
     # utils
@@ -49,6 +50,8 @@
     qbittorrent
     libnatpmp
     mkvtoolnix
+    quickemu
+    spice-gtk
 
     # programming
     nodejs
