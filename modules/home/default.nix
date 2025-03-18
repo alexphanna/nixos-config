@@ -1,7 +1,7 @@
 { inputs, username, host, ... }:
 {
   imports =
-       [(import ./firefox/firefox.nix)]
+       [(import ./firefox.nix)]
     ++ [(import ./gtk.nix)]
     ++ [(import ./packages.nix)]
     ++ [(import ./vscode.nix)]

@@ -1,7 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 {
-  fonts.fontconfig.enable = true;
-
   home.packages = with pkgs; [
     # basic apps
     discord
@@ -18,7 +16,7 @@
     nicotine-plus
     
     # gaming
-    (prismlauncher.override { jdks = [ jdk8 /*jdk17 jdk21*/ ]; })
+    (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
     protonup
 
     # utils
@@ -50,8 +48,8 @@
     qbittorrent
     libnatpmp
     mkvtoolnix
-    quickemu
     spice-gtk
+    woeusb-ng
 
     # programming
     nodejs
@@ -79,5 +77,9 @@
       };
       # src = /home/alex/Documents/dmenu;
     }))
+  ]
+  ++
+  [
+    inputs.apple-emoji-linux.packages.${system}.default
   ];
 }

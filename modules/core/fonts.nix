@@ -9,5 +9,11 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
     ];
+
+    fontconfig = {
+      defaultFonts = {
+        emoji = [ "Apple Color Emoji" ];
+      };
+    };
   };
 }
