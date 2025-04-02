@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 while true; do
 	brightness=" $(xbacklight -perceived -get)%"
 	

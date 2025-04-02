@@ -48,8 +48,6 @@
     qbittorrent
     libnatpmp
     mkvtoolnix
-    spice-gtk
-    woeusb-ng
 
     # programming
     nodejs
