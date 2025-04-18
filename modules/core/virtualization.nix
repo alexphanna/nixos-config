@@ -7,6 +7,7 @@
     libvirt
     qemu_full
     dnsmasq
+    samba
   ];
 
   virtualisation.spiceUSBRedirection.enable = true;

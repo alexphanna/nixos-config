@@ -2,10 +2,11 @@
 {
   home.packages = with pkgs; [
     # basic apps
-    discord
+    (discord.override {
+      withVencord = true;
+    })
     spotify
     gpodder
-    obsidian
     galculator
     gucharmap
     gimp
@@ -14,6 +15,9 @@
     ffmpeg
     # davinci-resolve
     nicotine-plus
+    openrgb-with-all-plugins
+    protonvpn-gui
+    qbittorrent
     
     # gaming
     (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
@@ -39,13 +43,10 @@
     p7zip
     discordchatexporter-cli
     qdirstat
-    openrgb-with-all-plugins
     xwinwrap
     xarchiver
     killall
     neofetch
-    protonvpn-gui
-    qbittorrent
     libnatpmp
     mkvtoolnix
 
@@ -56,6 +57,8 @@
     typescript
     texlive.combined.scheme-full
     vim
+    uv
+    flutter
 
     # custom packages
     (st.overrideAttrs (oldAttrs: rec {

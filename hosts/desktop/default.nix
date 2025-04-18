@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: 
+{ pkgs, pkgs-unstable, config, ... }: 
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,26 +7,25 @@
 
   services = {
     xserver.videoDrivers = ["nvidia"];
-    ollama = {
-      enable = true;
-      acceleration = "cuda";
-    };
-    sunshine = {
-      enable = true;
-      autoStart = true;
-      capSysAdmin = true;
-      openFirewall = true;
-    };
     jellyfin.enable = true;
+    audiobookshelf = {
+      enable = true;
+      host = "0.0.0.0";
+    };
   };
 
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
+
+    audiobookshelf
   ];
 
+  boot.kernelPackages = pkgs.unstable.linuxPackages;
+
   hardware.nvidia = {
+    package = pkgs.unstable.linuxPackages.nvidiaPackages.production;
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;

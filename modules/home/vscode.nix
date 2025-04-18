@@ -10,6 +10,7 @@
       ms-vscode-remote.remote-ssh
       esbenp.prettier-vscode
       james-yu.latex-workshop
+      dart-code.flutter
     ];
 
     userSettings = {
