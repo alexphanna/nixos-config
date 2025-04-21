@@ -1,36 +1,6 @@
 { pkgs, inputs, ... }:
-let
-  # Fetch the GitHub repository
-  cascadeRepo = pkgs.fetchFromGitHub {
-    owner = "alexphanna";
-    repo = "cascade";
-    rev = "c247468156ae49a395880ef3c5e2faad4544ce7f";
-    sha256 = "sha256-n3G1iLWZFk3T8oX8DuKzlzHND5wXphgtAso141wvgVQ=";
-  };
-
-  # Derive a package from the repository
-  cascadePackage = pkgs.stdenv.mkDerivation {
-    name = "cascade";
-    src = cascadeRepo;
-
-    installPhase = ''
-      mkdir -p $out
-      cp -r * $out
-      rm $out/chrome/includes/cascade-colours.css
-    '';
-  };
-
-
-  # Path to the desired file in the repository
-  cascadeFilePath = "${cascadePackage}";  # Update with actual path in repo
-in
 {
   imports = [ inputs.arkenfox.hmModules.default ];
-
-  home.file."cascade" = {
-    target = ".mozilla/firefox/default/chrome/cascade";
-    source = cascadeFilePath;
-  };
 
   programs.firefox = {
     enable = true;
@@ -40,6 +10,15 @@ in
     };
 
     policies = {
+      BlockAboutConfig = true;
+      # Disable
+      DisableAppUpdate = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxScreenshots = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
       Cookies = {
         Allow = [
           "https://accounts.google.com"
@@ -60,11 +39,10 @@ in
     };
 
     profiles.default = {
-      search = {
-        force = true;
-        default = "Google";
-      };
-
+      id = 0;
+      name = "Default";
+      isDefault = true;
+      
       bookmarks = [
         {
           name = "YouTube";
@@ -92,14 +70,10 @@ in
       };
 
       settings = {
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "extensions.pocket.enabled" = false;
         "extensions.autoDisableScopes" = 0;
+        "ui.key.menuAccessKeyFocuses" = false;
       };
-
-      userChrome = ''
-        @import url("cascade/chrome/userChrome.css");
-      '';
 
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
@@ -107,8 +81,15 @@ in
         grammarly
         return-youtube-dislikes
         adaptive-tab-bar-colour
+        redirector
         # ttv-lol not in repo
       ];
+
+      search = {
+        force = true;
+        default = "Google";
+        privateDefault = "Google";
+      };
     };
   };
 }

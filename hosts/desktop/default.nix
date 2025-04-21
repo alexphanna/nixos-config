@@ -32,15 +32,33 @@
     open = false;
     nvidiaSettings = true;
   };
-  
-  programs = {
-    gamemode.enable = true;
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+
+  # Virtualization
+
+  users.users.${username}.extraGroups = [ "libvirtd" "kvm" ];
+
+  environment.systemPackages = with pkgs; [
+    # ultimate-macOS-kvm dependencies
+    libvirt
+    qemu_full
+    dnsmasq
+    samba
+  ];
+
+  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
     };
   };
 }

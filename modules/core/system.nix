@@ -31,6 +31,7 @@
       auto-optimise-store = true;
       experimental-features = "nix-command flakes";
       flake-registry = "";
+      download-buffer-size = 524288000;
     };
   };
 

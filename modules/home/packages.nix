@@ -6,21 +6,18 @@
       withVencord = true;
     })
     spotify
-    gpodder
     galculator
-    gucharmap
     gimp
     chromium
     streamlink
-    ffmpeg
-    # davinci-resolve
-    nicotine-plus
     openrgb-with-all-plugins
     protonvpn-gui
     qbittorrent
     
     # gaming
-    (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 ]; })
+    (prismlauncher.override { 
+      jdks = [ jdk8 jdk17 jdk21 ]; 
+    })
     protonup
 
     # utils
@@ -46,16 +43,16 @@
     xwinwrap
     xarchiver
     killall
-    neofetch
     libnatpmp
     mkvtoolnix
+    ffmpeg
 
     # programming
     nodejs
     python3Full
     jdk23
     typescript
-    texlive.combined.scheme-full
+    texlive.combined.scheme-basic
     vim
     uv
     flutter
@@ -78,9 +75,9 @@
       };
       # src = /home/alex/Documents/dmenu;
     }))
-  ]
-  ++
+  ];
+  /*++
   [
     inputs.apple-emoji-linux.packages.${system}.default
-  ];
+  ];*/
 }

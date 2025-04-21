@@ -2,6 +2,8 @@
 {
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
+
     extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack
       redhat.java
@@ -22,6 +24,7 @@
       "editor.formatOnSave" = true;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "update.mode" = "none";
+      "security.workspace.trust.untrustedFiles" = "never";
     };
   };
 

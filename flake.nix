@@ -53,10 +53,10 @@
       # FIXME replace with your hostname
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { host="desktop"; inherit self inputs username ; };
+        specialArgs = { host="laptop"; inherit self inputs username ; };
         # > Our main nixos configuration file <
         modules = [ 
-          (import ./hosts/desktop)
+          (import ./hosts/laptop)
           {
             nixpkgs.overlays = [
               nur.overlay
