@@ -12,13 +12,13 @@
     policies = {
       BlockAboutConfig = true;
       # Disable
-      DisableAppUpdate = true;
+      /*DisableAppUpdate = true;
       DisableFeedbackCommands = true;
       DisableFirefoxAccounts = true;
       DisableFirefoxScreenshots = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
-      DisableTelemetry = true;
+      DisableTelemetry = true;*/
       Cookies = {
         Allow = [
           "https://accounts.google.com"

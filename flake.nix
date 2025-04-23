@@ -22,6 +22,11 @@
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-06cb-009a-fingerprint-sensor = {
+      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -30,6 +35,7 @@
     nixpkgs-unstable,
     home-manager,
     nur,
+    nixos-06cb-009a-fingerprint-sensor,
     ...
   } @ inputs: let
     username = "alex";
@@ -59,7 +65,7 @@
           (import ./hosts/laptop)
           {
             nixpkgs.overlays = [
-              nur.overlay
+              nur.overlays.default
               overlay-unstable
 
               # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
@@ -80,6 +86,7 @@
               })
             ];
           }
+          nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
         ];
       };
     };

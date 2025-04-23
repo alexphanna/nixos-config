@@ -11,10 +11,12 @@
     acpilight
     powertop
     moonlight-qt
+    fprintd
   ];
 
   hardware.bluetooth.enable = true;
 
+  # Fix no speakers
   boot.kernelParams = [ "snd-intel-dspcfg.dsp_driver=1" ];
 
   services = {
@@ -34,5 +36,13 @@
 
     throttled.enable = true;
     blueman.enable = true;
+    fwupd.enable = true; # bios updating
+
+    # fingerprint
+    "06cb-009a-fingerprint-sensor" = {                                 
+      enable = true;                                                            
+      backend = "libfprint-tod";                                                
+      calib-data-file = ./calib-data.bin;                
+    };
   };
 }
