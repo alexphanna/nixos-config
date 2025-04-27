@@ -56,6 +56,7 @@
     vim
     uv
     flutter
+    nixfmt-rfc-style
 
     # custom packages
     (st.overrideAttrs (oldAttrs: rec {
@@ -75,9 +76,9 @@
       };
       # src = /home/alex/Documents/dmenu;
     }))
-  ];
-  /*++
+  ]
+  ++
   [
     inputs.apple-emoji-linux.packages.${system}.default
-  ];*/
+  ];
 }

@@ -22,7 +22,9 @@ done &
 # xcompmgr &
 picom &
 
-xwinwrap -ov -g 1920x1080+0+0 -- mpv -wid WID ~/cyberpunk.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings --scripts=disable uosc.lua &
+nmcli c up "Wired connection 1" &
+
+xwinwrap -ov -g 1920x1080+0+0 -- mpv -wid WID ~/cyberpunk.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings --scripts=disable uosc.lua --cursor-autohide=no &
 
 xrandr --output HDMI-0 --mode 1920x1080 --rate 74.97
 

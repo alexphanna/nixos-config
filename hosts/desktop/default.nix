@@ -3,15 +3,12 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
-  ];
+  ]
+  ++ [ (import ./virtualization.nix) ];
 
   services = {
     xserver.videoDrivers = ["nvidia"];
     jellyfin.enable = true;
-    audiobookshelf = {
-      enable = true;
-      host = "0.0.0.0";
-    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -19,7 +16,7 @@
     jellyfin-web
     jellyfin-ffmpeg
 
-    audiobookshelf
+    unstable.blockbench
   ];
 
   boot.kernelPackages = pkgs.unstable.linuxPackages;
@@ -31,34 +28,5 @@
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-  };
-
-  # Virtualization
-
-  users.users.${username}.extraGroups = [ "libvirtd" "kvm" ];
-
-  environment.systemPackages = with pkgs; [
-    # ultimate-macOS-kvm dependencies
-    libvirt
-    qemu_full
-    dnsmasq
-    samba
-  ];
-
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
-    };
   };
 }

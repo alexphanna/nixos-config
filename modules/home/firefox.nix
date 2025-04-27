@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 {
   imports = [ inputs.arkenfox.hmModules.default ];
 
@@ -11,14 +11,6 @@
 
     policies = {
       BlockAboutConfig = true;
-      # Disable
-      /*DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxAccounts = true;
-      DisableFirefoxScreenshots = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;*/
       Cookies = {
         Allow = [
           "https://accounts.google.com"
@@ -82,7 +74,6 @@
         return-youtube-dislikes
         adaptive-tab-bar-colour
         redirector
-        # ttv-lol not in repo
       ];
 
       search = {

@@ -53,16 +53,43 @@
     lib = nixpkgs.lib;
   in
   {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
-      nixos = nixpkgs.lib.nixosSystem {
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { host="desktop"; inherit self inputs username ; };
+        modules = [ 
+          ./hosts/desktop
+          {
+            nixpkgs.overlays = [
+              nur.overlays.default
+              overlay-unstable
+
+              # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
+              (self: super: {
+                xarchiver = super.xarchiver.overrideAttrs (old: {
+                  postInstall = ''
+                    rm -rf $out/libexec
+                  '';
+                });
+
+                xfce = super.xfce.overrideScope (xself: xsuper: {
+                  thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
+                    postInstall = ''
+                      cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
+                    '';
+                  });
+                });
+              })
+            ];
+          }
+        ];
+      };
+
+      laptop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { host="laptop"; inherit self inputs username ; };
-        # > Our main nixos configuration file <
         modules = [ 
-          (import ./hosts/laptop)
+          ./hosts/laptop
           {
             nixpkgs.overlays = [
               nur.overlays.default
