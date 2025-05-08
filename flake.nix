@@ -27,6 +27,8 @@
       url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = {

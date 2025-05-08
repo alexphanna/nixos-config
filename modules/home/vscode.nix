@@ -13,6 +13,7 @@
       esbenp.prettier-vscode
       james-yu.latex-workshop
       dart-code.flutter
+      tamasfe.even-better-toml
     ];
 
     userSettings = {
@@ -25,6 +26,7 @@
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "update.mode" = "none";
       "security.workspace.trust.untrustedFiles" = "never";
+      "editor.fontFamily" = "'SF Mono', 'monospace', monospace";
     };
   };
 

@@ -2,13 +2,14 @@
 {
   programs.mpv = {
     enable = true;
-    scripts = [
-      pkgs.mpvScripts.uosc
-      pkgs.mpvScripts.thumbfast
-      pkgs.mpvScripts.sponsorblock
+    scripts = with pkgs.mpvScripts; [
+      uosc
+      thumbfast
+      sponsorblock
     ];
     config = {
       save-position-on-quit = true;
+      ao = "pulse";
     };
   };
 }

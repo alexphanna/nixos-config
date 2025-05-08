@@ -15,10 +15,9 @@
         src = pkgs.fetchFromGitHub {
           owner = "alexphanna";
           repo = "dwm";
-          rev = "d199064ac2cf69f5c0a142fda5fd4ac2d34940d6";
-          hash = "sha256-V4R0uL/8ml27hvXgXn+ka5RdRQ0JiuZCqDEfVa10Bw0=";
+          rev = "7ef75a067cadff08725110f33b9e30007e976922";
+          hash = "sha256-gSIXjpyHSSUjsIVqa92L1YcnJz5aTKkNYYmkISkmLQk=";
         };
-        # src = /home/alex/Documents/dwm;
       };
     };
   };

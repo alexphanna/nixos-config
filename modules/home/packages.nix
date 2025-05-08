@@ -13,6 +13,7 @@
     openrgb-with-all-plugins
     protonvpn-gui
     qbittorrent
+    obsidian
     
     # gaming
     (prismlauncher.override { 
@@ -46,13 +47,14 @@
     libnatpmp
     mkvtoolnix
     ffmpeg
+    gucharmap
 
     # programming
     nodejs
     python3Full
     jdk23
     typescript
-    texlive.combined.scheme-basic
+    texlive.combined.scheme-full
     vim
     uv
     flutter
@@ -63,9 +65,10 @@
       src = fetchFromGitHub {
         owner = "alexphanna";
         repo = "st";
-        rev = "b35c560d0f3c213927760dc51ff49e3bb2073e37";
-        hash = "sha256-FAfxQ2hiKF4LM5uFjQLakWSKDPmTTKuKXiJnPsELoOY=";
+        rev = "1fbc35dd244f37ca44af59bc0883abee40410d0b";
+        hash = "sha256-1Wtj/yyTepzgJzCpsHRZSsCK2D4QJze2Igk7ujPMU3Y=";
       };
+      # src = /home/alex/Documents/st;
     }))
     (dmenu.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
