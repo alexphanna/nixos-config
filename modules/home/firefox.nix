@@ -10,7 +10,6 @@
     };
 
     policies = {
-      BlockAboutConfig = true;
       Cookies = {
         Allow = [
           "https://accounts.google.com"

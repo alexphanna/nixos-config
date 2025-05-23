@@ -32,12 +32,12 @@
       options = [ "x-gvfs-show" "defaults" ];
       label = "Hard Drive";
     };
-  fileSystems."/mnt/windows" =
+  /*fileSystems."/mnt/windows" =
     { device = "/dev/disk/by-uuid/D432175A32174142";
       fsType = "ntfs-3g"; 
       options = [ "x-gvfs-show" "rw" "uid=1000"];
       label = "Windows";
-    };
+    };*/
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/9aed6e0f-4644-4dbd-b52f-5e507576588b"; }

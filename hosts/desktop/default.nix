@@ -9,6 +9,10 @@
   services = {
     xserver.videoDrivers = ["nvidia"];
     jellyfin.enable = true;
+    audiobookshelf = {
+      enable = true;
+      host = "0.0.0.0";
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -19,7 +23,10 @@
     unstable.blockbench
   ];
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages;
+  boot = {
+    kernelPackages = pkgs.unstable.linuxPackages;
+    initrd.availableKernelModules = [ "r8169" ];
+  };
 
   hardware.nvidia = {
     package = pkgs.unstable.linuxPackages.nvidiaPackages.production;

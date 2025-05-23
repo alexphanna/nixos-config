@@ -2,9 +2,10 @@
 {
   home.packages = with pkgs; [
     # basic apps
-    (discord.override {
+    /*(discord.override {
       withVencord = true;
-    })
+    })*/
+    # discord
     spotify
     galculator
     gimp
@@ -14,12 +15,16 @@
     protonvpn-gui
     qbittorrent
     obsidian
+    nicotine-plus
+    mission-center
     
     # gaming
     (prismlauncher.override { 
       jdks = [ jdk8 jdk17 jdk21 ]; 
     })
     protonup
+    lutris
+    heroic
 
     # utils
     zip
@@ -48,6 +53,8 @@
     mkvtoolnix
     ffmpeg
     gucharmap
+    neofetch
+    gparted
 
     # programming
     nodejs

@@ -7,5 +7,6 @@
     udisks2.enable = true;
     devmon.enable = true;
     fstrim.enable = true;
+    openssh.enable = true;
   };
 }

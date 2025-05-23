@@ -29,6 +29,8 @@
     };
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    nixcord. url = "github:kaylorben/nixcord";
+    
   };
 
   outputs = {
