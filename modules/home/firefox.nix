@@ -10,6 +10,7 @@
     };
 
     policies = {
+      BlockAboutConfig = true;
       Cookies = {
         Allow = [
           "https://accounts.google.com"
@@ -34,23 +35,26 @@
       name = "Default";
       isDefault = true;
       
-      bookmarks = [
-        {
-          name = "YouTube";
-          keyword = "youtube";
-          url = "https://www.youtube.com/";
-        }
-        {
-          name = "GitHub";
-          keyword = "github";
-          url = "https://www.github.com/";
-        }
-        {
-          name = "Canvas";
-          keyword = "canvas";
-          url = "https://rutgers.instructure.com/login/saml/";
-        }
-      ];
+      bookmarks = {
+        force = true;
+        settings = [
+          {
+            name = "YouTube";
+            keyword = "youtube";
+            url = "https://www.youtube.com/";
+          }
+          {
+            name = "GitHub";
+            keyword = "github";
+            url = "https://www.github.com/";
+          }
+          {
+            name = "Canvas";
+            keyword = "canvas";
+            url = "https://rutgers.instructure.com/login/saml/";
+          }
+        ];
+      };
 
       arkenfox = {
         enable = true;
@@ -63,22 +67,44 @@
       settings = {
         "extensions.pocket.enabled" = false;
         "extensions.autoDisableScopes" = 0;
-        "ui.key.menuAccessKeyFocuses" = false;
+        "ui.key.menuAccessKeyFocuses" = false; # no alt key
+        "media.videocontrols.picture-in-picture.enabled" = true;
       };
 
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        sponsorblock
-        grammarly
-        return-youtube-dislikes
-        adaptive-tab-bar-colour
-        redirector
-      ];
+      extensions  = {
+        force = true;
+        packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          sponsorblock
+          grammarly
+          return-youtube-dislikes
+          adaptive-tab-bar-colour
+          redirector
+        ];
+        settings = {
+          "redirector@einaregilsson.com" = {
+            force = true;
+            settings = {
+              redirects = [
+                {
+                  description = "NixOS Official Wiki";
+                  exampleUrl = "https://nixos.wiki/wiki/Firefox";
+                  exampleResult = "https://wiki.nixos.org/wiki/Firefox";
+                  includePattern = "https://nixos.wiki/wiki/*";
+                  redirectUrl = "https://wiki.nixos.org/wiki/$1";
+                  patternType = "W";
+                  appliesTo = [ "main_frame" ];
+                }
+              ];
+            };
+          };
+        };
+      };
 
       search = {
         force = true;
-        default = "Google";
-        privateDefault = "Google";
+        default = "google";
+        privateDefault = "google";
       };
     };
   };

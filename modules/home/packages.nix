@@ -1,11 +1,6 @@
 { pkgs, pkgs-unstable, inputs, ... }:
 {
   home.packages = with pkgs; [
-    # basic apps
-    /*(discord.override {
-      withVencord = true;
-    })*/
-    # discord
     spotify
     galculator
     gimp
@@ -87,8 +82,8 @@
       # src = /home/alex/Documents/dmenu;
     }))
   ]
-  ++
+  /*++
   [
     inputs.apple-emoji-linux.packages.${system}.default
-  ];
+  ]*/;
 }

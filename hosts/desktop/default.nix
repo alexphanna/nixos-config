@@ -25,11 +25,13 @@
 
   boot = {
     kernelPackages = pkgs.unstable.linuxPackages;
-    initrd.availableKernelModules = [ "r8169" ];
+    initrd.availableKernelModules = [ "r8169" ]; # wake on lan fix
   };
 
+  networking.interfaces."enp42s0".wakeOnLan.enable = true;
+
   hardware.nvidia = {
-    package = pkgs.unstable.linuxPackages.nvidiaPackages.production;
+    package = pkgs.unstable.linuxPackages.nvidiaPackages.production; # more up to date drivers
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;

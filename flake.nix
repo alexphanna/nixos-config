@@ -3,14 +3,14 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # NUR
     nur.url = "github:nix-community/NUR";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     arkenfox = {
@@ -23,10 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-06cb-009a-fingerprint-sensor = {
+    /*nixos-06cb-009a-fingerprint-sensor = {
       url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
+    };*/
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     nixcord. url = "github:kaylorben/nixcord";
@@ -39,7 +39,7 @@
     nixpkgs-unstable,
     home-manager,
     nur,
-    nixos-06cb-009a-fingerprint-sensor,
+    # nixos-06cb-009a-fingerprint-sensor,
     ...
   } @ inputs: let
     username = "alex";
@@ -117,7 +117,7 @@
               })
             ];
           }
-          nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+          # nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
         ];
       };
     };
