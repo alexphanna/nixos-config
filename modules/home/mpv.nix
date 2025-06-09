@@ -8,8 +8,9 @@
       sponsorblock
     ];
     config = {
-      save-position-on-quit = true;
-      ao = "pulse";
+      # save-position-on-quit = true;
+      vo = "gpu";
+      hwdec = "auto";
     };
   };
 }

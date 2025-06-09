@@ -11,15 +11,13 @@
     qbittorrent
     obsidian
     nicotine-plus
-    mission-center
+    teamspeak3
+    resources
     
     # gaming
     (prismlauncher.override { 
       jdks = [ jdk8 jdk17 jdk21 ]; 
     })
-    protonup
-    lutris
-    heroic
 
     # utils
     zip
@@ -82,8 +80,8 @@
       # src = /home/alex/Documents/dmenu;
     }))
   ]
-  /*++
+  ++
   [
     inputs.apple-emoji-linux.packages.${system}.default
-  ]*/;
+  ];
 }

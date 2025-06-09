@@ -4,13 +4,18 @@
 
   programs.firefox = {
     enable = true;
-    arkenfox = {
-      enable = true;
-      version = "master";
-    };
 
     policies = {
+      AppAutoUpdate = false;
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+      BackgroundAppUpdate = false;
+
+      BlockAboutAddons = true;
+      BlockAboutProfiles = true;
       BlockAboutConfig = true;
+      BlockAboutSupport = true;
+
       Cookies = {
         Allow = [
           "https://accounts.google.com"
@@ -28,6 +33,39 @@
           "https://piazza.com/"
         ];
       }; 
+
+      DisableAccounts = true;
+      DisableAppUpdate = true;
+      DisableDefaultBrowserAgent = true;
+      DisableEncryptedClientHello = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxAccounts = true;
+      DisableFirefoxScreenshots = true;
+      DisableFirefoxStudies = true;
+      DisableForgetButton = true;
+      DisableFormHistory = true;
+      DisableMasterPasswordCreation = true;
+      DisablePasswordReveal = true;
+      DisablePocket = true;
+      DisablePrivateBrowsing = true;
+      DisableProfileImport = true;
+      DisableProfileRefresh = true;
+      DisableSafeMode = true;
+      DisableSetDesktopBackground = true;
+      DisableSystemAddonUpdate = true;
+      DisableTelemetry = true;
+      
+      DisplayBookmarksToolbar = "never";
+      DisplayMenuBar = "never";
+      DontCheckDefaultBrowser = true;
+      DownloadDirectory = "~/Downloads";
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+        EmailTracking = true;
+      };
     };
 
     profiles.default = {
@@ -56,21 +94,6 @@
         ];
       };
 
-      arkenfox = {
-        enable = true;
-        enableAllSections = true;
-
-        "0900".enable = false; # passwords
-        "4500".enable = false; # optional rfp
-      };
-
-      settings = {
-        "extensions.pocket.enabled" = false;
-        "extensions.autoDisableScopes" = 0;
-        "ui.key.menuAccessKeyFocuses" = false; # no alt key
-        "media.videocontrols.picture-in-picture.enabled" = true;
-      };
-
       extensions  = {
         force = true;
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -92,6 +115,15 @@
                   exampleResult = "https://wiki.nixos.org/wiki/Firefox";
                   includePattern = "https://nixos.wiki/wiki/*";
                   redirectUrl = "https://wiki.nixos.org/wiki/$1";
+                  patternType = "W";
+                  appliesTo = [ "main_frame" ];
+                }
+                {
+                  description = "Minecraft Wiki";
+                  exampleUrl = "https://minecraft.fandom.com/wiki/Brick";
+                  exampleResult = "https://minecraft.wiki/w/Bricks";
+                  includePattern = "https://minecraft.fandom.com/wiki/*";
+                  redirectUrl = "https://minecraft.wiki/w/$1";
                   patternType = "W";
                   appliesTo = [ "main_frame" ];
                 }

@@ -17,7 +17,6 @@
     { device = "/dev/disk/by-uuid/d1d2e3e8-d86c-4502-9f89-83c362d74e6c";
       fsType = "ext4";
       options = [ "x-gvfs-show" ];
-      label = "NixOS";
     };
 
   fileSystems."/boot" =
@@ -30,13 +29,11 @@
     { device = "/dev/disk/by-uuid/600511bd-0cbd-4a86-8f7d-d4d38f3f8805";
       fsType = "ext4";
       options = [ "x-gvfs-show" "defaults" ];
-      label = "Hard Drive";
     };
   /*fileSystems."/mnt/windows" =
     { device = "/dev/disk/by-uuid/D432175A32174142";
       fsType = "ntfs-3g"; 
       options = [ "x-gvfs-show" "rw" "uid=1000"];
-      label = "Windows";
     };*/
 
   swapDevices =

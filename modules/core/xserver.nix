@@ -4,6 +4,20 @@
     enable = true;
     displayManager.startx.enable = true;
 
+    libinput = {
+      enable = true;
+
+      # disabling mouse acceleration
+      mouse = {
+        accelProfile = "flat";
+      };
+
+      # disabling touchpad acceleration
+      touchpad = {
+        accelProfile = "flat";
+      };
+    };
+
     xkb = {
       layout = "us";
       variant = "";
