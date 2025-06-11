@@ -11,6 +11,5 @@
     ++ [(import ./scripts/scripts.nix)]
     ++ [(import ./zsh.nix)]
     ++ [(import ./picom.nix)]
-    ++ [(import ./discord.nix)]
-    ++ [(import ./obs.nix)];
+    ++ [(import ./discord.nix)];
 }

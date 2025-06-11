@@ -13,6 +13,11 @@
       enable = true;
       host = "0.0.0.0";
     };
+    freshrss = {
+      enable = true;
+      passwordFile = "/run/secrets/freshrss";
+      baseUrl = "0.0.0.0";
+    };
     /*
     resilio = { random software for downloading 4k77
       enable = true;

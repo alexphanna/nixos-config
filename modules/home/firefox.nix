@@ -127,6 +127,15 @@
                   patternType = "W";
                   appliesTo = [ "main_frame" ];
                 }
+                {
+                  description = "YouTube Embed";
+                  exampleUrl = "https://www.youtube.com/watch?v=PNuHWjoGfLk";
+                  exampleResult = "https://www.youtube.com/embed/PNuHWjoGfLk";
+                  includePattern = "https://www.youtube.com/watch?v=*";
+                  redirectUrl = "https://www.youtube.com/embed/$1";
+                  patternType = "W";
+                  appliesTo = [ "main_frame" ];
+                }
               ];
             };
           };

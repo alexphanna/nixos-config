@@ -4,20 +4,6 @@
     enable = true;
     displayManager.startx.enable = true;
 
-    libinput = {
-      enable = true;
-
-      # disabling mouse acceleration
-      mouse = {
-        accelProfile = "flat";
-      };
-
-      # disabling touchpad acceleration
-      touchpad = {
-        accelProfile = "flat";
-      };
-    };
-
     xkb = {
       layout = "us";
       variant = "";
@@ -32,6 +18,7 @@
           rev = "7ef75a067cadff08725110f33b9e30007e976922";
           hash = "sha256-gSIXjpyHSSUjsIVqa92L1YcnJz5aTKkNYYmkISkmLQk=";
         };
+        # src = /home/alex/Documents/Projects/dwm;
       };
     };
   };
