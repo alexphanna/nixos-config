@@ -4,6 +4,7 @@
        [ (import ./programs/obs.nix) ]
     ++ [ (import ./programs/steam.nix) ]
     ++ [ (import ./programs/thunar.nix) ]
+    ++ [ (import ./programs/virt-manager.nix) ]
     ++ [ (import ./programs/zsh.nix) ]
     ++ [ (import ./user.nix) ]
     ++ [ (import ./boot.nix) ]

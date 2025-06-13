@@ -23,6 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
+
     /*nixos-06cb-009a-fingerprint-sensor = {
       url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +41,7 @@
     nixpkgs-unstable,
     home-manager,
     nur,
+    vscode-server,
     # nixos-06cb-009a-fingerprint-sensor,
     ...
   } @ inputs: let
@@ -63,6 +66,7 @@
         specialArgs = { host="desktop"; inherit self inputs username ; };
         modules = [ 
           ./hosts/desktop
+          vscode-server.nixosModules.default
           {
             nixpkgs.overlays = [
               nur.overlays.default

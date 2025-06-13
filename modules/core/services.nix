@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   services = {
     gvfs.enable = true; # Mount, trash, and other functionalities
@@ -8,5 +8,6 @@
     devmon.enable = true;
     fstrim.enable = true;
     openssh.enable = true;
+    getty.autologinUser = "${username}";
   };
 }
