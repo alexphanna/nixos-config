@@ -13,7 +13,7 @@
 
       BlockAboutAddons = true;
       BlockAboutProfiles = true;
-      BlockAboutConfig = true;
+      #BlockAboutConfig = true;
       BlockAboutSupport = true;
 
       Cookies = {
@@ -99,7 +99,7 @@
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           sponsorblock
-          grammarly
+          # grammarly   has annoying popups and stuff
           return-youtube-dislikes
           adaptive-tab-bar-colour
           redirector

@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     /*nixos-06cb-009a-fingerprint-sensor = {
@@ -42,6 +47,7 @@
     home-manager,
     nur,
     vscode-server,
+    sops-nix,
     # nixos-06cb-009a-fingerprint-sensor,
     ...
   } @ inputs: let
@@ -67,6 +73,7 @@
         modules = [ 
           ./hosts/desktop
           vscode-server.nixosModules.default
+          sops-nix.nixosModules.sops
           {
             nixpkgs.overlays = [
               nur.overlays.default
@@ -102,6 +109,14 @@
             nixpkgs.overlays = [
               nur.overlays.default
               overlay-unstable
+
+              (final: prev: {
+                usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
+                  patches = [
+                    ./modules/home/usbredir-blacklist.patch
+                  ];
+                });
+              })
 
               # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
               (self: super: {

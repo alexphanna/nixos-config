@@ -1,0 +1,11 @@
+diff --git a/usbredirhost/usbredirhost.c b/usbredirhost/usbredirhost.c
+index 03c56e9..fe007e1 100644
+--- a/usbredirhost/usbredirhost.c
++++ b/usbredirhost/usbredirhost.c
+@@ -151,6 +151,7 @@ struct usbredirhost_dev_ids {
+ static const struct usbredirhost_dev_ids usbredirhost_reset_blacklist[] = {
+     { 0x1210, 0x001c },
+     { 0x2798, 0x0001 },
++    { 0x05ac, 0x12a8 },
+     { -1, -1 } /* Terminating Entry */
+ };

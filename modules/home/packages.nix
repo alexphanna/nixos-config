@@ -48,6 +48,7 @@
     gucharmap
     neofetch
     gparted
+    angryipscanner
 
     # programming
     nodejs
