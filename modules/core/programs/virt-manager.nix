@@ -3,6 +3,9 @@
     programs.virt-manager.enable = true;
 
     environment = {
-        systemPackages = [ pkgs.qemu_kvm ];
+        systemPackages = with pkgs; [ 
+            qemu_kvm 
+            virt-viewer 
+        ];
     };
 }

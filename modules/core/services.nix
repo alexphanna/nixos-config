@@ -8,6 +8,7 @@
     devmon.enable = true;
     fstrim.enable = true;
     openssh.enable = true;
+    openssh.settings.GatewayPorts = "yes";
     getty.autologinUser = "${username}";
   };
 }

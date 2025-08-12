@@ -13,6 +13,7 @@
     powertop
     moonlight-qt
     # fprintd
+    socat
   ];
 
   hardware.bluetooth.enable = true;
@@ -30,6 +31,21 @@
 
   virtualisation.spiceUSBRedirection.enable = true; 
 
+  # allows me to watch jellyfin on TVs that can't use vpns
+  systemd.services.jellyfin-forward = {
+    enable = true;
+    description = "Jellyfin Port Forwarding";
+    after = [ "network.target" "wg-quick-wg0.service" ]; # Adjust if your WireGuard service name differs
+    wants = [ "wg-quick-wg0.service" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:8096,bind=0.0.0.0,reuseaddr,fork TCP:192.168.0.39:8096";
+      Restart = "always";
+      RestartSec = 5;
+      User = "root"; # Requires root for port binding
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   services = {
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
@@ -38,9 +54,9 @@
     tlp = {
       enable = true;
       settings = {
-        START_CHARGE_THRESH_BAT0 = 75;
+        START_CHARGE_THRESH_BAT0 = 20;
         STOP_CHARGE_THRESH_BAT0 = 80;
-        START_CHARGE_THRESH_BAT1 = 75;
+        START_CHARGE_THRESH_BAT1 = 20;
         STOP_CHARGE_THRESH_BAT1 = 80;
       };
     };

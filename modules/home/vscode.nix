@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = false;
+    # mutableExtensionsDir = false;
 
     extensions = with pkgs.vscode-extensions; [
       vscjava.vscode-java-pack

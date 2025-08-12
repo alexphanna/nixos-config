@@ -14,5 +14,6 @@
     ++ [ (import ./fonts.nix) ]
     ++ [ (import ./libinput.nix) ]
     ++ [ (import ./services.nix) ]
+    ++ [(import ./agenix.nix)]
     ++ [ (import ./xserver.nix) ];
 }

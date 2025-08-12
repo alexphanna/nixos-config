@@ -23,11 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     /*nixos-06cb-009a-fingerprint-sensor = {
@@ -37,7 +32,9 @@
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     nixcord. url = "github:kaylorben/nixcord";
-    
+
+    # agenix
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -47,7 +44,7 @@
     home-manager,
     nur,
     vscode-server,
-    sops-nix,
+    agenix,
     # nixos-06cb-009a-fingerprint-sensor,
     ...
   } @ inputs: let
@@ -68,12 +65,12 @@
   {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = { host="desktop"; inherit self inputs username ; };
         modules = [ 
           ./hosts/desktop
           vscode-server.nixosModules.default
-          sops-nix.nixosModules.sops
+          agenix.nixosModules.default
           {
             nixpkgs.overlays = [
               nur.overlays.default
@@ -101,10 +98,11 @@
       };
 
       laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = { host="laptop"; inherit self inputs username ; };
         modules = [ 
           ./hosts/laptop
+          agenix.nixosModules.default
           {
             nixpkgs.overlays = [
               nur.overlays.default
