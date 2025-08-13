@@ -8,7 +8,7 @@
     streamlink
     openrgb-with-all-plugins
     protonvpn-gui
-    qbittorrent
+    # qbittorrent
     obsidian
     nicotine-plus
     teamspeak3

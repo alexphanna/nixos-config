@@ -2,6 +2,7 @@
 {
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.libvirtd.enable = true;
+  systemd.services."libvirtd".path = [ pkgs.passt ];
   users.users.${username}.extraGroups = [ "libvirtd" "kvm" ];
 
   boot.extraModprobeConfig = ''

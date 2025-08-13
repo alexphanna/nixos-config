@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
     ./../../modules/core
   ]
+  ++ [ (import ./wireguard.nix) ]
+  ++ [ (import ./qbittorrent.nix) ]
   ++ [ (import ./virtualization.nix) ];
 
   services = {
@@ -48,9 +50,9 @@
 
   networking.interfaces."enp42s0".wakeOnLan.enable = true;
 
-  environment.sessionVariables = {
+  /*environment.sessionVariables = {
     DISPLAY = ":0"; # https://docs.lizardbyte.dev/projects/sunshine/latest/md_docs_2getting__started.html#start-sunshine-over-ssh-linuxx11
-  };
+  };*/
 
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.production;
