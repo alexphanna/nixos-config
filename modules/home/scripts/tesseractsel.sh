@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 scrot /tmp/screenshot.png -s
 tesseract /tmp/screenshot.png /tmp/text -l eng

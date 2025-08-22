@@ -18,8 +18,6 @@
     (prismlauncher.override { 
       jdks = [ jdk8 jdk17 jdk21 ]; 
     })
-    desmume
-    melonDS
 
     # utils
     zip
@@ -54,6 +52,10 @@
     pkg-config
     pavucontrol
     paprefs
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
 
     # programming
     nodejs
