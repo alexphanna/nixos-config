@@ -25,142 +25,158 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    /*nixos-06cb-009a-fingerprint-sensor = {
-      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };*/
+    /*
+      nixos-06cb-009a-fingerprint-sensor = {
+        url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    */
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    nixcord. url = "github:kaylorben/nixcord";
+    nixcord.url = "github:kaylorben/nixcord";
 
     # agenix
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    nur,
-    vscode-server,
-    agenix,
-    # nixos-06cb-009a-fingerprint-sensor,
-    ...
-  } @ inputs: let
-    username = "alex";
-    system = "x86_64-linux";
-    overlay-unstable = final: prev: {
-      unstable = import nixpkgs-unstable {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nur,
+      vscode-server,
+      agenix,
+      # nixos-06cb-009a-fingerprint-sensor,
+      ...
+    }@inputs:
+    let
+      username = "alex";
+      system = "x86_64-linux";
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+      pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-    };
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    lib = nixpkgs.lib;
-  in
-  {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { host="desktop"; inherit self inputs username ; };
-        modules = [ 
-          ./hosts/desktop
-          vscode-server.nixosModules.default
-          agenix.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              nur.overlays.default
-              overlay-unstable
+      lib = nixpkgs.lib;
+    in
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            host = "desktop";
+            inherit self inputs username;
+          };
+          modules = [
+            ./hosts/desktop
+            vscode-server.nixosModules.default
+            agenix.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                nur.overlays.default
+                overlay-unstable
 
-              (final: prev: {
-                jellyfin-web = prev.jellyfin-web.overrideAttrs (finalAttrs: previousAttrs: {
-                  installPhase = ''
-                    runHook preInstall
+                (final: prev: {
+                  jellyfin-web = prev.jellyfin-web.overrideAttrs (
+                    finalAttrs: previousAttrs: {
+                      installPhase = ''
+                        runHook preInstall
 
-                    # this is the important line
-                    sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
+                        # this is the important line
+                        sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
 
-                    mkdir -p $out/share
-                    cp -a dist $out/share/jellyfin-web
+                        mkdir -p $out/share
+                        cp -a dist $out/share/jellyfin-web
 
-                    runHook postInstall
-                  '';
-                });
-              })
+                        runHook postInstall
+                      '';
+                    }
+                  );
+                })
 
-              (final: prev: {
-                usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                  patches = [
-                    ./modules/home/usbredir-blacklist.patch
-                  ];
-                });
-              })
+                (final: prev: {
+                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
+                    patches = [
+                      ./modules/home/usbredir-blacklist.patch
+                    ];
+                  });
+                })
 
-              # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-              (self: super: {
-                xarchiver = super.xarchiver.overrideAttrs (old: {
-                  postInstall = ''
-                    rm -rf $out/libexec
-                  '';
-                });
-
-                xfce = super.xfce.overrideScope (xself: xsuper: {
-                  thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
+                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
+                (self: super: {
+                  xarchiver = super.xarchiver.overrideAttrs (old: {
                     postInstall = ''
-                      cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
+                      rm -rf $out/libexec
                     '';
                   });
-                });
-              })
-            ];
-          }
-        ];
-      };
 
-      laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { host="laptop"; inherit self inputs username ; };
-        modules = [ 
-          ./hosts/laptop
-          agenix.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              nur.overlays.default
-              overlay-unstable
+                  xfce = super.xfce.overrideScope (
+                    xself: xsuper: {
+                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
+                        postInstall = ''
+                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
+                        '';
+                      });
+                    }
+                  );
+                })
+              ];
+            }
+          ];
+        };
 
-              (final: prev: {
-                usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                  patches = [
-                    ./modules/home/usbredir-blacklist.patch
-                  ];
-                });
-              })
+        laptop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            host = "laptop";
+            inherit self inputs username;
+          };
+          modules = [
+            ./hosts/laptop
+            agenix.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                nur.overlays.default
+                overlay-unstable
 
-              # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-              (self: super: {
-                xarchiver = super.xarchiver.overrideAttrs (old: {
-                  postInstall = ''
-                    rm -rf $out/libexec
-                  '';
-                });
+                (final: prev: {
+                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
+                    patches = [
+                      ./modules/home/usbredir-blacklist.patch
+                    ];
+                  });
+                })
 
-                xfce = super.xfce.overrideScope (xself: xsuper: {
-                  thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
+                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
+                (self: super: {
+                  xarchiver = super.xarchiver.overrideAttrs (old: {
                     postInstall = ''
-                      cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
+                      rm -rf $out/libexec
                     '';
                   });
-                });
-              })
-            ];
-          }
-          # nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
-        ];
+
+                  xfce = super.xfce.overrideScope (
+                    xself: xsuper: {
+                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
+                        postInstall = ''
+                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
+                        '';
+                      });
+                    }
+                  );
+                })
+              ];
+            }
+            # nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+          ];
+        };
       };
     };
-  };
 }

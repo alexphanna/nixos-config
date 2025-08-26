@@ -1,12 +1,12 @@
 {
   services.picom = {
-    enable = true; 
+    enable = true;
     settings = {
       unredir-if-possible = false;
       backend = "glx";
       vsync = true;
 
-      blur = { 
+      blur = {
         method = "gaussian";
         size = 10;
         deviation = 5.0;

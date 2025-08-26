@@ -1,4 +1,10 @@
-{ pkgs, pkgs-unstable, config, ... }: 
+{
+  pkgs,
+  pkgs-unstable,
+  config,
+  username,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -23,13 +29,16 @@
         cudaSupport = true;
       };
     };
-    /* random software for downloading 4k77
-    resilio = { 
-      enable = true;
-      enableWebUI = true;
-    };
+    /*
+      random software for downloading 4k77
+      resilio = {
+        enable = true;
+        enableWebUI = true;
+      };
     */
   };
+
+  hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
     jellyfin
@@ -44,10 +53,6 @@
   };
 
   networking.interfaces."enp42s0".wakeOnLan.enable = true;
-
-  /*environment.sessionVariables = {
-    DISPLAY = ":0"; # https://docs.lizardbyte.dev/projects/sunshine/latest/md_docs_2getting__started.html#start-sunshine-over-ssh-linuxx11
-  };*/
 
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.production;

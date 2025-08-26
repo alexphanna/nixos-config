@@ -1,9 +1,12 @@
-{ pkgs, username, ... }: 
+{ pkgs, username, ... }:
 {
   virtualisation.spiceUSBRedirection.enable = true;
   virtualisation.libvirtd.enable = true;
   systemd.services."libvirtd".path = [ pkgs.passt ];
-  users.users.${username}.extraGroups = [ "libvirtd" "kvm" ];
+  users.users.${username}.extraGroups = [
+    "libvirtd"
+    "kvm"
+  ];
 
   boot.extraModprobeConfig = ''
     options kvm_amd nested=1

@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
-    programs.virt-manager.enable = true;
+  programs.virt-manager.enable = true;
 
-    environment = {
-        systemPackages = with pkgs; [ 
-            qemu_kvm 
-            virt-viewer 
-        ];
-    };
+  environment = {
+    systemPackages = with pkgs; [
+      qemu_kvm
+      virt-viewer
+    ];
+  };
 }

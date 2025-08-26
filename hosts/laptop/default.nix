@@ -1,4 +1,9 @@
-{ pkgs, config, username, ... }: 
+{
+  pkgs,
+  config,
+  username,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -25,17 +30,22 @@
       # intel-vaapi-driver # For older processors. LIBVA_DRIVER_NAME=i965
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Optionally, set the environment variable
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  }; # Optionally, set the environment variable
 
-  boot.kernelParams = [ "snd_hda_intel.dmic_detect=0" ];  # Fix no speakers
+  boot.kernelParams = [ "snd_hda_intel.dmic_detect=0" ]; # Fix no speakers
 
-  virtualisation.spiceUSBRedirection.enable = true; 
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # allows me to watch jellyfin on TVs that can't use vpns
   systemd.services.jellyfin-forward = {
     enable = true;
     description = "Jellyfin Port Forwarding";
-    after = [ "network.target" "wg-quick-wg0.service" ]; # Adjust if your WireGuard service name differs
+    after = [
+      "network.target"
+      "wg-quick-wg0.service"
+    ]; # Adjust if your WireGuard service name differs
     wants = [ "wg-quick-wg0.service" ];
     serviceConfig = {
       ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:8096,bind=0.0.0.0,reuseaddr,fork TCP:192.168.0.39:8096";
@@ -50,7 +60,7 @@
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
     '';
-    
+
     tlp = {
       enable = true;
       settings = {
@@ -62,14 +72,15 @@
     };
 
     throttled.enable = true;
-    blueman.enable = true;
     fwupd.enable = true; # bios updating
 
     # fingerprint
-    /*"06cb-009a-fingerprint-sensor" = {                                 
-      enable = true;                                                            
-      backend = "libfprint-tod";                                                
-      calib-data-file = ./.calib-data.bin;                
-    };*/
+    /*
+      "06cb-009a-fingerprint-sensor" = {
+        enable = true;
+        backend = "libfprint-tod";
+        calib-data-file = ./.calib-data.bin;
+      };
+    */
   };
 }

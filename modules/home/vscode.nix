@@ -1,19 +1,20 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   programs.vscode = {
     enable = true;
-    # mutableExtensionsDir = false;
-
+    package = pkgs.vscodium;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
+      ms-vscode.cpptools-extension-pack
+      ms-vscode-remote.vscode-remote-extensionpack
       vscjava.vscode-java-pack
-      redhat.java
-      bbenoist.nix
+      jnoortheen.nix-ide
       ms-python.python
-      ms-vscode-remote.remote-ssh
       esbenp.prettier-vscode
       james-yu.latex-workshop
       dart-code.flutter
       tamasfe.even-better-toml
+      jbockle.jbockle-format-files
     ];
 
     userSettings = {
@@ -27,6 +28,19 @@
       "update.mode" = "none";
       "security.workspace.trust.untrustedFiles" = "never";
       "editor.fontFamily" = "'SF Mono', 'monospace', monospace";
+
+      "[nix]" = {
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+      };
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
+      "nix.serverSettings" = {
+        "nixd" = {
+          "formatting" = {
+            "command" = [ "nixfmt" ];
+          };
+        };
+      };
     };
   };
 

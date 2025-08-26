@@ -1,4 +1,9 @@
-{ pkgs, pkgs-unstable, inputs, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  inputs,
+  ...
+}:
 {
   imports = [ inputs.arkenfox.hmModules.default ];
 
@@ -13,11 +18,12 @@
 
       BlockAboutAddons = true;
       BlockAboutProfiles = true;
-      #BlockAboutConfig = true;
+      # BlockAboutConfig = true;
       BlockAboutSupport = true;
 
       Cookies = {
         Allow = [
+          # websites that I use somewhat frequently and don't feel like re logging in every time
           "https://accounts.google.com"
           "https://www.youtube.com"
           "https://www.github.com"
@@ -25,14 +31,12 @@
           "https://www.reddit.com"
 
           # school
-          "https://rutgers.edu"
+          "https://psu.edu"
           "https://instructure.com/"
-          "https://duosecurity.com/"
           "https://canvaslms.com/"
-          "https://gradescope.com/"
-          "https://piazza.com/"
+          "https://login.microsoftonline.com"
         ];
-      }; 
+      };
 
       DisableAccounts = true;
       DisableAppUpdate = true;
@@ -54,7 +58,7 @@
       DisableSetDesktopBackground = true;
       DisableSystemAddonUpdate = true;
       DisableTelemetry = true;
-      
+
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "never";
       DontCheckDefaultBrowser = true;
@@ -72,7 +76,7 @@
       id = 0;
       name = "Default";
       isDefault = true;
-      
+
       bookmarks = {
         force = true;
         settings = [
@@ -89,17 +93,21 @@
           {
             name = "Canvas";
             keyword = "canvas";
-            url = "https://rutgers.instructure.com/login/saml/";
+            url = "https://psu.instructure.com/login/saml/";
+          }
+          {
+            name = "LionPATH";
+            keyword = "lionpath";
+            url = "https://www.lionpath.psu.edu/";
           }
         ];
       };
 
-      extensions  = {
+      extensions = {
         force = true;
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           sponsorblock
-          # grammarly   has annoying popups and stuff
           return-youtube-dislikes
           adaptive-tab-bar-colour
           redirector
