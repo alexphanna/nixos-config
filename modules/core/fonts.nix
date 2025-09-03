@@ -9,6 +9,7 @@
       noto-fonts-emoji
       inputs.apple-fonts.packages.${pkgs.system}.sf-pro
       inputs.apple-fonts.packages.${pkgs.system}.sf-mono
+      vista-fonts
     ];
 
     fontconfig = {

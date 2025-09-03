@@ -2,12 +2,26 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
     mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
-      ms-vscode.cpptools-extension-pack
-      ms-vscode-remote.vscode-remote-extensionpack
-      vscjava.vscode-java-pack
+    extensions = with pkgs.vscode-extensions; [ # cannot include extension pack
+      # ms-vscode.cpptools-extension-pack
+      ms-vscode.cpptools
+      # ms-vscode.cpptools-themes
+      ms-vscode.cmake-tools
+      
+      # ms-vscode-remote.vscode-remote-extensionpack
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-ssh-edit
+
+      # vscjava.vscode-java-pack
+      redhat.java
+      vscjava.vscode-java-debug
+      vscjava.vscode-java-test 
+      # vscjava.vscode-maven
+      # vscjava.vscode-gradle
+      vscjava.vscode-java-dependency
+      visualstudioexptteam.vscodeintellicode
+
       jnoortheen.nix-ide
       ms-python.python
       esbenp.prettier-vscode
@@ -15,6 +29,7 @@
       dart-code.flutter
       tamasfe.even-better-toml
       jbockle.jbockle-format-files
+      adpyke.codesnap
     ];
 
     userSettings = {

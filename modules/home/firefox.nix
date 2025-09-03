@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }:
@@ -34,6 +33,7 @@
           "https://psu.edu"
           "https://instructure.com/"
           "https://canvaslms.com/"
+          "https://kaltura.com/"
           "https://login.microsoftonline.com"
         ];
       };
@@ -136,6 +136,23 @@
                   appliesTo = [ "main_frame" ];
                 }
               ];
+            };
+          };
+          "uBlock0@raymondhill.net" = {
+            force = true;
+            settings = {
+              "userSettings" = {
+                "uiAccentCustom" = true;
+                "uiAccentCustom0" = "#8000FF";
+                "externalLists" = "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt";
+                "importedLists" = [
+                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                ];
+              };
+              "user-filters" = ''
+                ! Hide Playables section
+                www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-shelf-renderer:has(#title:has-text(/(^| )Playables( |$)/i))
+              '';
             };
           };
         };

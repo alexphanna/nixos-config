@@ -6,7 +6,7 @@ let
   xbacklight-log = pkgs.writeScriptBin "xbacklight-log" (builtins.readFile ./xbacklight-log.py);
 in
 {
-  home.packages = with pkgs; [
+  home.packages = [
     screenshot
     screenshotsel
     tesseractsel

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      code = "codium --wait --new-window";
+      code = "code --wait --new-window";
     };
     history = {
       size = 10000;

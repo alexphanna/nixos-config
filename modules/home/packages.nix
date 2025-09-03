@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }:
@@ -66,6 +65,8 @@
       pkg-config
       pavucontrol
       paprefs
+      jq
+      mcaselector
 
       libreoffice-qt
       hunspell
@@ -83,9 +84,10 @@
       nixfmt-rfc-style
       gnat15
       nixd
+      powershell
 
       # custom packages
-      (st.overrideAttrs (oldAttrs: rec {
+      (st.overrideAttrs (oldAttrs:  {
         src = fetchFromGitHub {
           owner = "alexphanna";
           repo = "st";
@@ -94,7 +96,7 @@
         };
         # src = /home/alex/Documents/st;
       }))
-      (dmenu.overrideAttrs (oldAttrs: rec {
+      (dmenu.overrideAttrs (oldAttrs:  {
         src = fetchFromGitHub {
           owner = "alexphanna";
           repo = "dmenu";
