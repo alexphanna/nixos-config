@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -138,21 +139,37 @@
               ];
             };
           };
+          # https://github.com/search?q=language%3Anix+%22nur.repos.rycee%22+%22uBlock0%40raymondhill.net%22&type=code
+          # https://github.com/Rsr45/nixos-config/blob/c398c8caeba5a3ddd02defe0ba23daa433a37962/home/hare/common/optional/browsers/librewolf.nix#L78
           "uBlock0@raymondhill.net" = {
             force = true;
-            settings = {
-              "userSettings" = {
-                "uiAccentCustom" = true;
-                "uiAccentCustom0" = "#8000FF";
-                "externalLists" = "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt";
-                "importedLists" = [
-                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
-                ];
-              };
-              "user-filters" = ''
-                ! Hide Playables section
-                www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-shelf-renderer:has(#title:has-text(/(^| )Playables( |$)/i))
-              '';
+            settings = let
+              importedLists = [
+                "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+                "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+              ];
+            in
+            {
+              uiAccentCustom = true;
+              uiAccentCustom0 = "#8000FF";
+              cloudStorageEnabled = lib.mkForce false;
+              advancedUserEnabled = true;
+              userFiltersTrusted = true;
+              importedLists = importedLists;
+              externalLists = lib.concatStringsSep "\n" importedLists;
+              selectedFilterLists = [
+                "user-filters"
+                "ublock-filters"
+                "ublock-badware"
+                "ublock-privacy"
+                "ublock-abuse"
+                "ublock-unbreak"
+                "easylist"
+                "easyprivacy"
+                "urlhaus-1"
+                "plowe-0"
+              ]
+              ++ importedLists;
             };
           };
         };

@@ -22,6 +22,7 @@
       stremio
       cheese # webcam
       foliate # for reading books
+      telegram-desktop
 
       # gaming
       (prismlauncher.override {
@@ -67,6 +68,7 @@
       paprefs
       jq
       mcaselector
+      mailutils
 
       libreoffice-qt
       hunspell
@@ -74,7 +76,9 @@
 
       # programming
       nodejs
-      python3Full
+      (python3.withPackages (python-pkgs: with python-pkgs; [
+          psutil
+      ]))
       jdk23
       typescript
       texlive.combined.scheme-full
