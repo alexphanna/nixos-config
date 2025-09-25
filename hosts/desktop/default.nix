@@ -1,8 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
-  username,
   ...
 }:
 {
@@ -47,19 +45,21 @@
 
     unstable.blockbench
   ];
-
+  
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd.availableKernelModules = [ "r8169" ]; # wake on lan fix
   };
 
   networking.interfaces."enp42s0".wakeOnLan.enable = true;
 
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.production;
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    open = false;
+    open = true;
     nvidiaSettings = true;
   };
 }

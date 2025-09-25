@@ -11,15 +11,15 @@
 
     windowManager.dwm = {
       enable = true;
-      package = pkgs.dwm.overrideAttrs {
+      package = pkgs.dwm.overrideAttrs (oldAttrs: {
+        buildInputs = (oldAttrs.buildInputs or []) ++ [pkgs.xorg.libxcb];
         src = pkgs.fetchFromGitHub {
           owner = "alexphanna";
           repo = "dwm";
-          rev = "661606269e20d0a8d6423923d746f09b43bf998f";
-          hash = "sha256-7JgR4xv4AbvRC+6vPnhgLHyDYKLdTHGL0ySVjKI70TQ=";
+          rev = "52114012a4ec703eea68c581b8cd3f48596559cc";
+          hash = "sha256-wGNdJU/oQBjbTGEqQF3Do/F6n/RgBKtNLAQmxVOPXCc=";
         };
-        # src = /home/alex/Documents/dwm;
-      };
+      });
     };
   };
 }

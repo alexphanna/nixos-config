@@ -58,16 +58,6 @@
     ];
   };
 
-  fileSystems."/mnt/gateway" =
-    { device = "/dev/disk/by-uuid/AE92E6B492E68067";
-      fsType = "ntfs-3g";
-      options = [ 
-        "x-gvfs-show"
-        "rw" 
-        "uid=1000"
-      ];
-    };
-
   swapDevices = [
     { device = "/dev/disk/by-uuid/9aed6e0f-4644-4dbd-b52f-5e507576588b"; }
   ];

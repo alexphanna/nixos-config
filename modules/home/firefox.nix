@@ -16,7 +16,7 @@
       AutofillCreditCardEnabled = false;
       BackgroundAppUpdate = false;
 
-      BlockAboutAddons = true;
+      # BlockAboutAddons = true;
       BlockAboutProfiles = true;
       # BlockAboutConfig = true;
       BlockAboutSupport = true;
@@ -24,11 +24,9 @@
       Cookies = {
         Allow = [
           # websites that I use somewhat frequently and don't feel like re logging in every time
-          "https://accounts.google.com"
+          # "https://accounts.google.com"
           "https://www.youtube.com"
           "https://www.github.com"
-          "https://www.twitch.tv"
-          "https://www.reddit.com"
 
           # school
           "https://psu.edu"
@@ -70,6 +68,24 @@
         Cryptomining = true;
         Fingerprinting = true;
         EmailTracking = true;
+      };
+      FirefoxHome = {
+        Search = true;
+        TopSites = false;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        Stories = false;
+        SponsoredPocket = false;
+        SponsoredStories = false;
+        Snippets = false;
+        Locked = true;
+      };
+      FirefoxSuggest = {
+        WebSuggestions = false;
+        SponsoredSuggestions = false;
+        ImproveSuggest = false;
+        Locked = true;
       };
     };
 
@@ -143,33 +159,46 @@
           # https://github.com/Rsr45/nixos-config/blob/c398c8caeba5a3ddd02defe0ba23daa433a37962/home/hare/common/optional/browsers/librewolf.nix#L78
           "uBlock0@raymondhill.net" = {
             force = true;
-            settings = let
-              importedLists = [
-                "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
-                "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+            settings =
+              let
+                importedLists = [
+                  "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                ];
+              in
+              {
+                uiAccentCustom = true;
+                uiAccentCustom0 = "#8000FF";
+                cloudStorageEnabled = lib.mkForce false;
+                advancedUserEnabled = true;
+                userFiltersTrusted = true;
+                importedLists = importedLists;
+                externalLists = lib.concatStringsSep "\n" importedLists;
+                selectedFilterLists = [
+                  "user-filters"
+                  "ublock-filters"
+                  "ublock-badware"
+                  "ublock-privacy"
+                  "ublock-abuse"
+                  "ublock-unbreak"
+                  "easylist"
+                  "easyprivacy"
+                  "urlhaus-1"
+                  "plowe-0"
+                ]
+                ++ importedLists;
+              };
+          };
+          # https://github.com/ilovethensa/homelab/blob/0722492056619f1203e1d37011e89c99ccaca1b2/home/tht/firefox.nix#L20
+          "sponsorBlocker@ajay.app" = {
+            force = true;
+            settings = {
+              categorySelections = [
+                {
+                  name = "sponsor";
+                  option = 2;
+                }
               ];
-            in
-            {
-              uiAccentCustom = true;
-              uiAccentCustom0 = "#8000FF";
-              cloudStorageEnabled = lib.mkForce false;
-              advancedUserEnabled = true;
-              userFiltersTrusted = true;
-              importedLists = importedLists;
-              externalLists = lib.concatStringsSep "\n" importedLists;
-              selectedFilterLists = [
-                "user-filters"
-                "ublock-filters"
-                "ublock-badware"
-                "ublock-privacy"
-                "ublock-abuse"
-                "ublock-unbreak"
-                "easylist"
-                "easyprivacy"
-                "urlhaus-1"
-                "plowe-0"
-              ]
-              ++ importedLists;
             };
           };
         };
@@ -179,6 +208,71 @@
         force = true;
         default = "google";
         privateDefault = "google";
+
+        engines = {
+          "Nix Packages" = {
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
+
+          "Nix Options" = {
+            urls = [
+              {
+                template = "https://search.nixos.org/options";
+                params = [
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@no" ];
+          };
+
+          "NixOS Wiki" = {
+            urls = [
+              {
+                template = "https://wiki.nixos.org/w/index.php";
+                params = [
+                  {
+                    name = "search";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@nw" ];
+          };
+
+          ddg.metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
+          bing.metaData.hidden = true;
+          amazondotcom-au.metaData.hidden = true;
+          ebay.metaData.hidden = true;
+          amazondotcom-us.metaData.hidden = true;
+        };
       };
     };
   };

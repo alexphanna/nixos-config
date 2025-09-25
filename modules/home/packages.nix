@@ -14,15 +14,13 @@
       streamlink
       openrgb-with-all-plugins
       protonvpn-gui
-      # qbittorrent
+      qbittorrent
       obsidian
       nicotine-plus
-      teamspeak3
       resources
-      stremio
+      # stremio
       cheese # webcam
       foliate # for reading books
-      telegram-desktop
 
       # gaming
       (prismlauncher.override {
@@ -69,6 +67,8 @@
       jq
       mcaselector
       mailutils
+      ddcutil
+      xorg.xfontsel
 
       libreoffice-qt
       hunspell

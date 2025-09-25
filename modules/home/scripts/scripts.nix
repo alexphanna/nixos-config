@@ -4,6 +4,7 @@ let
   screenshotsel = pkgs.writeScriptBin "screenshotsel" (builtins.readFile ./screenshotsel.sh);
   tesseractsel = pkgs.writeScriptBin "tesseractsel" (builtins.readFile ./tesseractsel.sh);
   xbacklight-log = pkgs.writeScriptBin "xbacklight-log" (builtins.readFile ./xbacklight-log.py);
+  stealth = pkgs.writeScriptBin "stealth" (builtins.readFile ./stealth.sh);
 in
 {
   home.packages = [
@@ -11,5 +12,6 @@ in
     screenshotsel
     tesseractsel
     xbacklight-log
+    stealth
   ];
 }

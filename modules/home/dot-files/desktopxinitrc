@@ -3,9 +3,9 @@ while true; do
 	if [ $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep "[MUTED]" -c) = 1 ]; then
 		volume=" $volume%"
 	else
-		if (($volume >= 66)); then
+		if (($volume > 50)); then
 			volume=" $volume%"
-		elif (($volume >= 33)); then
+		elif (($volume > 0)); then
 			volume=" $volume%"
 		else
 			volume=" $volume%"
