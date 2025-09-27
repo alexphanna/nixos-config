@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  material-icon = pkgs.callPackage ./material-icon.nix  { inherit pkgs; };
+  material-icon = pkgs.callPackage ./../../packages/material-icon.nix  { inherit pkgs; };
 in
 {
   fonts = {

@@ -9,7 +9,6 @@
     git
   ];
 
-  # is not launching with scripts
   system.activationScripts."mpv-link" = {
     text = ''
       ln -sf ${config.home-manager.users.alex.programs.mpv.finalPackage}/bin/mpv /usr/bin/mpv

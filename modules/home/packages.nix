@@ -30,10 +30,12 @@
       angryipscanner
       pavucontrol
       mcaselector
+      
       # libreoffice
       libreoffice-qt
       hunspell
       hunspellDicts.en_US
+      moonlight-qt
 
       # gaming
       (prismlauncher.override {

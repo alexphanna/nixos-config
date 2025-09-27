@@ -20,18 +20,8 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    /*
-      nixos-06cb-009a-fingerprint-sensor = {
-        url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-    */
-
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     nixcord.url = "github:kaylorben/nixcord";
-
-    # agenix
-    agenix.url = "github:ryantm/agenix";
   };
 
   outputs =
@@ -39,11 +29,8 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      home-manager,
       nur,
       vscode-server,
-      agenix,
-      # nixos-06cb-009a-fingerprint-sensor,
       ...
     }@inputs:
     let
@@ -67,7 +54,6 @@
           modules = [
             ./hosts/desktop
             vscode-server.nixosModules.default
-            agenix.nixosModules.default
             {
               nixpkgs.overlays = [
                 nur.overlays.default
@@ -94,7 +80,7 @@
                 (final: prev: {
                   usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
                     patches = [
-                      ./modules/home/usbredir-blacklist.patch
+                      ./patches/usbredir-blacklist.patch
                     ];
                   });
                 })
@@ -130,7 +116,6 @@
           };
           modules = [
             ./hosts/laptop
-            agenix.nixosModules.default
             {
               nixpkgs.overlays = [
                 nur.overlays.default
@@ -164,7 +149,6 @@
                 })
               ];
             }
-            # nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
           ];
         };
       };
