@@ -1,4 +1,3 @@
-{ pkgs, inputs, ... }:
 {
   programs.thunderbird = {
     enable = true;

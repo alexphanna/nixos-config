@@ -47,7 +47,6 @@
   ];
   
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     initrd.availableKernelModules = [ "r8169" ]; # wake on lan fix
   };
 

@@ -1,12 +1,9 @@
 {
   pkgs,
-  inputs,
   lib,
   ...
 }:
 {
-  imports = [ inputs.arkenfox.hmModules.default ];
-
   programs.firefox = {
     enable = true;
 

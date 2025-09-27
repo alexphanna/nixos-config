@@ -7,20 +7,33 @@
   home.packages =
     with pkgs;
     [
+      # daily
       spotify
-      galculator
       gimp
       chromium
-      streamlink
-      openrgb-with-all-plugins
-      protonvpn-gui
-      qbittorrent
       obsidian
-      nicotine-plus
-      resources
-      # stremio
+      stremio
+      openrgb-with-all-plugins
+
+      # useful GTK and QT apps
+      galculator
       cheese # webcam
       foliate # for reading books
+      resources
+      nicotine-plus
+      protonvpn-gui
+      gucharmap
+      xarchiver
+      qdirstat
+      qbittorrent
+      gparted
+      angryipscanner
+      pavucontrol
+      mcaselector
+      # libreoffice
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
 
       # gaming
       (prismlauncher.override {
@@ -31,7 +44,7 @@
         ];
       })
 
-      # utils
+      # utilities
       zip
       aria2
       git
@@ -50,34 +63,24 @@
       fastfetch
       p7zip
       discordchatexporter-cli
-      qdirstat
       xwinwrap
-      xarchiver
       killall
       libnatpmp
       mkvtoolnix
       ffmpeg
-      gucharmap
       neofetch
-      gparted
-      angryipscanner
       pkg-config
-      pavucontrol
       paprefs
       jq
-      mcaselector
       mailutils
       ddcutil
-      xorg.xfontsel
-
-      libreoffice-qt
-      hunspell
-      hunspellDicts.en_US
+      streamlink
 
       # programming
       nodejs
       (python3.withPackages (python-pkgs: with python-pkgs; [
           psutil
+          jobspy
       ]))
       jdk23
       typescript
