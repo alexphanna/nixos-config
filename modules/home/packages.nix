@@ -3,20 +3,25 @@
   inputs,
   ...
 }:
+let
+  stremio-enhanced = pkgs.callPackage ./../../packages/stremio-enhanced.nix  { };
+in
 {
   home.packages =
     with pkgs;
     [
       # daily
-      spotify
+      unstable.spotify
       gimp
       chromium
       obsidian
-      stremio
+      # stremio
+      stremio-enhanced
       openrgb-with-all-plugins
 
       # useful GTK and QT apps
       galculator
+      gscreenshot
       cheese # webcam
       foliate # for reading books
       resources
@@ -45,6 +50,7 @@
           jdk21
         ];
       })
+      mcpelauncher-client
 
       # utilities
       zip
@@ -77,12 +83,21 @@
       mailutils
       ddcutil
       streamlink
+      devour
 
       # programming
       nodejs
       (python3.withPackages (python-pkgs: with python-pkgs; [
           psutil
           jobspy
+          faker
+          pynput
+          beautifulsoup4
+          lxml
+          pywinctl
+          tkinter
+
+          sklearn-compat
       ]))
       jdk23
       typescript
@@ -105,15 +120,7 @@
         };
         # src = /home/alex/Documents/st;
       }))
-      (dmenu.overrideAttrs (oldAttrs:  {
-        src = fetchFromGitHub {
-          owner = "alexphanna";
-          repo = "dmenu";
-          rev = "19ee02a32e581a443bafea5177d17d03285fb50d";
-          hash = "sha256-J9RIOiLEYAlbQhnt8IHznIur4dixExsPMVYr6EEXKiQ=";
-        };
-        # src = /home/alex/Documents/dmenu;
-      }))
+      wmenu
     ]
     ++ [
       inputs.apple-emoji-linux.packages.${system}.default

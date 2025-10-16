@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.sunshine = {
-    enable = true;
+    enable = false;
     # Enable nvenc support
     package = pkgs.sunshine.override {
       cudaSupport = true;

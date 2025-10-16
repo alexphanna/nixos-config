@@ -18,10 +18,10 @@
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
     '';
-    profileExtra = ''
-      if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec startx
+    /*profileExtra = ''
+      if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+          exec sway
       fi
-    '';
+    '';*/
   };
 }

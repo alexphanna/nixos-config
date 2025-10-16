@@ -1,24 +1,19 @@
 {
-  inputs,
-  username,
-  host,
-  ...
-}:
-{
   imports = [
-    ./dot-files/dot-files.nix
     ./scripts/scripts.nix
     ./discord.nix
     ./firefox.nix
     ./git.nix
     ./gtk.nix
+    ./mako.nix
     ./mangohud.nix
     ./mpv.nix
     ./packages.nix
-    ./picom.nix
     ./services.nix
+    ./sway.nix
     ./thunderbird.nix
     ./vscode.nix
+    ./waybar.nix
     ./zsh.nix
   ];
 }

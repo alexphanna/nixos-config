@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./selfhosted/audiobookshelf.nix
+    ./selfhosted/freshrss.nix
     ./selfhosted/jellyfin.nix
     ./selfhosted/sunshine.nix
     ./selfhosted/vscode-server.nix

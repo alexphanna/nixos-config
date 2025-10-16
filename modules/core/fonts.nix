@@ -1,12 +1,9 @@
 { pkgs, inputs, ... }:
-let
-  material-icon = pkgs.callPackage ./../../packages/material-icon.nix  { inherit pkgs; };
-in
 {
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      material-icon
+      material-symbols
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji

@@ -23,14 +23,17 @@
         vscjava.vscode-java-dependency
         visualstudioexptteam.vscodeintellicode
 
-        jnoortheen.nix-ide
         ms-python.python
+        ms-python.vscode-pylance
+
+        jnoortheen.nix-ide
         esbenp.prettier-vscode
         james-yu.latex-workshop
         dart-code.flutter
         tamasfe.even-better-toml
         jbockle.jbockle-format-files
         adpyke.codesnap
+        mechatroner.rainbow-csv
       ];
 
       userSettings = {
@@ -44,7 +47,7 @@
         "update.mode" = "none";
         "security.workspace.trust.untrustedFiles" = "never";
         "git.openRepositoryInParentFolders" = "never";
-        "editor.fontFamily" = "'SF Mono', 'monospace', monospace";
+        "editor.fontFamily" = "'SF Mono', 'Material Symbols Rounded', monospace";
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
@@ -57,6 +60,7 @@
             };
           };
         };
+        "terminal.integrated.stickyScroll.enabled" = false;
       };
     };
   };

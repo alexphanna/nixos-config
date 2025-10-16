@@ -84,6 +84,17 @@
         ImproveSuggest = false;
         Locked = true;
       };
+      SanitizeOnShutdown = {
+        Cache = true;
+        Cookies = true;
+        Downloads = true;
+        FormData = true;
+        History = true;
+        Sessions = true;
+        SiteSettings = true;
+        OfflineApps = true;
+        Locked = true;
+      };
     };
 
     profiles.default = {
@@ -115,6 +126,10 @@
             url = "https://www.lionpath.psu.edu/";
           }
         ];
+      };
+
+      settings = {
+        "full-screen-api.warning.timeout" = 0;
       };
 
       extensions = {
@@ -214,7 +229,7 @@
                 params = [
                   {
                     name = "channel";
-                    value = "unstable";
+                    value = "25.05";
                   }
                   {
                     name = "query";
@@ -234,7 +249,7 @@
                 params = [
                   {
                     name = "channel";
-                    value = "unstable";
+                    value = "25.05";
                   }
                   {
                     name = "query";

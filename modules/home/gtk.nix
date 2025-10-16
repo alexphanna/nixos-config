@@ -25,6 +25,7 @@
   dconf.settings."org/gnome/desktop/interface" = {
     gtk-theme = config.gtk.theme.name;
     icon-theme = config.gtk.iconTheme.name;
+    color-scheme = "prefer-dark"; # Required for Firefox auto dark theme in wayland
   };
 
   home.sessionVariables = {
