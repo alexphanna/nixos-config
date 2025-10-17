@@ -4,7 +4,7 @@
   ...
 }:
 let
-  stremio-enhanced = pkgs.callPackage ./../../packages/stremio-enhanced.nix  { };
+  stremio-enhanced = pkgs.callPackage ./../../packages/stremio-enhanced.nix { };
 in
 {
   home.packages =
@@ -18,6 +18,7 @@ in
       # stremio
       stremio-enhanced
       openrgb-with-all-plugins
+      wmenu
 
       # useful GTK and QT apps
       galculator
@@ -35,7 +36,7 @@ in
       angryipscanner
       pavucontrol
       mcaselector
-      
+
       # libreoffice
       libreoffice-qt
       hunspell
@@ -50,7 +51,6 @@ in
           jdk21
         ];
       })
-      mcpelauncher-client
 
       # utilities
       zip
@@ -60,8 +60,6 @@ in
       feh
       bc
       dconf
-      scrot
-      tesseract
       xclip
       xcolor
       unzip
@@ -81,13 +79,13 @@ in
       paprefs
       jq
       mailutils
-      ddcutil
       streamlink
-      devour
+      slurp
 
       # programming
       nodejs
-      (python3.withPackages (python-pkgs: with python-pkgs; [
+      (python3.withPackages (
+        python-pkgs: with python-pkgs; [
           psutil
           jobspy
           faker
@@ -96,33 +94,27 @@ in
           lxml
           pywinctl
           tkinter
-
           sklearn-compat
-      ]))
+        ]
+      ))
       jdk23
       typescript
       texlive.combined.scheme-full
       vim
-      uv
       flutter
       nixfmt-rfc-style
       gnat15
-      nixd
-      powershell
-
-      # custom packages
-      (st.overrideAttrs (oldAttrs:  {
+      (nixd.overrideAttrs (oldAttrs:  {
         src = fetchFromGitHub {
-          owner = "alexphanna";
-          repo = "st";
-          rev = "1fbc35dd244f37ca44af59bc0883abee40410d0b";
-          hash = "sha256-1Wtj/yyTepzgJzCpsHRZSsCK2D4QJze2Igk7ujPMU3Y=";
+          owner = "oandrew";
+          repo = "nixd";
+          rev = "4cd9d17b30fc3bdc8becdd98d91dc3e305c6eb3d";
+          hash = "sha256-T1NvNy57LKnxkdACMujmhV+LFlqBV6b41CfqFWlriVw=";
         };
         # src = /home/alex/Documents/st;
       }))
-      wmenu
-    ]
-    ++ [
+      powershell
+    ] ++ [
       inputs.apple-emoji-linux.packages.${system}.default
     ];
 }

@@ -26,7 +26,7 @@
           format-ethernet = "<span rise='-4000' size='large'></span>";
           format-wifi = "<span rise='-4000' size='large'></span>";
           format-disconnected = "<span rise='-4000' size='large'></span>";
-          tooltip-format = "<span rise='-4000' size='large'></span> {bandwidthDownBytes}  <span rise='-4000' size='large'></span> {bandwidthUpBytes}";
+          tooltip = false;
         };
         clock = {
           format = "{:%m/%d/%y %I:%M %p}";
@@ -52,7 +52,7 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: SF Mono, Material Symbols Rounded;
+        font-family: monospace, Material Symbols Rounded;
         font-size: 16px;
         padding: 0;
       }

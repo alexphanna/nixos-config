@@ -1,28 +1,30 @@
-{ pkgs, ... }:
+{ pkgs, inputs, host, ... }:
 {
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
     profiles.default = {
-      extensions = with pkgs.vscode-extensions; [ # cannot include extension pack
-        # ms-vscode.cpptools-extension-pack
+      extensions = with pkgs.vscode-extensions; [
+        # cannot include extension packs
+        # c++
         ms-vscode.cpptools
         # ms-vscode.cpptools-themes
         ms-vscode.cmake-tools
-        
-        # ms-vscode-remote.vscode-remote-extensionpack
+
+        # remote
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
 
-        # vscjava.vscode-java-pack
+        # java
         redhat.java
         vscjava.vscode-java-debug
-        vscjava.vscode-java-test 
+        vscjava.vscode-java-test
         # vscjava.vscode-maven
         # vscjava.vscode-gradle
         vscjava.vscode-java-dependency
         visualstudioexptteam.vscodeintellicode
 
+        # python
         ms-python.python
         ms-python.vscode-pylance
 
@@ -37,6 +39,7 @@
       ];
 
       userSettings = {
+      
         "java.jdt.ls.java.home" = "${pkgs.jdk23}";
         "workbench.colorTheme" = "Default Dark+";
         "files.autoSave" = "afterDelay";
@@ -47,20 +50,21 @@
         "update.mode" = "none";
         "security.workspace.trust.untrustedFiles" = "never";
         "git.openRepositoryInParentFolders" = "never";
-        "editor.fontFamily" = "'SF Mono', 'Material Symbols Rounded', monospace";
+        "editor.fontFamily" = "'monospace', 'Material Symbols Rounded', monospace";
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
-        "nix.serverSettings" = {
-          "nixd" = {
-            "formatting" = {
-              "command" = [ "nixfmt" ];
-            };
+        "nix.serverSettings".nixd = {
+          formatting.command = ["nixfmt"];
+
+          options = {
+            nixos.expr = "(builtins.getFlake \"/home/alex/Documents/nixos-config\").nixosConfigurations.${host}.options";
+            home-manager.expr = "(builtins.getFlake \"/home/alex/Documents/nixos-config\").nixosConfigurations.${host}.options.home-manager.users.type.getSubOptions []";
           };
         };
-        "terminal.integrated.stickyScroll.enabled" = false;
+        "editor.fontLigatures" = true;
       };
     };
   };

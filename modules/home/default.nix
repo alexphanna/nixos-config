@@ -3,15 +3,15 @@
     ./scripts/scripts.nix
     ./discord.nix
     ./firefox.nix
+    ./foot.nix
     ./git.nix
     ./gtk.nix
     ./mako.nix
     ./mangohud.nix
     ./mpv.nix
     ./packages.nix
-    ./services.nix
     ./sway.nix
-    ./thunderbird.nix
+    ./syncthing.nix
     ./vscode.nix
     ./waybar.nix
     ./zsh.nix

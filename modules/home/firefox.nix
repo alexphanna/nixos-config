@@ -54,7 +54,6 @@
       DisableSetDesktopBackground = true;
       DisableSystemAddonUpdate = true;
       DisableTelemetry = true;
-
       DisplayBookmarksToolbar = "never";
       DisplayMenuBar = "never";
       DontCheckDefaultBrowser = true;
@@ -96,7 +95,7 @@
         Locked = true;
       };
     };
-
+    
     profiles.default = {
       id = 0;
       name = "Default";
