@@ -3,8 +3,10 @@
     ./hardware-configuration.nix
     ./selfhosted/audiobookshelf.nix
     ./selfhosted/freshrss.nix
+    ./selfhosted/invidious.nix
     ./selfhosted/jellyfin.nix
     ./selfhosted/sunshine.nix
+    ./selfhosted/syncthing.nix
     ./selfhosted/vscode-server.nix
     ./autologin.nix
     ./nvidia.nix

@@ -1,13 +1,11 @@
-{ username, ... }:
 {
   services.syncthing = {
     enable = true;
+    user = "alex";
+    configDir = "/home/alex/.config/syncthing";
     settings = {
-      urAccepted = -1;
-      user = "${username}";
-      configDir = "/home/myusername/.config/syncthing";
       gui = {
-        user = "${username}";
+        user = "alex";
         password = "";
       };
       devices = {
@@ -17,7 +15,7 @@
       };
       folders = {
         "Vault" = {
-          path = "/home/${username}/Documents/vault";
+          path = "/home/alex/Documents/vault";
           devices = [ "iPhone" ];
         };
       };

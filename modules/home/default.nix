@@ -10,8 +10,8 @@
     ./mangohud.nix
     ./mpv.nix
     ./packages.nix
+    ./pointer-cursor.nix
     ./sway.nix
-    ./syncthing.nix
     ./vscode.nix
     ./waybar.nix
     ./zsh.nix

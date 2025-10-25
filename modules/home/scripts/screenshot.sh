@@ -1,4 +1,6 @@
 #!/usr/bin/env zsh
 
 mkdir -p ~/Pictures/Screenshots
-scrot ~/Pictures/Screenshots/%m-%d-%Y-%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'
+date=$(date +%m-%d-%Y-%H%M%S)
+grim -g "0,0 1920x1080" ~/Pictures/Screenshots/$date.png
+cat ~/Pictures/Screenshots/$date.png | wl-copy -t image/png

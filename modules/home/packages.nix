@@ -81,6 +81,9 @@ in
       mailutils
       streamlink
       slurp
+      dmg2img
+      mpvpaper
+      tesseract
 
       # programming
       nodejs

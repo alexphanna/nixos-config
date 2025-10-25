@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-scrot /tmp/screenshot.png -s
+grim -g "$(slurp)" /tmp/screenshot.png
 tesseract /tmp/screenshot.png /tmp/text -l eng
-xclip -sel c /tmp/text.txt
+cat /tmp/text.txt | wl-copy
 rm /tmp/screenshot.png /tmp/text.txt

@@ -16,7 +16,7 @@
       # BlockAboutAddons = true;
       BlockAboutProfiles = true;
       # BlockAboutConfig = true;
-      BlockAboutSupport = true;
+      # BlockAboutSupport = true;
 
       Cookies = {
         Allow = [

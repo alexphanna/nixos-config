@@ -8,7 +8,7 @@
         modules-right = [ "wireplumber#source" "wireplumber" "network" "clock" ];
         wireplumber = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
-          on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           format-icons = ""; # [ "" "" ""];
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
@@ -16,7 +16,7 @@
         };
         "wireplumber#source" = {
           node-type = "Audio/Source";
-          on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           format = "<span rise='-4000' size='large'></span>";
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
@@ -55,11 +55,14 @@
         font-family: monospace, Material Symbols Rounded;
         font-size: 16px;
         padding: 0;
+        transition: none;
       }
+
       window#waybar {
-        background: rgba(0, 0, 0, 0.5);
+        background: transparent;
         color: #FFFFFF;
       }
+
       label.module {
         padding: 0 4px;
       }
@@ -70,6 +73,13 @@
       
       #workspaces button {
         padding: 0 8px;
+      }
+
+      box.module button:hover, #wireplumber:hover, #wireplumber#source:hover {
+        box-shadow: inherit;
+        text-shadow: inherit;
+        background: inherit;
+        color: #8000FF;
       }
     '';
   };
