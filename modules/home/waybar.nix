@@ -23,6 +23,7 @@
           tooltip-format = "{volume}%";
         };
         network = {
+          format-linked = "<span rise='-4000' size='large'></span>"; # I think this means I have a vpn
           format-ethernet = "<span rise='-4000' size='large'></span>";
           format-wifi = "<span rise='-4000' size='large'></span>";
           format-disconnected = "<span rise='-4000' size='large'></span>";
@@ -80,6 +81,10 @@
         text-shadow: inherit;
         background: inherit;
         color: #8000FF;
+      }
+
+      tooltip {
+        background: rgba(32, 32, 32, 0.5);
       }
     '';
   };

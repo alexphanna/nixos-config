@@ -16,6 +16,8 @@
       blur_passes 3
       blur_noise 0
 
+      layer_effects "notifications" blur enable; corner_radius 10;
+
       for_window    [app_id="mpv"]                             floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
       for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
