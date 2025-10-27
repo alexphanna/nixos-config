@@ -1,3 +1,4 @@
+{ lib, host, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -5,7 +6,16 @@
       mainBar = {
         height = 32;
         modules-left = [ "sway/workspaces" ];
-        modules-right = [ "wireplumber#source" "wireplumber" "network" "clock" ];
+        modules-right = (
+          if (host == "laptop") 
+          then [ "battery#bat0" "battery#bat1" "backlight" ]
+          else []
+        ) ++ [ 
+          "wireplumber#source" 
+          "wireplumber" 
+          "network" 
+          "clock" 
+        ];
         wireplumber = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -25,9 +35,29 @@
         network = {
           format-linked = "<span rise='-4000' size='large'></span>"; # I think this means I have a vpn
           format-ethernet = "<span rise='-4000' size='large'></span>";
-          format-wifi = "<span rise='-4000' size='large'></span>";
+          format-wifi = "<span rise='-4000' size='large'>{icon}</span>";
           format-disconnected = "<span rise='-4000' size='large'></span>";
+          format-icons = [ "" "" "" ];
           tooltip = false;
+        };
+        backlight = {
+          device = "intel_backlight";
+          format = "<span rise='-4000' size='large'></span>";
+          tooltip-format = "{percent}%";
+        };
+        "battery#bat0" = {
+          bat = "BAT0";
+          format = "<span rise='-4000' size='large'>{icon}</span>";
+          format-charging = "<span rise='-4000' size='large'></span>";
+          format-icons = ["" "" "" "" "" "" "" ""];
+          tooltip-format = "{capacity}%";
+        };
+        "battery#bat1" = {
+          bat = "BAT1";
+          format = "<span rise='-4000' size='large'>{icon}</span>";
+          format-charging = "<span rise='-4000' size='large'></span>";
+          format-icons = ["" "" "" "" "" "" "" ""];
+          tooltip-format = "{capacity}%";
         };
         clock = {
           format = "{:%m/%d/%y %I:%M %p}";
@@ -55,7 +85,7 @@
         border-radius: 0;
         font-family: monospace, Material Symbols Rounded;
         font-size: 16px;
-        padding: 0;
+        padding: 0; 
         transition: none;
       }
 
@@ -76,7 +106,7 @@
         padding: 0 8px;
       }
 
-      box.module button:hover, #wireplumber:hover, #wireplumber#source:hover {
+      box.module button:hover, #wireplumber:hover, #wireplumber#source:hover, #backlight:hover {
         box-shadow: inherit;
         text-shadow: inherit;
         background: inherit;
