@@ -20,7 +20,6 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     nixcord.url = "github:kaylorben/nixcord";
   };
 
@@ -58,51 +57,6 @@
               nixpkgs.overlays = [
                 nur.overlays.default
                 overlay-unstable
-
-                (final: prev: {
-                  jellyfin-web = prev.jellyfin-web.overrideAttrs (
-                    finalAttrs: previousAttrs: {
-                      installPhase = ''
-                        runHook preInstall
-
-                        # this is the important line
-                        sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
-
-                        mkdir -p $out/share
-                        cp -a dist $out/share/jellyfin-web
-
-                        runHook postInstall
-                      '';
-                    }
-                  );
-                })
-
-                (final: prev: {
-                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                    patches = [
-                      ./patches/usbredir-blacklist.patch
-                    ];
-                  });
-                })
-
-                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-                (self: super: {
-                  xarchiver = super.xarchiver.overrideAttrs (old: {
-                    postInstall = ''
-                      rm -rf $out/libexec
-                    '';
-                  });
-
-                  xfce = super.xfce.overrideScope (
-                    xself: xsuper: {
-                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
-                        postInstall = ''
-                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
-                        '';
-                      });
-                    }
-                  );
-                })
               ];
             }
           ];
@@ -120,33 +74,6 @@
               nixpkgs.overlays = [
                 nur.overlays.default
                 overlay-unstable
-
-                (final: prev: {
-                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                    patches = [
-                      ./modules/home/usbredir-blacklist.patch
-                    ];
-                  });
-                })
-
-                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-                (self: super: {
-                  xarchiver = super.xarchiver.overrideAttrs (old: {
-                    postInstall = ''
-                      rm -rf $out/libexec
-                    '';
-                  });
-
-                  xfce = super.xfce.overrideScope (
-                    xself: xsuper: {
-                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
-                        postInstall = ''
-                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
-                        '';
-                      });
-                    }
-                  );
-                })
               ];
             }
           ];

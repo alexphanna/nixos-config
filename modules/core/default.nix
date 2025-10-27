@@ -1,6 +1,5 @@
 {
   imports = [
-    ./programs/msmtp.nix
     ./programs/obs.nix
     ./programs/steam.nix
     ./programs/thunar.nix
@@ -16,6 +15,5 @@
     ./services.nix
     ./system.nix
     ./user.nix
-    ./wayland.nix
   ];
 }

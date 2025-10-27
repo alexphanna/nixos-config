@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   fonts = {
     enableDefaultPackages = true;
@@ -9,6 +9,8 @@
       noto-fonts-emoji
       jetbrains-mono
       vista-fonts
+    ] ++ [
+      inputs.apple-emoji-linux.packages.${system}.default
     ];
 
     fontconfig = {

@@ -11,5 +11,11 @@ in
     screenshotsel
     tesseractsel
     xbacklight-log
+
+    # dependencies
+    pkgs.tesseract
+    pkgs.slurp
+    pkgs.grim
+    pkgs.wl-clipboard
   ];
 }

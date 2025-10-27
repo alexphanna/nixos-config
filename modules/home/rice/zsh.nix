@@ -6,16 +6,12 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     
-
-    shellAliases = {
-      code = "code --wait --new-window";
-    };
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
     initContent = ''
-      PROMPT="%~%F{93} > %f"
+      PROMPT="%~%F{5} > %f"
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
     '';

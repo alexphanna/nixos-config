@@ -1,13 +1,13 @@
-{ lib, pkgs, ... }: 
+{ lib, pkgs, ... }:
 {
-   wayland.windowManager.sway = {
+  wayland.windowManager.sway = {
     enable = true;
     package = pkgs.swayfx;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     extraOptions = [
       "--unsupported-gpu"
     ];
-    checkConfig = false; 
+    checkConfig = false;
     extraConfig = ''
       corner_radius 16
 
@@ -24,7 +24,7 @@
     config = {
       defaultWorkspace = "workspace number 1";
       modifier = "Mod4";
-      terminal = "foot"; 
+      terminal = "foot";
       bars = [
         {
           command = "waybar";
@@ -74,8 +74,12 @@
         inner = 16;
       };
       startup = [
-        {command = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4";}
+        { command = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4"; }
       ];
     };
   };
+  home.packages = with pkgs; [
+    wmenu
+    mpvpaper
+  ];
 }

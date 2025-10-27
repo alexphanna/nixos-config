@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     inputs.nixcord.homeModules.nixcord
@@ -16,4 +16,8 @@
       };
     };
   };
+  
+  home.packages = with pkgs; [
+    discordchatexporter-cli
+  ];
 }

@@ -1,19 +1,35 @@
 {
   imports = [
+    ./apps/discord.nix
+    ./apps/firefox.nix
+    ./apps/foot.nix
+    ./apps/git.nix
+    ./apps/libreoffice.nix
+    ./apps/mpv.nix
+
+    ./dev/cpp.nix
+    ./dev/dart.nix
+    ./dev/java.nix
+    ./dev/macos.nix
+    ./dev/nix.nix
+    ./dev/python.nix
+    ./dev/vscode.nix
+
+    ./games/emulation.nix
+    ./games/mangohud.nix
+    ./games/minecraft.nix
+
+    ./rice/gtk.nix
+    ./rice/mako.nix
+    ./rice/pointer-cursor.nix
+    ./rice/sway.nix
+    ./rice/waybar.nix
+    ./rice/zsh.nix
+
     ./scripts/scripts.nix
-    ./discord.nix
-    ./firefox.nix
-    ./foot.nix
-    ./git.nix
-    ./gtk.nix
-    ./mako.nix
-    ./mangohud.nix
-    ./mpv.nix
-    ./packages.nix
-    ./pointer-cursor.nix
-    ./sway.nix
-    ./vscode.nix
-    ./waybar.nix
-    ./zsh.nix
+
+    ./essentials.nix
+
+    ./utilities.nix
   ];
 }
