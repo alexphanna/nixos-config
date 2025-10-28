@@ -1,31 +1,48 @@
-# NixOS Configuration
+# <center>NixOS Configuration</center>
 
-My NixOS and [home-manager](https://github.com/nix-community/home-manager) configuration.
+My one year old NixOS and home-manager configuration for my desktop and laptop.
 
-## Information
+## Screenshot
 
-### Software
+![screenshot](./screenshot.png)
 
-|         Item         |  Program   |
-| :------------------: | :--------: |
-|   Operating System   |   NixOS    |
-|    Window Manager    |    dwm     |
-| Application Launcher |   dmenu    |
-|  Terminal Emulator   |     st     |
-|        Shell         |    zsh     |
-|   Internet Browser   |  Firefox   |
-|     Text Editor      |  VS Code   |
-|     File Manager     |   Thunar   |
-|     Media Player     | mpv (uosc) |
+## Software
+| Item | Program |
+| - | -: |
+| Display server | **Wayland** |
+| Window Manager | **SwayFX** |
+| Bar | **Waybar** |
+| Menu | **wmenu** |
+| Terminal | **foot** |
+| Browser | **Firefox** |
+| Editor | **VS Code** |
+
+## Hardware
+#### Desktop
+- AMD Ryzen 5600x
+- NVIDIA 3060
+#### Laptop (Thinkpad T480)
+- Intel i5-8350U
 
 ## Installation
 
+1. Clone repository
 ```shell
     git clone https://github.com/alexphanna/nixos-config.git
     cd nixos-config
-    sudo nixos-rebuild switch --flake .#nixos
+```
+2. NixOS rebuild switch
+```shell
+    sudo nixos-rebuild switch --flake .#desktop
+```
+or
+```shell
+    sudo nixos-rebuild switch --flake .#laptop
 ```
 
 ## Credits
 
-- [Frost-Phoenix/nixos-config](https://github.com/Frost-Phoenix/nixos-config): layout inspiration
+- [Frost-Phoenix](https://github.com/Frost-Phoenix/nixos-config): config layout inspiration
+- [kira-bruneau](https://github.com/kira-bruneau/nixos-config): mako config
+- [Rsr45](https://github.com/Rsr45/nixos-config): uBlock Origin config
+- [u/Baba-](https://www.reddit.com/r/cyberpunkgame/comments/c4suz9/made_my_own_animated_wallpaper_of_night_city/): Cyberpunk 2077 animated wallpaper

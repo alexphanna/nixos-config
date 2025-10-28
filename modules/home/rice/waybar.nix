@@ -38,7 +38,7 @@
           format-wifi = "<span rise='-4000' size='large'>{icon}</span>";
           format-disconnected = "<span rise='-4000' size='large'></span>";
           format-icons = [ "" "" "" ];
-          tooltip = false;
+          tooltip-format-wifi = "{essid}";
         };
         backlight = {
           device = "intel_backlight";
