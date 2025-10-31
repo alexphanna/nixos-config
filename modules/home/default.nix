@@ -9,7 +9,9 @@
 
     ./dev/cpp.nix
     ./dev/dart.nix
+    ./dev/go.nix
     ./dev/java.nix
+    ./dev/latex.nix
     ./dev/macos.nix
     ./dev/nix.nix
     ./dev/python.nix

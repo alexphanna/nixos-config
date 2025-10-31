@@ -19,5 +19,6 @@
   
   home.packages = with pkgs; [
     discordchatexporter-cli
+    xdg-utils # Required to open links in firefox
   ];
 }

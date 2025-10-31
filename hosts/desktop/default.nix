@@ -10,6 +10,7 @@
     ./selfhosted/vscode-server.nix
     ./autologin.nix
     ./nvidia.nix
+    ./rgb.nix
     ./virtualization.nix
     ./wake-on-lan.nix
     ./../../modules/core

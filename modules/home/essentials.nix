@@ -13,5 +13,6 @@ in
     resources # task manager
     protonvpn-gui
     gucharmap
+    inkscape
   ];
 }

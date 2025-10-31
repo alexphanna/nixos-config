@@ -12,6 +12,7 @@
         pywinctl
         tkinter
         sklearn-compat
+        pycrypto
       ]
     ))
   ];
