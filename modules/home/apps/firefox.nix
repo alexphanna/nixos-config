@@ -78,7 +78,7 @@
         Locked = true;
       };
       FirefoxSuggest = {
-        WebSuggestions = false;
+        WebSuggestions = true;
         SponsoredSuggestions = false;
         ImproveSuggest = false;
         Locked = true;
@@ -94,6 +94,7 @@
         OfflineApps = true;
         Locked = true;
       };
+      SearchSuggestEnabled = true;
     };
     
     profiles.default = {
@@ -128,7 +129,7 @@
       };
 
       settings = {
-        "full-screen-api.warning.timeout" = 0;
+        full-screen-api.warning.timeout = 0;
       };
 
       extensions = {
@@ -196,6 +197,23 @@
                   "easyprivacy"
                   "urlhaus-1"
                   "plowe-0"
+
+                  # annoyances
+                  "adguard-popup-overlays"
+                  "adguard-mobile-app-banners"
+                  "adguard-other-annoyances"
+                  "adguard-widgets"
+                  "easylist-annoyances"
+                  "easylist-chat"
+                  "easylist-newsletters"
+                  "easylist-notifications"
+                  "ublock-annoyances"
+
+                  # cookies
+                  "adguard-cookies"
+                  "ublock-cookies-adguard"
+                  "fanboy-cookiemonster"
+                  "ublock-cookies-easylist"
                 ]
                 ++ importedLists;
               };
@@ -277,12 +295,33 @@
             definedAliases = [ "@nw" ];
           };
 
+          "Nix GitHub" = {
+            urls = [
+              {
+                template = "https://github.com/search";
+                params = [
+                  {
+                    name = "type";
+                    value = "code";
+                  }
+                  {
+                    name = "q";
+                    value = "language%3Anix+{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@ng" ];
+          };
+
           ddg.metaData.hidden = true;
           wikipedia.metaData.hidden = true;
           bing.metaData.hidden = true;
           amazondotcom-au.metaData.hidden = true;
           ebay.metaData.hidden = true;
           amazondotcom-us.metaData.hidden = true;
+          perplexity.metaData.hidden = true; # stupid ai thing they added
         };
       };
     };
