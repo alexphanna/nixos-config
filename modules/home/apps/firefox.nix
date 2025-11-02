@@ -129,7 +129,9 @@
       };
 
       settings = {
-        full-screen-api.warning.timeout = 0;
+        "full-screen-api.warning.timeout" = 0; # Hide useless full screen dialog
+        "permissions.default.desktop-notification" = 2; # Hide notification pop up because I never want that
+        "signon.rememberSignons" = false;
       };
 
       extensions = {
@@ -140,6 +142,7 @@
           return-youtube-dislikes
           adaptive-tab-bar-colour
           redirector
+          bitwarden
         ];
         settings = {
           "redirector@einaregilsson.com" = {
