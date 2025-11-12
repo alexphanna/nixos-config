@@ -58,6 +58,8 @@
         "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%+'";
         "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%-'";
         "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_SINK@ toggle'";
+        "XF86MonBrightnessUp" = "exec 'xbacklight -inc 5'";
+        "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
         "Shift+Print" = "exec 'screenshotsel'";
         "Print" = "exec 'screenshot'";
       };
@@ -74,7 +76,11 @@
         inner = 16;
       };
       startup = [
-        { command = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4"; }
+        { 
+          command = if (host == "desktop")
+            then "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4"
+            else "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg"; 
+        }
       ];
       output =
         if (host == "desktop") 
@@ -89,5 +95,6 @@
   home.packages = with pkgs; [
     wmenu
     mpvpaper
+    swaybg
   ];
 }

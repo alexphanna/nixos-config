@@ -8,7 +8,7 @@
         modules-left = [ "sway/workspaces" ];
         modules-right = (
           if (host == "laptop") 
-          then [ "battery#bat0" "battery#bat1" "backlight" ]
+          then [ "group/battery#bat0" "group/battery#bat1" "group/brightness" ]
           else []
         ) ++ [ 
           "group/audio-in"
@@ -81,25 +81,74 @@
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
         };
-        backlight = {
+
+        "group/brightness" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 100;
+          };
+          modules = [
+            "backlight#icon"
+            "backlight#brightness"
+          ];
+        };
+        "backlight#icon" = {
           device = "intel_backlight";
           format = "<span rise='-4000' size='large'></span>";
-          tooltip-format = "{percent}%";
+          tooltip = false;
         };
-        "battery#bat0" = {
+        "backlight#brightness" = {
+          device = "intel_backlight";
+          format = "{percent}%";
+          tooltip = false;
+        };
+
+        "group/battery#bat0" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 100;
+          };
+          modules = [
+            "battery#bat0-icon"
+            "battery#bat0-capacity"
+          ];
+        };
+        "battery#bat0-icon" = {
           bat = "BAT0";
           format = "<span rise='-4000' size='large'>{icon}</span>";
           format-charging = "<span rise='-4000' size='large'></span>";
           format-icons = ["" "" "" "" "" "" "" ""];
-          tooltip-format = "{capacity}%";
+          tooltip = false;
         };
-        "battery#bat1" = {
+        "battery#bat0-capacity" = {
+          bat = "BAT0";
+          format = "{capacity}%";
+          tooltip = false;
+        };
+
+        "group/battery#bat1" = {
+          orientation = "horizontal";
+          drawer = {
+            transition-duration = 100;
+          };
+          modules = [
+            "battery#bat1-icon"
+            "battery#bat1-capacity"
+          ];
+        };
+        "battery#bat1-icon" = {
           bat = "BAT1";
           format = "<span rise='-4000' size='large'>{icon}</span>";
           format-charging = "<span rise='-4000' size='large'></span>";
           format-icons = ["" "" "" "" "" "" "" ""];
-          tooltip-format = "{capacity}%";
+          tooltip = false;
         };
+        "battery#bat1-capacity" = {
+          bat = "BAT1";
+          format = "{capacity}%";
+          tooltip = false;
+        };
+
         clock = {
           format = "{:%m/%d/%y %I:%M %p}";
           tooltip = false;
@@ -147,7 +196,7 @@
         padding: 0 8px;
       }
 
-      box.module button:hover, #audio-out:hover, #audio-in:hover, #backlight:hover {
+      box.module button:hover, #audio-out:hover, #audio-in:hover, #brightness:hover, battery#bat0:hover, battery#bat1:hover {
         box-shadow: inherit;
         text-shadow: inherit;
         background: inherit;
