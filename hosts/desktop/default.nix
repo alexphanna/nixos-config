@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./selfhosted/audiobookshelf.nix
     ./selfhosted/freshrss.nix
+    ./selfhosted/home-assistant.nix
     ./selfhosted/invidious.nix
     ./selfhosted/jellyfin.nix
     ./selfhosted/sunshine.nix

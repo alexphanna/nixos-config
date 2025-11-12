@@ -14,5 +14,6 @@ in
     protonvpn-gui
     gucharmap
     inkscape
+    carla
   ];
 }

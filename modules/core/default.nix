@@ -1,5 +1,6 @@
 {
   imports = [
+    ./programs/flatpak.nix
     ./programs/obs.nix
     ./programs/steam.nix
     ./programs/thunar.nix
@@ -9,6 +10,7 @@
     ./bluetooth.nix
     ./boot.nix
     ./fonts.nix
+    ./iphone.nix
     ./user.nix
     ./libinput.nix
     ./networking.nix

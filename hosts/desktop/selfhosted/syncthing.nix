@@ -1,6 +1,6 @@
 {
   services.syncthing = {
-    enable = true;
+    enable = false;
     user = "alex";
     configDir = "/home/alex/.config/syncthing";
     settings = {

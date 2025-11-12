@@ -11,6 +11,7 @@ let
     tkinter
     sklearn-compat
     pycrypto
+    fonttools
   ]);
 in
 {

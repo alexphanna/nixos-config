@@ -35,5 +35,6 @@
 
     # other
     killall
+    openapi-generator-cli
   ];
 }

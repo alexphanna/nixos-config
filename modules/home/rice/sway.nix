@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, host, ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -76,6 +76,14 @@
       startup = [
         { command = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4"; }
       ];
+      output =
+        if (host == "desktop") 
+        then {
+          HDMI-A-1 = {
+            mode = "1920x1080@74.973Hz";
+          };
+        }
+        else {};
     };
   };
   home.packages = with pkgs; [

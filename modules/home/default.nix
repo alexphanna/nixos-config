@@ -11,6 +11,7 @@
     ./dev/dart.nix
     ./dev/go.nix
     ./dev/java.nix
+    ./dev/javascript.nix
     ./dev/latex.nix
     ./dev/macos.nix
     ./dev/nix.nix
@@ -32,7 +33,7 @@
     ./scripts/scripts.nix
 
     ./essentials.nix
-
+    
     ./utilities.nix
   ];
 }
