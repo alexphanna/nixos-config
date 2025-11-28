@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./selfhosted/ai.nix
     ./selfhosted/audiobookshelf.nix
     ./selfhosted/freshrss.nix
     ./selfhosted/home-assistant.nix

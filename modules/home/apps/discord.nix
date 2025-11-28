@@ -13,6 +13,7 @@
         volumeBooster.enable = true;
         clearURLs.enable = true;
         showHiddenChannels.enable = true;
+        viewIcons.enable = true;
       };
     };
   };

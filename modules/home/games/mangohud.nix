@@ -7,6 +7,8 @@
       vram = true;
       ram = true;
       fps = true;
+      fps_metrics = "avg,0.01,0.001";
+      output_folder = "~/Documents/mangohud";
     };
   };
 }

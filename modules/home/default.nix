@@ -1,4 +1,4 @@
-{
+{ 
   imports = [
     ./apps/discord.nix
     ./apps/firefox.nix
