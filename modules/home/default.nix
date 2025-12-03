@@ -16,7 +16,7 @@
     ./dev/macos.nix
     ./dev/nix.nix
     ./dev/python.nix
-    ./dev/swift.nix
+    # ./dev/swift.nix
     ./dev/vscode.nix
 
     ./games/emulation.nix

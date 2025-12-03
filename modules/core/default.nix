@@ -12,7 +12,6 @@
     ./fonts.nix
     ./iphone.nix
     ./user.nix
-    ./libinput.nix
     ./networking.nix
     ./services.nix
     ./system.nix

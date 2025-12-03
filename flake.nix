@@ -3,17 +3,17 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # NUR
     nur.url = "github:nix-community/NUR";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixohess.url = "gitlab:fazzi/nixohess";
+    # nixohess.url = "gitlab:fazzi/nixohess";
 
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
 
@@ -34,7 +34,6 @@
       nixpkgs-unstable,
       nur,
       vscode-server,
-      nixohess,
       ...
     }@inputs:
     let

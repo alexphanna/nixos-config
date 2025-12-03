@@ -2,7 +2,7 @@
 {
   home = {
     packages = with pkgs; [
-      jdk23
+      jdk25
     ];
     sessionVariables = {
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";
@@ -21,7 +21,7 @@
       visualstudioexptteam.vscodeintellicode
     ];
     userSettings = {
-      "java.jdt.ls.java.home" = "${pkgs.jdk23}";
+      "java.jdt.ls.java.home" = "${pkgs.jdk25}";
     };
   };
 }

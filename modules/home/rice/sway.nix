@@ -1,4 +1,4 @@
-{ lib, pkgs, host, ... }:
+{ lib, pkgs, host, config, ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -18,7 +18,6 @@
 
       layer_effects "notifications" blur enable; corner_radius 10;
 
-      for_window    [app_id="mpv"]                             floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
       for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
     config = {
@@ -54,7 +53,9 @@
         };
       };
       fonts.size = 10.0;
-      keybindings = lib.mkOptionDefault {
+      keybindings = let
+        modifier = config.wayland.windowManager.sway.config.modifier;
+      in lib.mkOptionDefault {
         "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%+'";
         "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%-'";
         "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_SINK@ toggle'";
@@ -62,6 +63,7 @@
         "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
         "Shift+Print" = "exec 'screenshotsel'";
         "Print" = "exec 'screenshot'";
+        "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable";
       };
       menu = "${pkgs.wmenu}/bin/wmenu-run -n FFFFFF -N 000000 -s 8000FF -S 000000 -m FFFFFF -M 000000 -f \"monospace 18\"";
       window = {
@@ -78,7 +80,7 @@
       startup = [
         { 
           command = if (host == "desktop")
-            then "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop' ALL Cyberpunk_2077_4K_Wallpaper.mp4"
+            then "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --glsl-shaders=' ALL Cyberpunk_2077_4K_Wallpaper.mp4"
             else "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg"; 
         }
       ];
@@ -86,10 +88,18 @@
         if (host == "desktop") 
         then {
           HDMI-A-1 = {
+            max_render_time = "off"; 
+            allow_tearing = "yes";
             mode = "1920x1080@74.973Hz";
           };
         }
         else {};
+      input = {
+        "*" = {
+          accel_profile = "flat";
+          pointer_accel = "-0.75";
+        };
+      };
     };
   };
   home.packages = with pkgs; [

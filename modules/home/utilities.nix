@@ -27,7 +27,7 @@
     yt-dlp
 
     # network
-    angryipscanner
+    # angryipscanner # causing problems
 
     # storage
     gparted

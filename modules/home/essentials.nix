@@ -12,6 +12,6 @@
     inkscape
     carla
 
-    inputs.nixohess.packages.${pkgs.stdenv.hostPlatform.system}.stremio-linux-shell
+    #inputs.nixohess.packages.${pkgs.stdenv.hostPlatform.system}.stremio-linux-shell
   ];
 }

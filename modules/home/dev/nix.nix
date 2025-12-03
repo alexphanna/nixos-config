@@ -1,14 +1,7 @@
 { pkgs, host, ... }:
 {
   home.packages = with pkgs; [
-    (nixd.overrideAttrs (oldAttrs: {
-      src = fetchFromGitHub {
-        owner = "oandrew";
-        repo = "nixd";
-        rev = "4cd9d17b30fc3bdc8becdd98d91dc3e305c6eb3d";
-        hash = "sha256-T1NvNy57LKnxkdACMujmhV+LFlqBV6b41CfqFWlriVw=";
-      };
-    }))
+    nixd
     nixfmt-rfc-style
     nix-prefetch-git
   ];

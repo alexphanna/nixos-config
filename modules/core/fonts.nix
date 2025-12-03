@@ -9,7 +9,6 @@ in
       # material-symbols
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
       jetbrains-mono
       vista-fonts
       material-symbols-filled
