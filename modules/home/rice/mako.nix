@@ -24,9 +24,9 @@
     };
   };
 
-  wayland.windowManager.sway.extraConfig = ''
-    layer_effects 'notifications' 'blur enable;
-  '';
+  # wayland.windowManager.sway.extraConfig = ''
+  #   layer_effects 'notifications' 'blur enable;
+  # '';
 
   # Inspired by: https://github.com/kira-bruneau/nixos-config/blob/74926b6d37922ada4e6f438f56fe77d64edc1800/home/programs/mako/default.nix
 }

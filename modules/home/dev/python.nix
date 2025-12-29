@@ -19,6 +19,6 @@ in
 
   programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     ms-python.python
-    ms-pyright.pyright
+    ms-python.vscode-pylance
   ];
 }

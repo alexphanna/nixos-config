@@ -21,7 +21,7 @@
       visualstudioexptteam.vscodeintellicode
     ];
     userSettings = {
-      "java.jdt.ls.java.home" = "${pkgs.jdk25}";
+      "java.jdt.ls.java.home" = "${pkgs.jdk25}/lib/openjdk";
     };
   };
 }

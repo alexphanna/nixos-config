@@ -4,7 +4,7 @@
     settings = {
       General = {
         Experimental = true; # Show battery charge of Bluetooth devices
-        DiscoverableTimeout = "0"; # Always discoverable
+        ControllerMode = "bredr"; # Required to make dualsense controller connect properly
       };
     };
   };

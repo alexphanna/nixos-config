@@ -1,23 +1,22 @@
-{ lib, pkgs, host, config, ... }:
+{ lib, pkgs, host, config, inputs, ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+    package = inputs.nixpkgs-wayland.packages.${pkgs.stdenv.hostPlatform.system}.sway-unwrapped; # for HDR support
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     extraOptions = [
       "--unsupported-gpu"
     ];
     checkConfig = false;
-    extraConfig = ''
+    /* 
       corner_radius 16
-
       blur enable
       blur_radius 3
       blur_passes 3
       blur_noise 0
-
-      layer_effects "notifications" blur enable; corner_radius 10;
-
+      layer_effects "notifications" blur enable; corner_radius 10; 
+    */
+    extraConfig = ''
       for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
     config = {
@@ -31,24 +30,24 @@
       ];
       colors = {
         unfocused = {
-          background = "#20202080";
-          border = "#20202080";
-          childBorder = "#20202080";
-          indicator = "#20202080";
+          background = "#202020C0";
+          border = "#202020C0";
+          childBorder = "#202020C0";
+          indicator = "#202020C0";
           text = "#FFFFFF";
         };
         focused = {
-          background = "#20202080";
-          border = "#20202080";
-          childBorder = "#20202080";
-          indicator = "#20202080";
+          background = "#202020C0";
+          border = "#202020C0";
+          childBorder = "#202020C0";
+          indicator = "#202020C0";
           text = "#FFFFFF";
         };
         focusedInactive = {
-          background = "#20202080";
-          border = "#20202080";
-          childBorder = "#20202080";
-          indicator = "#20202080";
+          background = "#202020C0";
+          border = "#202020C0";
+          childBorder = "#202020C0";
+          indicator = "#202020C0";
           text = "#FFFFFF";
         };
       };
@@ -87,10 +86,15 @@
       output =
         if (host == "desktop") 
         then {
-          HDMI-A-1 = {
-            max_render_time = "off"; 
-            allow_tearing = "yes";
+          # Monitor
+          DP-1 = {
             mode = "1920x1080@74.973Hz";
+          };
+          # TV
+          HDMI-A-1 = {
+            mode = "3840x2160@60Hz";
+            hdr = "on";
+            scale = "1.5";
           };
         }
         else {};

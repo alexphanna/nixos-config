@@ -11,7 +11,7 @@
         biggerStreamPreview.enable = true;
         fakeNitro.enable = true;
         volumeBooster.enable = true;
-        clearURLs.enable = true;
+        clearUrLs.enable = true;
         showHiddenChannels.enable = true;
         viewIcons.enable = true;
       };

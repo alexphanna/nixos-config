@@ -9,7 +9,7 @@
       colors = {
         foreground = "ffffff";
         background = "202020";
-        alpha = 0.5;
+        alpha = 0.75;
 
         regular0 = "202020"; # black
         regular1 = "FF0000"; # red

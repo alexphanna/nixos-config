@@ -1,17 +1,15 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
+let
+  stremio-linux-shell = pkgs.callPackage ./../../packages/stremio-linux-shell.nix { };
+in
 {
   home.packages = with pkgs; [
     spotify
     gimp
-    obsidian
     galculator
-    foliate # for reading books
     resources # task manager
+    foliate
     protonvpn-gui
-    gucharmap
-    inkscape
-    carla
-
-    #inputs.nixohess.packages.${pkgs.stdenv.hostPlatform.system}.stremio-linux-shell
+    stremio-linux-shell
   ];
 }

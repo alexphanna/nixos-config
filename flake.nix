@@ -25,6 +25,9 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     nixcord.url = "github:kaylorben/nixcord";
+
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -34,6 +37,7 @@
       nixpkgs-unstable,
       nur,
       vscode-server,
+      nixpkgs-wayland,
       ...
     }@inputs:
     let

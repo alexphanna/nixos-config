@@ -12,7 +12,6 @@
         ms-vscode-remote.remote-ssh-edit
         
         esbenp.prettier-vscode
-        james-yu.latex-workshop
         tamasfe.even-better-toml
         jbockle.jbockle-format-files
         mechatroner.rainbow-csv

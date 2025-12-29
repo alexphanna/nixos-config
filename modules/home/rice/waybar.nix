@@ -13,6 +13,7 @@
         ) ++ [ 
           "group/audio-in"
           "group/audio-out"
+          "bluetooth" 
           "network" 
           "clock" 
         ];
@@ -70,6 +71,13 @@
           max-volume = 200.0;
           scroll-step = 5;
           tooltip = false;
+        };
+
+        bluetooth = {
+          format = "<span rise='-4000' size='large'></span>"; 
+          format-no-controller = "<span rise='-4000' size='large'></span>";
+          tooltip = false;
+          on-click = "blueman-manager";
         };
 
         network = {
