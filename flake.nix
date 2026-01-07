@@ -13,8 +13,6 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nixohess.url = "gitlab:fazzi/nixohess";
-
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
 
     apple-emoji-linux = {
@@ -25,9 +23,6 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     nixcord.url = "github:kaylorben/nixcord";
-
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -37,7 +32,6 @@
       nixpkgs-unstable,
       nur,
       vscode-server,
-      nixpkgs-wayland,
       ...
     }@inputs:
     let
@@ -65,50 +59,6 @@
               nixpkgs.overlays = [
                 nur.overlays.default
                 overlay-unstable
-                (final: prev: {
-                  jellyfin-web = prev.jellyfin-web.overrideAttrs (
-                    finalAttrs: previousAttrs: {
-                      installPhase = ''
-                        runHook preInstall
-
-                        # this is the important line
-                        sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
-
-                        mkdir -p $out/share
-                        cp -a dist $out/share/jellyfin-web
-
-                        runHook postInstall
-                      '';
-                    }
-                  );
-                })
-
-                (final: prev: {
-                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                    patches = [
-                      ./patches/usbredir-blacklist.patch
-                    ];
-                  });
-                })
-
-                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-                (self: super: {
-                  xarchiver = super.xarchiver.overrideAttrs (old: {
-                    postInstall = ''
-                      rm -rf $out/libexec
-                    '';
-                  });
-
-                  xfce = super.xfce.overrideScope (
-                    xself: xsuper: {
-                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
-                        postInstall = ''
-                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
-                        '';
-                      });
-                    }
-                  );
-                })
               ];
             }
           ];
@@ -126,51 +76,6 @@
               nixpkgs.overlays = [
                 nur.overlays.default
                 overlay-unstable
-
-                (final: prev: {
-                  jellyfin-web = prev.jellyfin-web.overrideAttrs (
-                    finalAttrs: previousAttrs: {
-                      installPhase = ''
-                        runHook preInstall
-
-                        # this is the important line
-                        sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
-
-                        mkdir -p $out/share
-                        cp -a dist $out/share/jellyfin-web
-
-                        runHook postInstall
-                      '';
-                    }
-                  );
-                })
-
-                (final: prev: {
-                  usbredir = prev.usbredir.overrideAttrs (previousAttrs: {
-                    patches = [
-                      ./patches/usbredir-blacklist.patch
-                    ];
-                  });
-                })
-
-                # Thunar/xarchiver fix: https://github.com/NixOS/nixpkgs/issues/248192
-                (self: super: {
-                  xarchiver = super.xarchiver.overrideAttrs (old: {
-                    postInstall = ''
-                      rm -rf $out/libexec
-                    '';
-                  });
-
-                  xfce = super.xfce.overrideScope (
-                    xself: xsuper: {
-                      thunar-archive-plugin = xsuper.thunar-archive-plugin.overrideAttrs (old: {
-                        postInstall = ''
-                          cp ${super.xarchiver}/libexec/thunar-archive-plugin/* $out/libexec/thunar-archive-plugin/
-                        '';
-                      });
-                    }
-                  );
-                })
               ];
             }
           ];

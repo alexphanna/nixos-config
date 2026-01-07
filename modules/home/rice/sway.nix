@@ -1,20 +1,20 @@
-{ lib, pkgs, host, config, inputs, ... }:
+{ lib, pkgs, host, config, ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = inputs.nixpkgs-wayland.packages.${pkgs.stdenv.hostPlatform.system}.sway-unwrapped; # for HDR support
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     extraOptions = [
       "--unsupported-gpu"
     ];
     checkConfig = false;
-    /* 
+    # positions must account for gaps and bar
+    /*
       corner_radius 16
       blur enable
       blur_radius 3
       blur_passes 3
       blur_noise 0
-      layer_effects "notifications" blur enable; corner_radius 10; 
+      layer_effects "notifications" blur enable; corner_radius 10;
     */
     extraConfig = ''
       for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
@@ -92,9 +92,7 @@
           };
           # TV
           HDMI-A-1 = {
-            mode = "3840x2160@60Hz";
-            hdr = "on";
-            scale = "1.5";
+            power = "off";
           };
         }
         else {};
@@ -106,9 +104,11 @@
       };
     };
   };
-  home.packages = with pkgs; [
-    wmenu
-    mpvpaper
-    swaybg
-  ];
+  home = {
+    packages = with pkgs; [
+      wmenu
+      mpvpaper
+      swaybg
+    ];
+  };
 }
