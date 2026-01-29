@@ -1,9 +1,9 @@
-{pkgs, ... }:
+{pkgs, host, ... }:
 let
   sway = pkgs.sway.override {
-    extraOptions = [
+    extraOptions = if (host == "desktop") then [
       "--unsupported-gpu"
-    ];
+    ] else [];
   };
 in
 {

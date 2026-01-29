@@ -10,7 +10,7 @@
     ./selfhosted/sunshine.nix
     ./selfhosted/syncthing.nix
     ./selfhosted/vscode-server.nix
-    ./ly.nix
+    ./gamescope-session.nix
     ./nvidia.nix
     ./rgb.nix
     ./virtualization.nix

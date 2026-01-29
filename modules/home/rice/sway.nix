@@ -3,9 +3,9 @@
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-    extraOptions = [
+    extraOptions = if (host == "desktop") then [
       "--unsupported-gpu"
-    ];
+    ] else [];
     checkConfig = false;
     # positions must account for gaps and bar
     /*
@@ -99,7 +99,7 @@
       input = {
         "*" = {
           accel_profile = "flat";
-          pointer_accel = "-0.75";
+          pointer_accel = if (host == "desktop") then "-0.75" else "0";
         };
       };
     };

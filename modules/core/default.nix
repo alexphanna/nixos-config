@@ -1,6 +1,7 @@
 {
   imports = [
     ./programs/flatpak.nix
+    ./programs/ly.nix
     ./programs/obs.nix
     ./programs/steam.nix
     ./programs/thunar.nix
