@@ -31,7 +31,7 @@
         "wireplumber#icon" = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          format-icons = [ "" "" ""];
+          format-icons = [ "" "" "" ""];
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
           scroll-step = 5;

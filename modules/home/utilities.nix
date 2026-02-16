@@ -27,7 +27,7 @@
     yt-dlp
 
     # network
-    # angryipscanner # causing problems
+    angryipscanner
 
     # storage
     gparted
@@ -37,5 +37,6 @@
     killall
     openapi-generator-cli
     gucharmap
+    wine
   ];
 }

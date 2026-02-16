@@ -5,6 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stremio-linux-shell.url = "github:thunze/nixpkgs";
 
     # NUR
     nur.url = "github:nix-community/NUR";
@@ -30,6 +31,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      stremio-linux-shell,
       nur,
       vscode-server,
       ...

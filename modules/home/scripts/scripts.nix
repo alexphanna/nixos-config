@@ -4,6 +4,7 @@ let
   screenshotsel = pkgs.writeScriptBin "screenshotsel" (builtins.readFile ./screenshotsel.sh);
   tesseractsel = pkgs.writeScriptBin "tesseractsel" (builtins.readFile ./tesseractsel.sh);
   xbacklight-log = pkgs.writeScriptBin "xbacklight-log" (builtins.readFile ./xbacklight-log.py);
+  steamos-session-select = pkgs.writeScriptBin "steamos-session-select" (builtins.readFile ./steamos-session-select.sh);
 in
 {
   home.packages = [
@@ -11,6 +12,7 @@ in
     screenshotsel
     tesseractsel
     xbacklight-log
+    steamos-session-select
 
     # dependencies
     pkgs.tesseract

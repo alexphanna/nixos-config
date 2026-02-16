@@ -6,6 +6,7 @@
 
   programs.nixcord = {
     enable = true;
+    discord.openASAR.enable = true;
     config = {
       plugins = {
         biggerStreamPreview.enable = true;
@@ -13,7 +14,7 @@
         volumeBooster.enable = true;
         ClearURLs.enable = true;
         showHiddenChannels.enable = true;
-        viewIcons.enable = true;
+        youtubeAdblock.enable = true;
       };
     };
   };

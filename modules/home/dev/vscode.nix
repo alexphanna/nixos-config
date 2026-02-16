@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = true;
-    mutableExtensionsDir = true;
+    mutableExtensionsDir = false;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [ 
         # cannot include extension packs
@@ -29,6 +29,7 @@
         "git.openRepositoryInParentFolders" = "never";
         "editor.fontFamily" = "'monospace', 'Material Symbols Rounded', monospace";
         "editor.fontLigatures" = true;
+        "chat.disableAIFeatures" = true;
       };
     };
   };

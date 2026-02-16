@@ -21,12 +21,13 @@
         ];
         env = {
           "DXVK_HDR" = "1";
+          "ENABLE_HDR_WSI" = "1";
         };
       };
-      gamescope = {
-        enable = true;
-        capSysNice = false;
-      };
+    };
+    gamescope = {
+      enable = true;
+      capSysNice = false;
     };
   };
   environment.systemPackages = with pkgs; [

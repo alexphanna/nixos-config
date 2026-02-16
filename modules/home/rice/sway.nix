@@ -82,6 +82,16 @@
             then "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --glsl-shaders=' ALL Cyberpunk_2077_4K_Wallpaper.mp4"
             else "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg"; 
         }
+        { 
+          command = if (host == "desktop")
+            then "bluetoothctl select E8:48:B8:C8:20:00" # Bluetooth controller at PC
+            else ""; 
+        }
+        { 
+          command = if (host == "desktop")
+            then "bluetoothctl select E8:48:B8:C8:20:00" # Bluetooth controller at PC
+            else ""; 
+        }
       ];
       output =
         if (host == "desktop") 

@@ -9,6 +9,7 @@
 
     ./dev/cpp.nix
     ./dev/dart.nix
+    ./dev/game-maker.nix
     ./dev/go.nix
     ./dev/java.nix
     ./dev/javascript.nix
@@ -20,6 +21,7 @@
     ./dev/vscode.nix
 
     ./games/emulation.nix
+    ./games/lutris.nix
     ./games/mangohud.nix
     ./games/minecraft.nix
 
