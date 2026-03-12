@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host, accentColor, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -11,7 +11,7 @@
           then [ "group/battery#bat0" "group/battery#bat1" "group/brightness" ]
           else []
         ) ++ [ 
-          "group/audio-in"
+          # "group/audio-in" not used often
           "group/audio-out"
           "bluetooth" 
           "network" 
@@ -30,7 +30,7 @@
         };
         "wireplumber#icon" = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-click = "pavucontrol";
           format-icons = [ "" "" "" ""];
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
@@ -39,13 +39,13 @@
         };
         "wireplumber#volume" = {
           format = "{volume}%";
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-click = "pavucontrol";
           max-volume = 200.0;
           scroll-step = 5;
           tooltip = false;
         };
 
-        "group/audio-in" = {
+        /*"group/audio-in" = {
           orientation = "horizontal";
           drawer = {
             transition-duration = 100;
@@ -57,7 +57,7 @@
         };
         "wireplumber#source-icon" = {
           node-type = "Audio/Source";
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          on-click = "pavucontrol";
           format = "<span rise='-4000' size='large'></span>";
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
@@ -67,11 +67,11 @@
         "wireplumber#source-volume" = {
           node-type = "Audio/Source";
           format = "{volume}%";
-          on-click = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          on-click = "pavucontrol";
           max-volume = 200.0;
           scroll-step = 5;
           tooltip = false;
-        };
+        };*/
 
         bluetooth = {
           format = "<span rise='-4000' size='large'></span>"; 
@@ -208,7 +208,7 @@
         box-shadow: inherit;
         text-shadow: inherit;
         background: inherit;
-        color: #8000FF;
+        color: ${accentColor};
       }
 
       tooltip {

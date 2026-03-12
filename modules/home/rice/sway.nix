@@ -1,4 +1,4 @@
-{ lib, pkgs, host, config, ... }:
+{ lib, pkgs, host, config, accentColor, backgroundColor, foregroundColor,  ... }:
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -8,14 +8,6 @@
     ] else [];
     checkConfig = false;
     # positions must account for gaps and bar
-    /*
-      corner_radius 16
-      blur enable
-      blur_radius 3
-      blur_passes 3
-      blur_noise 0
-      layer_effects "notifications" blur enable; corner_radius 10;
-    */
     extraConfig = ''
       for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
@@ -30,25 +22,25 @@
       ];
       colors = {
         unfocused = {
-          background = "#202020C0";
-          border = "#202020C0";
-          childBorder = "#202020C0";
-          indicator = "#202020C0";
-          text = "#FFFFFF";
+          background = backgroundColor;
+          border = backgroundColor;
+          childBorder = backgroundColor;
+          indicator = backgroundColor;
+          text = foregroundColor;
         };
         focused = {
-          background = "#202020C0";
-          border = "#202020C0";
-          childBorder = "#202020C0";
-          indicator = "#202020C0";
-          text = "#FFFFFF";
+          background = backgroundColor;
+          border = backgroundColor;
+          childBorder = backgroundColor;
+          indicator = backgroundColor;
+          text = foregroundColor;
         };
         focusedInactive = {
-          background = "#202020C0";
-          border = "#202020C0";
-          childBorder = "#202020C0";
-          indicator = "#202020C0";
-          text = "#FFFFFF";
+          background = backgroundColor;
+          border = backgroundColor;
+          childBorder = backgroundColor;
+          indicator = backgroundColor;
+          text = foregroundColor;
         };
       };
       fonts.size = 10.0;
@@ -64,7 +56,7 @@
         "Print" = "exec 'screenshot'";
         "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable";
       };
-      menu = "${pkgs.wmenu}/bin/wmenu-run -n FFFFFF -N 000000 -s 8000FF -S 000000 -m FFFFFF -M 000000 -f \"monospace 18\"";
+      menu = "${pkgs.wmenu}/bin/wmenu-run -n FFFFFF -N 000000 -s ${lib.strings.removePrefix "#" accentColor} -S 000000 -m FFFFFF -M 000000 -f \"monospace 18\"";
       window = {
         border = 0;
         titlebar = false;
@@ -78,14 +70,7 @@
       };
       startup = [
         { 
-          command = if (host == "desktop")
-            then "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --glsl-shaders=' ALL Cyberpunk_2077_4K_Wallpaper.mp4"
-            else "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg"; 
-        }
-        { 
-          command = if (host == "desktop")
-            then "bluetoothctl select E8:48:B8:C8:20:00" # Bluetooth controller at PC
-            else ""; 
+          command = "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg";
         }
         { 
           command = if (host == "desktop")
@@ -117,7 +102,6 @@
   home = {
     packages = with pkgs; [
       wmenu
-      mpvpaper
       swaybg
     ];
   };

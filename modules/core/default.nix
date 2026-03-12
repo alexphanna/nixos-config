@@ -11,6 +11,7 @@
     ./bluetooth.nix
     ./boot.nix
     ./fonts.nix
+    ./home-manager.nix
     ./iphone.nix
     ./user.nix
     ./networking.nix
@@ -18,4 +19,5 @@
     ./system.nix
     ./user.nix
   ];
+  
 }

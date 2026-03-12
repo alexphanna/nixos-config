@@ -6,7 +6,7 @@
 
   programs.nixcord = {
     enable = true;
-    discord.openASAR.enable = true;
+    # discord.openASAR.enable = true;
     config = {
       plugins = {
         biggerStreamPreview.enable = true;

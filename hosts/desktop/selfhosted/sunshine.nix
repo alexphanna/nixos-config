@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.sunshine = {
-    enable = false;
+    enable = true;
     capSysAdmin = true;
     # Enable nvenc support
     package = pkgs.sunshine.override {

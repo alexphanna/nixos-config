@@ -17,6 +17,7 @@
     mkvtoolnix
     paprefs
     pavucontrol
+    handbrake
 
     # downloading
     aria2
@@ -38,5 +39,6 @@
     openapi-generator-cli
     gucharmap
     wine
+    speedtest-cli
   ];
 }

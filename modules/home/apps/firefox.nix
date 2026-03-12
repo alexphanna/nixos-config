@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  accentColor,
   ...
 }:
 {
@@ -183,7 +184,7 @@
               in
               {
                 uiAccentCustom = true;
-                uiAccentCustom0 = "#8000FF";
+                uiAccentCustom0 = "${accentColor}";
                 cloudStorageEnabled = lib.mkForce false;
                 advancedUserEnabled = true;
                 userFiltersTrusted = true;

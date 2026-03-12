@@ -11,6 +11,7 @@
       # save-position-on-quit = true;
       vo = "gpu";
       hwdec = "auto";
+      cache = "yes";
       glsl-shaders = "${./NVScaler.glsl}:${./FSR.glsl}:${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_VL.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl";
     };
     bindings = {

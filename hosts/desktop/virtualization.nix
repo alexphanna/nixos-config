@@ -1,7 +1,9 @@
 { pkgs, username, ... }:
 {
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    spiceUSBRedirection.enable = true;
+    libvirtd.enable = true;
+  };
   systemd.services."libvirtd".path = [ pkgs.passt ];
   users.users.${username}.extraGroups = [
     "libvirtd"

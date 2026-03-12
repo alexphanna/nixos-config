@@ -16,8 +16,9 @@
 
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
 
+    # FIX: bump when https://github.com/samuelngs/apple-emoji-ttf/issues/101 fixed
     apple-emoji-linux = {
-      url = "github:samuelngs/apple-emoji-linux";
+      url = "github:samuelngs/apple-emoji-linux/b22ae7f";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -31,7 +32,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      stremio-linux-shell,
       nur,
       vscode-server,
       ...
@@ -39,6 +39,9 @@
     let
       username = "alex";
       system = "x86_64-linux";
+      accentColor = "#4080c0";
+      backgroundColor = "#00000040";
+      foregroundColor = "#FFFFFF";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
@@ -52,7 +55,7 @@
           system = "x86_64-linux";
           specialArgs = {
             host = "desktop";
-            inherit self inputs username;
+            inherit self inputs username accentColor backgroundColor foregroundColor;
           };
           modules = [
             ./hosts/desktop
@@ -70,7 +73,7 @@
           system = "x86_64-linux";
           specialArgs = {
             host = "laptop";
-            inherit self inputs username;
+            inherit self inputs username accentColor backgroundColor foregroundColor;
           };
           modules = [
             ./hosts/laptop

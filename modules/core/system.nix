@@ -45,12 +45,6 @@
     };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "mbedtls-2.28.10"
-      "gradle-7.6.6"
-    ];
-  };
+  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";
 }
