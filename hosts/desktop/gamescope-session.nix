@@ -33,5 +33,17 @@
   environment.systemPackages = with pkgs; [
     gamescope-wsi # HDR won't work without this
     jq
+    (pkgs.writeScriptBin "steamos-session-select" ''
+      #!/usr/bin/env zsh
+
+      pkill -f gamescope
+      sway --unsupported-gpu
+      exec steam-gamescope
+    '')
+    (pkgs.kodi-wayland.withPackages (kodiPkgs: with kodiPkgs; [
+      jellyfin
+      jurialmunkey
+      texturemaker
+    ]))
   ];
 }

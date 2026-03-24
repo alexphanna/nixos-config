@@ -11,7 +11,6 @@
           then [ "group/battery#bat0" "group/battery#bat1" "group/brightness" ]
           else []
         ) ++ [ 
-          # "group/audio-in" not used often
           "group/audio-out"
           "bluetooth" 
           "network" 
@@ -44,34 +43,6 @@
           scroll-step = 5;
           tooltip = false;
         };
-
-        /*"group/audio-in" = {
-          orientation = "horizontal";
-          drawer = {
-            transition-duration = 100;
-          };
-          modules = [
-            "wireplumber#source-icon"
-            "wireplumber#source-volume"
-          ];
-        };
-        "wireplumber#source-icon" = {
-          node-type = "Audio/Source";
-          on-click = "pavucontrol";
-          format = "<span rise='-4000' size='large'></span>";
-          format-muted = "<span rise='-4000' size='large'></span>";
-          max-volume = 200.0;
-          scroll-step = 5;
-          tooltip = false;
-        };
-        "wireplumber#source-volume" = {
-          node-type = "Audio/Source";
-          format = "{volume}%";
-          on-click = "pavucontrol";
-          max-volume = 200.0;
-          scroll-step = 5;
-          tooltip = false;
-        };*/
 
         bluetooth = {
           format = "<span rise='-4000' size='large'></span>"; 

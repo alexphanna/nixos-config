@@ -32,7 +32,7 @@
     ./rice/waybar.nix
     ./rice/zsh.nix
 
-    ./scripts/scripts.nix
+    ./scripts.nix
 
     ./essentials.nix
     

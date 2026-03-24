@@ -11,6 +11,10 @@
       ];
     };
   };
+
+  environment.systemPackages = with pkgs; [ 
+    zstd
+  ];
  
   nixpkgs.overlays = lib.mkAfter [
     (self: super: {

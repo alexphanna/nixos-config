@@ -7,9 +7,9 @@
       "--unsupported-gpu"
     ] else [];
     checkConfig = false;
-    # positions must account for gaps and bar
     extraConfig = ''
-      for_window    [title="Picture-in-Picture"]               floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
+      for_window    [app_id=\"com.obsproject.Studio\"]    move scratchpad
+      for_window    [title="Picture-in-Picture"]          floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
     config = {
       defaultWorkspace = "workspace number 1";
@@ -52,11 +52,11 @@
         "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_SINK@ toggle'";
         "XF86MonBrightnessUp" = "exec 'xbacklight -inc 5'";
         "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
-        "Shift+Print" = "exec 'screenshotsel'";
         "Print" = "exec 'screenshot'";
-        "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable";
+        "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable"; # picture-in-picture
+        "${modifier}+Shift+e" = "exec 'swaymsg exit'"; # skips exit dialog
       };
-      menu = "${pkgs.wmenu}/bin/wmenu-run -n FFFFFF -N 000000 -s ${lib.strings.removePrefix "#" accentColor} -S 000000 -m FFFFFF -M 000000 -f \"monospace 18\"";
+      menu = "${pkgs.wmenu}/bin/wmenu-run -i -n FFFFFF -N 000000 -s ${lib.strings.removePrefix "#" accentColor} -S 000000 -m FFFFFF -M 000000 -f \"monospace 16\"";
       window = {
         border = 0;
         titlebar = false;
@@ -72,10 +72,12 @@
         { 
           command = "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg";
         }
+        # https://github.com/obsproject/obs-studio/issues/12650#issuecomment-3396656122
         { 
-          command = if (host == "desktop")
-            then "bluetoothctl select E8:48:B8:C8:20:00" # Bluetooth controller at PC
-            else ""; 
+          command = "rm -r ~/.config/obs-studio/.sentinel";
+        }
+        { 
+          command = "obs --startreplaybuffer";
         }
       ];
       output =
@@ -99,10 +101,8 @@
       };
     };
   };
-  home = {
-    packages = with pkgs; [
-      wmenu
-      swaybg
-    ];
-  };
+  home.packages = with pkgs; [
+    wmenu
+    swaybg
+  ];
 }

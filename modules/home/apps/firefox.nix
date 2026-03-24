@@ -48,7 +48,7 @@
       DisableMasterPasswordCreation = true;
       DisablePasswordReveal = true;
       DisablePocket = true;
-      DisablePrivateBrowsing = true;
+      # DisablePrivateBrowsing = true;
       DisableProfileImport = true;
       DisableProfileRefresh = true;
       DisableSafeMode = true;

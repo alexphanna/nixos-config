@@ -2,9 +2,9 @@
 {
   services.getty = {
     autologinUser = "${username}";
-    autologinOnce = true;
+    # autologinOnce = true;
   };
   environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway --unsupported-gpu
+    [[ "$(tty)" == /dev/tty1 ]] && { sway --unsupported-gpu; exec steam-gamescope; }
   '';
 }

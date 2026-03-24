@@ -17,4 +17,5 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
   };
+  environment.systemPackages = [ pkgs.obs-cmd ];
 }
