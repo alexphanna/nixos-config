@@ -1,4 +1,4 @@
-# <center>NixOS Configuration</center>
+<center><h1>NixOS Configuration</h1></center>
 
 My one year old NixOS and home-manager configuration for my desktop and laptop.
 
@@ -10,11 +10,11 @@ My one year old NixOS and home-manager configuration for my desktop and laptop.
 | Item | Program |
 | - | -: |
 | Display server | **Wayland** |
-| Window Manager | **SwayFX** |
+| Window Manager | **Sway** |
 | Bar | **Waybar** |
 | Menu | **wmenu** |
 | Terminal | **foot** |
-| Browser | **Firefox** |
+| Browser | **LibreWolf** |
 | Editor | **VS Code** |
 
 ## Hardware
@@ -43,6 +43,4 @@ or
 ## Credits
 
 - [Frost-Phoenix](https://github.com/Frost-Phoenix/nixos-config): config layout inspiration
-- [kira-bruneau](https://github.com/kira-bruneau/nixos-config): mako config
 - [Rsr45](https://github.com/Rsr45/nixos-config): uBlock Origin config
-- [u/Baba-](https://www.reddit.com/r/cyberpunkgame/comments/c4suz9/made_my_own_animated_wallpaper_of_night_city/): Cyberpunk 2077 animated wallpaper
