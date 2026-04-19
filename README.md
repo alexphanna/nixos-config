@@ -1,5 +1,4 @@
-<center><h1>NixOS Configuration</h1></center>
-
+# NixOS Configuration 
 My one year old NixOS and home-manager configuration for my desktop and laptop.
 
 ## Screenshot

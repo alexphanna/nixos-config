@@ -1,10 +1,12 @@
 { 
   imports = [
+    ./apps/librewolf/librewolf.nix
+    ./apps/librewolf/redirector.nix
+    ./apps/librewolf/ublock-origin.nix
     ./apps/discord.nix
     ./apps/foot.nix
     ./apps/git.nix
     ./apps/libreoffice.nix
-    ./apps/librewolf.nix
     ./apps/mpv.nix
 
     ./dev/cpp.nix
