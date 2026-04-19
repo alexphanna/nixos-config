@@ -54,7 +54,7 @@
         "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
         "Print" = "exec 'screenshot'";
         "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable"; # picture-in-picture
-        "${modifier}+Shift+e" = "exec 'swaymsg exit'"; # skips exit dialog
+        "${modifier}+Shift+e" = "exec 'pkill sway'"; # skips exit dialog
       };
       menu = "${pkgs.wmenu}/bin/wmenu-run -i -n FFFFFF -N 000000 -s ${lib.strings.removePrefix "#" accentColor} -S 000000 -m FFFFFF -M 000000 -f \"monospace 16\"";
       window = {
@@ -73,12 +73,12 @@
           command = "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg";
         }
         # https://github.com/obsproject/obs-studio/issues/12650#issuecomment-3396656122
-        { 
+        /*{ 
           command = "rm -r ~/.config/obs-studio/.sentinel";
         }
         { 
           command = "obs --startreplaybuffer";
-        }
+        }*/
       ];
       output =
         if (host == "desktop") 

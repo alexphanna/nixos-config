@@ -5,96 +5,32 @@
   ...
 }:
 {
-  programs.firefox = {
+  home.packages = [
+    (pkgs.writeScriptBin "firefox" "librewolf")
+  ];
+  programs.librewolf = {
     enable = true;
 
     policies = {
-      AppAutoUpdate = false;
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      BackgroundAppUpdate = false;
+      Cookies.Allow = [
+        # websites that I use somewhat frequently and don't feel like re logging in every time
+        # "https://accounts.google.com"
+        "https://www.youtube.com"
+        "https://www.github.com"
 
-      # BlockAboutAddons = true;
-      BlockAboutProfiles = true;
-      # BlockAboutConfig = true;
-      # BlockAboutSupport = true;
-
-      Cookies = {
-        Allow = [
-          # websites that I use somewhat frequently and don't feel like re logging in every time
-          # "https://accounts.google.com"
-          "https://www.youtube.com"
-          "https://www.github.com"
-
-          # school
-          "https://psu.edu"
-          "https://instructure.com/"
-          "https://canvaslms.com/"
-          "https://kaltura.com/"
-          "https://login.microsoftonline.com"
-        ];
-      };
-
-      DisableAccounts = true;
-      DisableAppUpdate = true;
-      DisableDefaultBrowserAgent = true;
-      DisableEncryptedClientHello = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxAccounts = true;
-      DisableFirefoxScreenshots = true;
-      DisableFirefoxStudies = true;
-      DisableForgetButton = true;
-      DisableFormHistory = true;
-      DisableMasterPasswordCreation = true;
-      DisablePasswordReveal = true;
-      DisablePocket = true;
-      # DisablePrivateBrowsing = true;
-      DisableProfileImport = true;
-      DisableProfileRefresh = true;
-      DisableSafeMode = true;
-      DisableSetDesktopBackground = true;
-      DisableSystemAddonUpdate = true;
-      DisableTelemetry = true;
+        # school
+        "https://psu.edu"
+        "https://instructure.com/"
+        "https://canvaslms.com/"
+        "https://kaltura.com/"
+        "https://login.microsoftonline.com"
+      ];
+      Homepage.StartPage = "none";
+      NewTabPage = false;
+      PasswordManagerEnabled = false;
+      GenerativeAI.Enabled = false;
       DisplayBookmarksToolbar = "never";
-      DisplayMenuBar = "never";
-      DontCheckDefaultBrowser = true;
-      DownloadDirectory = "~/Downloads";
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-        EmailTracking = true;
-      };
-      FirefoxHome = {
-        Search = true;
-        TopSites = false;
-        SponsoredTopSites = false;
-        Highlights = false;
-        Pocket = false;
-        Stories = false;
-        SponsoredPocket = false;
-        SponsoredStories = false;
-        Snippets = false;
-        Locked = true;
-      };
-      FirefoxSuggest = {
-        WebSuggestions = true;
-        SponsoredSuggestions = false;
-        ImproveSuggest = false;
-        Locked = true;
-      };
-      SanitizeOnShutdown = {
-        Cache = true;
-        Cookies = true;
-        Downloads = true;
-        FormData = true;
-        History = true;
-        Sessions = true;
-        SiteSettings = true;
-        OfflineApps = true;
-        Locked = true;
-      };
+      Permissions.Notifications.BlockNewRequests = true;
       SearchSuggestEnabled = true;
     };
     
@@ -127,12 +63,6 @@
             url = "https://www.lionpath.psu.edu/";
           }
         ];
-      };
-
-      settings = {
-        "full-screen-api.warning.timeout" = 0; # Hide useless full screen dialog
-        "permissions.default.desktop-notification" = 2; # Hide notification pop up because I never want that
-        "signon.rememberSignons" = false;
       };
 
       extensions = {
@@ -168,6 +98,15 @@
                   patternType = "W";
                   appliesTo = [ "main_frame" ];
                 }
+                {
+                  description = "Twitter";
+                  exampleUrl = "https://x.com/User";
+                  exampleResult = "https://nitter.net/User";
+                  includePattern = "https://x.com/*";
+                  redirectUrl = "https://nitter.net/$1";
+                  patternType = "W";
+                  appliesTo = [ "main_frame" ];
+                }
               ];
             };
           };
@@ -178,8 +117,9 @@
             settings =
               let
                 importedLists = [
-                  "https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
-                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                  "https://raw.githubusercontent.com/i5heu/ublock-hide-yt-shorts/master/list.txt"
+                  "https://raw.githubusercontent.com/i5heu/ublock-hide-yt-shorts/master/playables.txt"
+                  "https://raw.githubusercontent.com/Stevoisiak/Stevos-GenAI-Blocklist/refs/heads/main/GenAI-Blocklist.txt"
                 ];
               in
               {
@@ -222,19 +162,11 @@
                 ++ importedLists;
               };
           };
-          # https://github.com/ilovethensa/homelab/blob/0722492056619f1203e1d37011e89c99ccaca1b2/home/tht/firefox.nix#L20
-          "sponsorBlocker@ajay.app" = {
-            force = true;
-            settings = {
-              categorySelections = [
-                {
-                  name = "sponsor";
-                  option = 2;
-                }
-              ];
-            };
-          };
         };
+      };
+
+      settings = {
+        "privacy.resistFingerprinting" = false;
       };
 
       search = {
@@ -243,7 +175,19 @@
         privateDefault = "google";
 
         engines = {
-          "Nix Packages" = {
+          "google" = {
+            name = "Google";
+            urls = [
+              {
+                template = "https://www.google.com/search?q={searchTerms}";
+              }
+            ];
+            icon = "https://www.google.com/favicon.ico";
+            definedAliases = ["@g"];
+          };
+
+          "nix-packages" = {
+            name = "Nix Packages";
             urls = [
               {
                 template = "https://search.nixos.org/packages";
@@ -263,7 +207,8 @@
             definedAliases = [ "@np" ];
           };
 
-          "Nix Options" = {
+          "nix-options" = {
+            name = "Nix Options";
             urls = [
               {
                 template = "https://search.nixos.org/options";
@@ -283,7 +228,8 @@
             definedAliases = [ "@no" ];
           };
 
-          "NixOS Wiki" = {
+          "nixos-wiki" = {
+            name = "NixOS Wiki";
             urls = [
               {
                 template = "https://wiki.nixos.org/w/index.php";
@@ -299,7 +245,8 @@
             definedAliases = [ "@nw" ];
           };
 
-          "Nix GitHub" = {
+          "nix-github" = {
+            name = "Nix GitHub";
             urls = [
               {
                 template = "https://github.com/search";
@@ -319,13 +266,15 @@
             definedAliases = [ "@ng" ];
           };
 
-          ddg.metaData.hidden = true;
-          wikipedia.metaData.hidden = true;
-          bing.metaData.hidden = true;
-          amazondotcom-au.metaData.hidden = true;
-          ebay.metaData.hidden = true;
-          amazondotcom-us.metaData.hidden = true;
-          perplexity.metaData.hidden = true; # stupid ai thing they added
+          "ddg".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "perplexity".metaData.hidden = true;
+          "wikipedia".metaData.hidden = true;
+          "policy-DuckDuckGo Lite".metaData.hidden = true;
+          "policy-MetaGer".metaData.hidden = true;
+          "policy-Mojeek".metaData.hidden = true;
+          "policy-Searx Belgium".metaData.hidden = true;
+          "policy-Startpage".metaData.hidden = true;
         };
       };
     };

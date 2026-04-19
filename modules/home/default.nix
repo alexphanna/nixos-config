@@ -1,10 +1,10 @@
 { 
   imports = [
     ./apps/discord.nix
-    ./apps/firefox.nix
     ./apps/foot.nix
     ./apps/git.nix
     ./apps/libreoffice.nix
+    ./apps/librewolf.nix
     ./apps/mpv.nix
 
     ./dev/cpp.nix

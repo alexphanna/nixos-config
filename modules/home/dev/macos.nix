@@ -2,5 +2,6 @@
 {
   home.packages = with pkgs; [
     dmg2img
+    dnsmasq
   ];
 }

@@ -40,10 +40,8 @@
       sway --unsupported-gpu
       exec steam-gamescope
     '')
-    (pkgs.kodi-wayland.withPackages (kodiPkgs: with kodiPkgs; [
-      jellyfin
-      jurialmunkey
-      texturemaker
+    (kodi-gbm.withPackages (kodiPkgs: with kodiPkgs; [
+      joystick
     ]))
   ];
 }

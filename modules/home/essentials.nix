@@ -7,6 +7,6 @@
     galculator
     resources # task manager
     protonvpn-gui
-    unstable.stremio-linux-shell
+    jellyfin-desktop
   ];
 }

@@ -1,25 +1,19 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.nixcord.homeModules.nixcord
-  ];
-
-  programs.nixcord = {
+  programs.vesktop = {
     enable = true;
-    # discord.openASAR.enable = true;
-    config = {
-      plugins = {
-        biggerStreamPreview.enable = true;
-        fakeNitro.enable = true;
-        volumeBooster.enable = true;
-        ClearURLs.enable = true;
-        showHiddenChannels.enable = true;
-        youtubeAdblock.enable = true;
-      };
+    vencord.settings.plugins = {
+      BiggerStreamPreview.enabled = true;
+      FakeNitro.enabled = true;
+      VolumeBooster.enabled = true;
+      ClearURLs.enabled = true;
+      ShowHiddenChannels.enabled = true;
+      YoutubeAdblock.enabled = true;
     };
   };
   
   home.packages = with pkgs; [
+    (pkgs.writeScriptBin "Discord" "vesktop")
     discordchatexporter-cli
     xdg-utils # Required to open links in firefox
   ];
