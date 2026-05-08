@@ -18,6 +18,8 @@
     paprefs
     pavucontrol
     handbrake
+    dovi-tool
+    mediainfo
 
     # downloading
     aria2

@@ -14,8 +14,13 @@
           "group/audio-out"
           "bluetooth" 
           "network" 
-          "clock" 
+          "custom/clock" 
         ];
+
+        "custom/clock" = {
+            exec = "date +\"%-m/%-d/%-y %-I:%M %p\"";
+            interval = 1;
+        };
 
         "group/audio-out" = {
           orientation = "horizontal";
@@ -127,11 +132,6 @@
           format = "{capacity}%";
           tooltip = false;
         };
-
-        clock = {
-          format = "{:%m/%d/%y %I:%M %p}";
-          tooltip = false;
-        };
         "sway/workspaces" = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
           on-click = "activate";
@@ -167,7 +167,7 @@
         padding: 0 4px;
       }
 
-      #clock {
+      #custom-clock {
         padding: 0px 8px 0px 12px;
       }
       

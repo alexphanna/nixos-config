@@ -28,8 +28,10 @@
       PasswordManagerEnabled = false;
       GenerativeAI.Enabled = false;
       DisplayBookmarksToolbar = "never";
+      DisplayMenuBar = "never";
       Permissions.Notifications.BlockNewRequests = true;
       SearchSuggestEnabled = true;
+      DisableFirefoxScreenshots = true;
     };
     
     profiles.default = {
