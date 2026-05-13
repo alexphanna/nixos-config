@@ -8,6 +8,7 @@
     ./apps/git.nix
     ./apps/libreoffice.nix
     ./apps/mpv.nix
+    ./apps/spotify.nix
 
     ./dev/cpp.nix
     ./dev/dart.nix

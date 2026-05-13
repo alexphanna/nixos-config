@@ -4,6 +4,5 @@
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
-    moonlight-qt
   ];
 }

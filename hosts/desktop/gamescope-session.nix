@@ -40,8 +40,5 @@
       sway --unsupported-gpu
       exec steam-gamescope
     '')
-    (kodi-gbm.withPackages (kodiPkgs: with kodiPkgs; [
-      joystick
-    ]))
   ];
 }

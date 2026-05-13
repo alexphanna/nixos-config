@@ -24,6 +24,8 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     nixcord.url = "github:kaylorben/nixcord";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
