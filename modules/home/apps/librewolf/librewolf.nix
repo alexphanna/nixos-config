@@ -33,7 +33,7 @@
       SearchSuggestEnabled = true;
       DisableFirefoxScreenshots = true;
     };
-    
+
     profiles.default = {
       id = 0;
       name = "Default";
@@ -93,7 +93,7 @@
               }
             ];
             icon = "https://www.google.com/favicon.ico";
-            definedAliases = ["@g"];
+            definedAliases = [ "@g" ];
           };
 
           "nix-packages" = {

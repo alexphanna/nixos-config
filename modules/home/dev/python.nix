@@ -1,18 +1,20 @@
 { pkgs, ... }:
 let
-  myPython = pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-    psutil
-    jobspy
-    faker
-    pynput
-    beautifulsoup4
-    lxml
-    pywinctl
-    tkinter
-    sklearn-compat
-    pycrypto
-    fonttools
-  ]);
+  myPython = pkgs.python3.withPackages (
+    python-pkgs: with python-pkgs; [
+      psutil
+      jobspy
+      faker
+      pynput
+      beautifulsoup4
+      lxml
+      pywinctl
+      tkinter
+      sklearn-compat
+      pycrypto
+      fonttools
+    ]
+  );
 in
 {
   home.packages = [ myPython ];

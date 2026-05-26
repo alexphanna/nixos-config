@@ -1,14 +1,27 @@
-{ lib, pkgs, host, config, accentColor, backgroundColor, foregroundColor,  ... }:
+{
+  lib,
+  pkgs,
+  host,
+  config,
+  accentColor,
+  backgroundColor,
+  foregroundColor,
+  ...
+}:
 {
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-    extraOptions = if (host == "desktop") then [
-      "--unsupported-gpu"
-    ] else [];
+    extraOptions =
+      if (host == "desktop") then
+        [
+          "--unsupported-gpu"
+        ]
+      else
+        [ ];
     checkConfig = false;
+    # for_window    [app_id=\"com.obsproject.Studio\"]    move scratchpad
     extraConfig = ''
-      for_window    [app_id=\"com.obsproject.Studio\"]    move scratchpad
       for_window    [title="Picture-in-Picture"]          floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
     '';
     config = {
@@ -44,18 +57,21 @@
         };
       };
       fonts.size = 10.0;
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in lib.mkOptionDefault {
-        "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%+'";
-        "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%-'";
-        "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_SINK@ toggle'";
-        "XF86MonBrightnessUp" = "exec 'xbacklight -inc 5'";
-        "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
-        "Print" = "exec 'screenshot'";
-        "${modifier}+p" = "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable"; # picture-in-picture
-        "${modifier}+Shift+e" = "exec 'swaymsg exit'"; # skips exit dialog
-      };
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
+        lib.mkOptionDefault {
+          "XF86AudioRaiseVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%+'";
+          "XF86AudioLowerVolume" = "exec 'wpctl set-volume @DEFAULT_SINK@ 5%-'";
+          "XF86AudioMute" = "exec 'wpctl set-mute @DEFAULT_SINK@ toggle'";
+          "XF86MonBrightnessUp" = "exec 'xbacklight -inc 5'";
+          "XF86MonBrightnessDown" = "exec 'xbacklight -dec 5'";
+          "Print" = "exec 'screenshot'";
+          "${modifier}+p" =
+            "floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable"; # picture-in-picture
+          "${modifier}+Shift+e" = "exec 'swaymsg exit'"; # skips exit dialog
+        };
       menu = "${pkgs.wmenu}/bin/wmenu-run -i -n FFFFFF -N 000000 -s ${lib.strings.removePrefix "#" accentColor} -S 000000 -m FFFFFF -M 000000 -f \"monospace 16\"";
       window = {
         border = 0;
@@ -69,30 +85,33 @@
         inner = 16;
       };
       startup = [
-        { 
+        {
           command = "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg";
         }
         # https://github.com/obsproject/obs-studio/issues/12650#issuecomment-3396656122
-        /*{ 
-          command = "rm -r ~/.config/obs-studio/.sentinel";
-        }
-        { 
-          command = "obs --startreplaybuffer";
-        }*/
+        /*
+          {
+            command = "rm -r ~/.config/obs-studio/.sentinel";
+          }
+          {
+            command = "obs --startreplaybuffer";
+          }
+        */
       ];
       output =
-        if (host == "desktop") 
-        then {
-          # Monitor
-          DP-1 = {
-            mode = "1920x1080@74.973Hz";
-          };
-          # TV
-          HDMI-A-1 = {
-            power = "off";
-          };
-        }
-        else {};
+        if (host == "desktop") then
+          {
+            # Monitor
+            DP-1 = {
+              mode = "1920x1080@74.973Hz";
+            };
+            # TV
+            HDMI-A-1 = {
+              power = "off";
+            };
+          }
+        else
+          { };
       input = {
         "*" = {
           accel_profile = "flat";

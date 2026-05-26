@@ -5,16 +5,19 @@ in
 {
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      # material-symbols
-      noto-fonts
-      noto-fonts-cjk-sans
-      jetbrains-mono
-      vista-fonts
-      material-symbols-filled
-    ] ++ [
-      inputs.apple-emoji-linux.packages.${system}.default
-    ];
+    packages =
+      with pkgs;
+      [
+        # material-symbols
+        noto-fonts
+        noto-fonts-cjk-sans
+        jetbrains-mono
+        vista-fonts
+        material-symbols-filled
+      ]
+      ++ [
+        inputs.apple-emoji-linux.packages.${system}.default
+      ];
 
     fontconfig = {
       defaultFonts = {

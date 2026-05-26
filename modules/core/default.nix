@@ -19,5 +19,5 @@
     ./system.nix
     ./user.nix
   ];
-  
+
 }

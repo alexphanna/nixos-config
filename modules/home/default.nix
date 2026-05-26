@@ -1,4 +1,4 @@
-{ 
+{
   imports = [
     ./apps/librewolf/librewolf.nix
     ./apps/librewolf/redirector.nix
@@ -29,6 +29,7 @@
     ./games/minecraft.nix
 
     ./rice/gtk.nix
+    ./rice/i3.nix
     ./rice/mako.nix
     ./rice/pointer-cursor.nix
     ./rice/sway.nix
@@ -38,7 +39,7 @@
     ./scripts.nix
 
     ./essentials.nix
-    
+
     ./utilities.nix
   ];
 }

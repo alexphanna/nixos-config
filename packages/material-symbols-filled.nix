@@ -18,7 +18,10 @@ stdenvNoCC.mkDerivation {
     sparseCheckout = [ "variablefont" ];
   };
 
-  nativeBuildInputs = [ rename pkgs.python3Packages.fonttools ];
+  nativeBuildInputs = [
+    rename
+    pkgs.python3Packages.fonttools
+  ];
 
   installPhase = ''
     runHook preInstall

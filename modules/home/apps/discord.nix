@@ -14,7 +14,7 @@
       youtubeAdblock.enable = true;
     };
   };
-  
+
   home.packages = with pkgs; [
     # (pkgs.writeScriptBin "Discord" "vesktop")
     discordchatexporter-cli

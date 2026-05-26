@@ -4,9 +4,9 @@
     acpilight
   ];
 
-   # Fix no speakers
+  # Fix no speakers
   boot.kernelParams = [ "snd_hda_intel.dmic_detect=0" ];
-  
+
   powerManagement.enable = true;
 
   services = {
@@ -14,7 +14,7 @@
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
     '';
-    
+
     tlp = {
       enable = true;
       settings = {

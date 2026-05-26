@@ -1,4 +1,9 @@
-{ lib, pkgs, accentColor, ... }:
+{
+  lib,
+  pkgs,
+  accentColor,
+  ...
+}:
 {
   home.packages = [
     (pkgs.writeScriptBin "screenshot" ''

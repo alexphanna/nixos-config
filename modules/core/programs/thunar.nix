@@ -12,10 +12,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     zstd
   ];
- 
+
   nixpkgs.overlays = lib.mkAfter [
     (self: super: {
       xarchiver = super.xarchiver.overrideAttrs (old: {

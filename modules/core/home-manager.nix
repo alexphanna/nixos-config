@@ -13,7 +13,16 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs username host accentColor backgroundColor foregroundColor; };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        username
+        host
+        accentColor
+        backgroundColor
+        foregroundColor
+        ;
+    };
     users.${username} = {
       imports = [ ./../home/default.nix ];
       home.username = "${username}";

@@ -6,20 +6,27 @@
       mainBar = {
         height = 32;
         modules-left = [ "sway/workspaces" ];
-        modules-right = (
-          if (host == "laptop") 
-          then [ "group/battery#bat0" "group/battery#bat1" "group/brightness" ]
-          else []
-        ) ++ [ 
-          "group/audio-out"
-          "bluetooth" 
-          "network" 
-          "custom/clock" 
-        ];
+        modules-right =
+          (
+            if (host == "laptop") then
+              [
+                "group/battery#bat0"
+                "group/battery#bat1"
+                "group/brightness"
+              ]
+            else
+              [ ]
+          )
+          ++ [
+            "group/audio-out"
+            "bluetooth"
+            "network"
+            "custom/clock"
+          ];
 
         "custom/clock" = {
-            exec = "date +\"%-m/%-d/%-y %-I:%M %p\"";
-            interval = 1;
+          exec = "date +\"%-m/%-d/%-y %-I:%M %p\"";
+          interval = 1;
         };
 
         "group/audio-out" = {
@@ -35,7 +42,12 @@
         "wireplumber#icon" = {
           format = "<span rise='-4000' size='large'>{icon}</span>";
           on-click = "pavucontrol";
-          format-icons = [ "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+          ];
           format-muted = "<span rise='-4000' size='large'></span>";
           max-volume = 200.0;
           scroll-step = 5;
@@ -50,7 +62,7 @@
         };
 
         bluetooth = {
-          format = "<span rise='-4000' size='large'></span>"; 
+          format = "<span rise='-4000' size='large'></span>";
           format-no-controller = "<span rise='-4000' size='large'></span>";
           tooltip = false;
           on-click = "blueman-manager";
@@ -61,7 +73,11 @@
           format-ethernet = "<span rise='-4000' size='large'></span>";
           format-wifi = "<span rise='-4000' size='large'>{icon}</span>";
           format-disconnected = "<span rise='-4000' size='large'></span>";
-          format-icons = [ "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
         };
@@ -101,7 +117,16 @@
           bat = "BAT0";
           format = "<span rise='-4000' size='large'>{icon}</span>";
           format-charging = "<span rise='-4000' size='large'></span>";
-          format-icons = ["" "" "" "" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           tooltip = false;
         };
         "battery#bat0-capacity" = {
@@ -124,7 +149,16 @@
           bat = "BAT1";
           format = "<span rise='-4000' size='large'>{icon}</span>";
           format-charging = "<span rise='-4000' size='large'></span>";
-          format-icons = ["" "" "" "" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           tooltip = false;
         };
         "battery#bat1-capacity" = {
@@ -136,10 +170,10 @@
           format = "<span rise='-4000' size='large'>{icon}</span>";
           on-click = "activate";
           persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
           };
           format-icons = {
             focused = "";
@@ -170,7 +204,7 @@
       #custom-clock {
         padding: 0px 8px 0px 12px;
       }
-      
+
       #workspaces button {
         padding: 0 8px;
       }

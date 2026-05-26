@@ -16,7 +16,7 @@
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
       "nix.serverSettings".nixd = {
-        formatting.command = ["nixfmt"];
+        formatting.command = [ "nixfmt" ];
 
         options = {
           nixos.expr = "(builtins.getFlake \"/home/alex/Documents/nixos-config\").nixosConfigurations.${host}.options";

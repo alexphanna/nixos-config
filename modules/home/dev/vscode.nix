@@ -4,13 +4,13 @@
     enable = true;
     mutableExtensionsDir = false;
     profiles.default = {
-      extensions = with pkgs.vscode-extensions; [ 
+      extensions = with pkgs.vscode-extensions; [
         # cannot include extension packs
 
         # remote
         ms-vscode-remote.remote-ssh
         ms-vscode-remote.remote-ssh-edit
-        
+
         esbenp.prettier-vscode
         tamasfe.even-better-toml
         jbockle.jbockle-format-files

@@ -1,8 +1,8 @@
-{ 
-  pkgs, 
+{
+  pkgs,
   lib,
-  accentColor, 
-  ... 
+  accentColor,
+  ...
 }:
 {
   programs.librewolf.profiles.default.extensions = {

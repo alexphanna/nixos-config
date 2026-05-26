@@ -56,7 +56,14 @@
           system = "x86_64-linux";
           specialArgs = {
             host = "desktop";
-            inherit self inputs username accentColor backgroundColor foregroundColor;
+            inherit
+              self
+              inputs
+              username
+              accentColor
+              backgroundColor
+              foregroundColor
+              ;
           };
           modules = [
             ./hosts/desktop
@@ -74,7 +81,14 @@
           system = "x86_64-linux";
           specialArgs = {
             host = "laptop";
-            inherit self inputs username accentColor backgroundColor foregroundColor;
+            inherit
+              self
+              inputs
+              username
+              accentColor
+              backgroundColor
+              foregroundColor
+              ;
           };
           modules = [
             ./hosts/laptop
