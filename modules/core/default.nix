@@ -4,6 +4,7 @@
     ./programs/steam.nix
     ./programs/thunar.nix
     ./programs/thunderbird.nix
+    ./programs/usbip.nix
     ./programs/virt-manager.nix
     ./programs/zsh.nix
     ./audio.nix

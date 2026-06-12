@@ -8,6 +8,7 @@
     ./selfhosted/invidious.nix
     ./selfhosted/jellyfin.nix
     ./selfhosted/nix-serve.nix
+    ./selfhosted/qbittorrent.nix
     ./selfhosted/sunshine.nix
     ./selfhosted/syncthing.nix
     ./selfhosted/vscode-server.nix

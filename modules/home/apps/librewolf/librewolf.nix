@@ -32,6 +32,7 @@
       Permissions.Notifications.BlockNewRequests = true;
       SearchSuggestEnabled = true;
       DisableFirefoxScreenshots = true;
+      TranslateEnabled = false; # replaced with TWP extension
     };
 
     profiles.default = {
@@ -72,6 +73,7 @@
           return-youtube-dislikes
           adaptive-tab-bar-colour
           bitwarden
+          translate-web-pages
         ];
       };
 
@@ -104,7 +106,7 @@
                 params = [
                   {
                     name = "channel";
-                    value = "25.11";
+                    value = "26.05";
                   }
                   {
                     name = "query";
@@ -125,7 +127,7 @@
                 params = [
                   {
                     name = "channel";
-                    value = "25.11";
+                    value = "26.05";
                   }
                   {
                     name = "query";

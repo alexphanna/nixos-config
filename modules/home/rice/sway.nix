@@ -11,6 +11,7 @@
 {
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.unstable.sway;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     extraOptions =
       if (host == "desktop") then
@@ -120,8 +121,17 @@
       };
     };
   };
-  home.packages = with pkgs; [
-    wmenu
-    swaybg
-  ];
+  home = {
+    packages = with pkgs; [
+      wmenu
+      swaybg
+    ];
+    sessionVariables = {
+      # somewhat improper way to declare this
+      # needs to be this way because of the way auto login does not run extraSessionCommands
+      # required for HDR
+      # DOES not work with packaged sunshine
+      # WLR_RENDERER = "vulkan";
+    };
+  };
 }

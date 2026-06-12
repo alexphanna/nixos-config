@@ -56,7 +56,7 @@ in
         font = "monospace:pixelsize=16";
         pad = "16x16";
       };
-      colors = {
+      colors-dark = {
         foreground = lib.strings.removePrefix "#" foregroundColor;
         background = background;
         alpha = alphaRounded;

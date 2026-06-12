@@ -12,6 +12,7 @@
       displayManager.startx.enable = true;
     };
     displayManager.defaultSession = "none+i3";
+    # may be causing weird issues
     udev.extraRules = ''
       SUBSYSTEM=="input", ATTRS{idVendor}=="3233", ATTRS{idProduct}=="5311", ENV{ID_INPUT_JOYSTICK}=""
     '';

@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nix-prefetch-git
   ];
   programs.vscode.profiles.default = {

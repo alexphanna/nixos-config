@@ -9,8 +9,8 @@
       biggerStreamPreview.enable = true;
       fakeNitro.enable = true;
       volumeBooster.enable = true;
-      ClearURLs.enable = true;
-      showHiddenChannels.enable = true;
+      ClearUrls.enable = true;
+      # showHiddenChannels.enable = true; BROKEN
       youtubeAdblock.enable = true;
     };
   };

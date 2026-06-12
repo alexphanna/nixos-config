@@ -10,7 +10,6 @@
 
     # system information
     fastfetch
-    neofetch
 
     # audio and video
     ffmpeg

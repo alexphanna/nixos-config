@@ -5,7 +5,7 @@
     libresprite
     galculator
     resources # task manager
-    protonvpn-gui
+    proton-vpn
     jellyfin-desktop
     moonlight-qt
   ];

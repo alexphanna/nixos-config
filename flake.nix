@@ -3,23 +3,18 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # NUR
     nur.url = "github:nix-community/NUR";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
-
     # FIX: bump when https://github.com/samuelngs/apple-emoji-ttf/issues/101 fixed
-    apple-emoji-linux = {
-      url = "github:samuelngs/apple-emoji-linux/b22ae7f";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    apple-emoji-linux.url = "github:samuelngs/apple-emoji-linux/b22ae7f";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 

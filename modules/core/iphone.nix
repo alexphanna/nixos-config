@@ -1,13 +1,11 @@
 { pkgs, ... }:
 {
-  /*
-    services = {
-      usbmuxd.enable = true;
-    };
-  */
+  services = {
+    usbmuxd.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
-    # libimobiledevice
+    libimobiledevice
     ifuse # optional, to mount using 'ifuse'
     uxplay
     openssl

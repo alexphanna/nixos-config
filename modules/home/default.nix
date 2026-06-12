@@ -33,6 +33,7 @@
     ./rice/mako.nix
     ./rice/pointer-cursor.nix
     ./rice/sway.nix
+    ./rice/swayidle.nix
     ./rice/waybar.nix
     ./rice/zsh.nix
 
