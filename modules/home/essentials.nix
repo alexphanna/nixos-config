@@ -7,6 +7,5 @@
     resources # task manager
     proton-vpn
     jellyfin-desktop
-    moonlight-qt
   ];
 }

@@ -10,8 +10,8 @@
     initrd.verbose = false;
     kernelParams = [
       "quiet"
-      "fbcon=vc:2-6"
-      "console=tty0"
+      /*"fbcon=vc:2-6"
+      "console=tty0"*/
     ];
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key

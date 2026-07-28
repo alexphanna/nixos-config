@@ -18,7 +18,7 @@
       ];
 
       userSettings = {
-        "workbench.colorTheme" = "Default Dark+";
+        "workbench.colorTheme" = "Dark+";
         "files.autoSave" = "afterDelay";
         "workbench.statusBar.visible" = false;
         "editor.minimap.enabled" = false;
@@ -30,6 +30,10 @@
         "editor.fontFamily" = "'monospace', 'Material Symbols Rounded', monospace";
         "editor.fontLigatures" = true;
         "chat.disableAIFeatures" = true;
+        "window.restoreWindows" = "none";
+        "telemetry.feedback.enabled" = false;
+        "telemetry.telemetryLevel" = "off";
+        "extensions.ignoreRecommendations" = true;
       };
     };
   };

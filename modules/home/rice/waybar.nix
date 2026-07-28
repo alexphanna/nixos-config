@@ -80,6 +80,7 @@
           ];
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
+	  on-click = "nm-connection-editor";
         };
 
         "group/brightness" = {

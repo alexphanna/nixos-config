@@ -1,5 +1,6 @@
 {
   imports = [
+    ./programs/kde.nix
     ./programs/obs.nix
     ./programs/steam.nix
     ./programs/thunar.nix

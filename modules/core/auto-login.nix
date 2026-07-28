@@ -1,6 +1,6 @@
 { username, host, ... }:
 {
-  services.getty = {
+  /*services.getty = {
     autologinUser = "${username}";
     # autologinOnce = true;
   };
@@ -12,5 +12,5 @@
     else
       ''
         [[ "$(tty)" == /dev/tty1 ]] && { sway --unsupported-gpu }
-      '';
+      '';*/
 }

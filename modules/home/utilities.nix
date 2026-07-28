@@ -30,6 +30,7 @@
 
     # network
     angryipscanner
+    linssid
 
     # storage
     gparted
