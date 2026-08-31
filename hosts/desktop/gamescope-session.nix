@@ -37,8 +37,6 @@
       #!/usr/bin/env zsh
 
       pkill -f gamescope
-      sway --unsupported-gpu
-      exec steam-gamescope
     '')
   ];
 }

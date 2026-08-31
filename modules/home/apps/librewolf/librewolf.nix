@@ -191,4 +191,5 @@
       };
     };
   };
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark"; # Required for Firefox auto dark theme in wayland
 }

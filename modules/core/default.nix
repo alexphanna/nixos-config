@@ -1,6 +1,5 @@
 {
   imports = [
-    ./programs/kde.nix
     ./programs/obs.nix
     ./programs/steam.nix
     ./programs/thunar.nix
@@ -12,6 +11,7 @@
     ./auto-login.nix
     ./bluetooth.nix
     ./boot.nix
+    ./display-manager.nix
     ./fonts.nix
     ./home-manager.nix
     ./iphone.nix

@@ -1,13 +1,8 @@
 { pkgs, lib, ... }:
 {
   services.jellyfin.enable = true;
-  environment.systemPackages = with pkgs; [
-    jellyfin
-    jellyfin-web
-    jellyfin-ffmpeg
-  ];
 
-  nixpkgs.overlays = lib.mkAfter [
+  /*nixpkgs.overlays = lib.mkAfter [
     (final: prev: {
       jellyfin-web = prev.jellyfin-web.overrideAttrs (
         finalAttrs: previousAttrs: {
@@ -25,5 +20,5 @@
         }
       );
     })
-  ];
+  ];*/
 }

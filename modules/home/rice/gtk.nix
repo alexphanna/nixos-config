@@ -2,7 +2,7 @@
 {
   # Dark mode for everything
   gtk = {
-    enable = false;
+    enable = true;
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;

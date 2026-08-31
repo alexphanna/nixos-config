@@ -12,6 +12,8 @@
         ./latex.nix
         ./macos.nix
         ./python.nix
+        ./nix.nix
+        ./vscode.nix
         # ./swift.nix
       ]
     else
