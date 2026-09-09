@@ -13,14 +13,13 @@
     };
   };
 
-  qt = {
+  /*qt = {
     enable = true;
-    platformTheme.name = "gtk";
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
     };
-  };
+  };*/
 
   dconf.settings."org/gnome/desktop/interface" = {
     gtk-theme = config.gtk.theme.name;
@@ -34,7 +33,7 @@
     ];
     sessionVariables = {
       GTK_THEME = "Adwaita-dark"; # For GTK applications
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+      QT_STYLE_OVERRIDE = "adwaita-dark";
     };
   };
 }

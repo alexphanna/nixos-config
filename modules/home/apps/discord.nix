@@ -5,11 +5,12 @@
   programs.nixcord = {
     enable = true;
     discord.openASAR.enable = false;
+    discord.vencord.enable = true;
     config.plugins = {
       biggerStreamPreview.enable = true;
       fakeNitro.enable = true;
       volumeBooster.enable = true;
-      ClearURLs.enable = true;
+      clearUrls.enable = true;
       # showHiddenChannels.enable = true; BROKEN
       youtubeAdblock.enable = true;
     };

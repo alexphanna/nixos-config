@@ -11,15 +11,8 @@
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.unstable.sway;
+    package = null;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-    extraOptions =
-      if (host == "desktop") then
-        [
-          "--unsupported-gpu"
-        ]
-      else
-        [ ];
     checkConfig = false;
     # for_window    [app_id=\"com.obsproject.Studio\"]    move scratchpad
     extraConfig = ''

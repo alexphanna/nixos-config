@@ -5,6 +5,7 @@
   ];
   programs.plasma = {
     enable = true;
+    overrideConfig = true;
     session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
     workspace = {
       colorScheme = "BreezeDark";

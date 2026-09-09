@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs; [
       jdk25
+      jetbrains.idea
     ];
     sessionVariables = {
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=lcd";

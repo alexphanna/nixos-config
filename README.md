@@ -1,6 +1,6 @@
 # NixOS Configuration
 
-My one year old NixOS and home-manager configuration for my desktop and laptop.
+My two year old NixOS and home-manager configuration for my desktop and laptop.
 
 ## Screenshot
 

@@ -17,7 +17,7 @@
     ./games/mangohud.nix
     ./games/minecraft.nix
 
-    #./rice/gtk.nix
+    ./rice/gtk.nix
     ./rice/kde.nix
     ./rice/mako.nix
     ./rice/pointer-cursor.nix

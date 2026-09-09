@@ -2,6 +2,7 @@
   imports = [
     ./programs/obs.nix
     ./programs/steam.nix
+    ./programs/sway.nix
     ./programs/thunar.nix
     ./programs/thunderbird.nix
     ./programs/usbip.nix

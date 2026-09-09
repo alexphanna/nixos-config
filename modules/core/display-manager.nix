@@ -1,17 +1,9 @@
-{ username, pkgs, host, ... }:
+{ username, pkgs, ... }:
 {
   services = {
     desktopManager.plasma6.enable = true;
     displayManager = {
       plasma-login-manager.enable = true;
-      defaultSession = "sway";
-      sessionPackages = with pkgs; [ 
-        (sway.override { extraOptions = [ "--unsupported-gpu" ]; })
-      ];
-      /*autoLogin = {
-        enable = if (host == "desktop") then true else false ;
-        user = username;
-      };*/
     };
   };
   security = {
