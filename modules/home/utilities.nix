@@ -31,6 +31,8 @@
     # network
     angryipscanner
     linssid
+    gpauth
+    gpclient
 
     # storage
     gparted

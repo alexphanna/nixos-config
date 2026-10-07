@@ -5,10 +5,9 @@
   programs.nixcord = {
     enable = true;
     discord.openASAR.enable = false;
-    discord.vencord.enable = true;
+    discord.vencord.enable = false;
     config.plugins = {
       biggerStreamPreview.enable = true;
-      fakeNitro.enable = true;
       volumeBooster.enable = true;
       clearUrls.enable = true;
       # showHiddenChannels.enable = true; BROKEN

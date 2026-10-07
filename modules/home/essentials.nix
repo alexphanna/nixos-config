@@ -6,6 +6,9 @@
     galculator
     resources # task manager
     proton-vpn
-    jellyfin-desktop
+    mcomix
+    discord
+
+    google-chrome
   ];
 }

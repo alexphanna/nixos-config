@@ -14,9 +14,9 @@
     package = null;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
     checkConfig = false;
-    # for_window    [app_id=\"com.obsproject.Studio\"]    move scratchpad
     extraConfig = ''
       for_window    [title="Picture-in-Picture"]          floating enable, resize set 480, resize set height 270, move position 100 ppt 100 ppt, move left 480, move up 270, sticky enable
+      for_window    [title="File Operation Progress"]     floating enable
     '';
     config = {
       defaultWorkspace = "workspace number 1";
@@ -82,15 +82,6 @@
         {
           command = "${pkgs.swaybg}/bin/swaybg -i wallpaper.jpg";
         }
-        # https://github.com/obsproject/obs-studio/issues/12650#issuecomment-3396656122
-        /*
-          {
-            command = "rm -r ~/.config/obs-studio/.sentinel";
-          }
-          {
-            command = "obs --startreplaybuffer";
-          }
-        */
       ];
       output =
         if (host == "desktop") then
@@ -119,12 +110,5 @@
       wmenu
       swaybg
     ];
-    sessionVariables = {
-      # somewhat improper way to declare this
-      # needs to be this way because of the way auto login does not run extraSessionCommands
-      # required for HDR
-      # DOES not work with packaged sunshine
-      # WLR_RENDERER = "vulkan";
-    };
   };
 }

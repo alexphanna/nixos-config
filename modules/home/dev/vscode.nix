@@ -29,7 +29,7 @@
         "git.openRepositoryInParentFolders" = "never";
         "editor.fontFamily" = "'monospace', 'Material Symbols Rounded', monospace";
         "editor.fontLigatures" = true;
-        "chat.disableAIFeatures" = true;
+        "chat.disableAIFeatures" = false;
         "window.restoreWindows" = "none";
         "telemetry.feedback.enabled" = false;
         "telemetry.telemetryLevel" = "off";

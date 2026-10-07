@@ -18,6 +18,7 @@
     ./iphone.nix
     ./user.nix
     ./networking.nix
+    ./screensharing.nix
     ./services.nix
     ./system.nix
     ./user.nix

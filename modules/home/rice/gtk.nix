@@ -3,6 +3,7 @@
   # Dark mode for everything
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme; # To silence this warning and keep legacy behavior
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
@@ -13,13 +14,14 @@
     };
   };
 
-  /*qt = {
+  qt = {
     enable = true;
+    platformTheme.name = "gtk3";
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
     };
-  };*/
+  };
 
   dconf.settings."org/gnome/desktop/interface" = {
     gtk-theme = config.gtk.theme.name;

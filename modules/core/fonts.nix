@@ -16,7 +16,7 @@ in
         material-symbols-filled
       ]
       ++ [
-        inputs.apple-emoji-linux.packages.${system}.default
+        inputs.apple-emoji-linux.packages.${stdenv.hostPlatform.system}.default
       ];
 
     fontconfig = {

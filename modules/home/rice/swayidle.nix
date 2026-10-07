@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   services.swayidle = {
     enable = true;
@@ -10,6 +10,13 @@
       }
     ];
   };
+
+  # prevent idle while gaming with controller
+  # source: https://github.com/swaywm/swayidle/issues/68#issuecomment-670779101
+  wayland.windowManager.sway.extraConfig = lib.mkAfter  ''
+    for_window [class="steam_app*"] inhibit_idle focus
+  '';
+  
 
   xdg.configFile."xdg-desktop-portal/sway-portals.conf".text = ''
     [preferred]

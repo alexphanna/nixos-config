@@ -3,7 +3,7 @@
     ./apps/librewolf/librewolf.nix
     ./apps/librewolf/redirector.nix
     ./apps/librewolf/ublock-origin.nix
-    ./apps/discord.nix
+    # ./apps/discord.nix
     ./apps/foot.nix
     ./apps/git.nix
     # ./apps/libreoffice.nix
@@ -18,7 +18,7 @@
     ./games/minecraft.nix
 
     ./rice/gtk.nix
-    ./rice/kde.nix
+    # ./rice/kde.nix
     ./rice/mako.nix
     ./rice/pointer-cursor.nix
     ./rice/sway.nix
