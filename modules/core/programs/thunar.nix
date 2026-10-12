@@ -14,6 +14,7 @@
 
   environment.systemPackages = with pkgs; [
     zstd
+    xarchiver
   ];
 
   nixpkgs.overlays = lib.mkAfter [
