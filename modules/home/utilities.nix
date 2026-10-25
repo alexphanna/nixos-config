@@ -12,7 +12,7 @@
     fastfetch
 
     # audio and video
-    ffmpeg
+    jellyfin-ffmpeg # required for "-bsf:v hevc_metadata=remove_dovi=1" argument
     mkvtoolnix
     paprefs
     pavucontrol
@@ -37,6 +37,7 @@
     # storage
     gparted
     qdirstat
+    gsmartcontrol
 
     # other
     killall

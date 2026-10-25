@@ -14,7 +14,7 @@
         ./python.nix
         ./nix.nix
         ./vscode.nix
-        # ./swift.nix
+        ./swift.nix
       ]
     else
       [ ]

@@ -4,7 +4,7 @@
     gimp
     libresprite
     galculator
-    resources # task manager
+    unstable.tux-manager # task manager
     proton-vpn
     mcomix
     discord

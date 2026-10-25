@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let
+/*let
   myPython = pkgs.python3.withPackages (
     python-pkgs: with python-pkgs; [
       psutil
@@ -13,11 +13,12 @@ let
       sklearn-compat
       pycrypto
       fonttools
+      psycopg2
     ]
   );
-in
+in*/
 {
-  home.packages = [ myPython ];
+  home.packages = with pkgs; [ python3 ];
 
   programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
     ms-python.python

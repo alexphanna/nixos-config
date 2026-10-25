@@ -12,5 +12,5 @@
   };
 
   # not needed with kde
-  # services.blueman.enable = true;
+  services.blueman.enable = true;
 }

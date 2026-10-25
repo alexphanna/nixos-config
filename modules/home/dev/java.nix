@@ -2,7 +2,8 @@
 {
   home = {
     packages = with pkgs; [
-      jdk25
+      # jdk25
+      jdk21
       jetbrains.idea
     ];
     sessionVariables = {
