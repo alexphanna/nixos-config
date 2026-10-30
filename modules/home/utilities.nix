@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  ffmpeg-bitrate-stats = pkgs.python3Packages.callPackage ./../../packages/ffmpeg-bitrate-stats.nix { };
+in
 {
   home.packages = with pkgs; [
     # compression
@@ -19,6 +22,7 @@
     handbrake
     dovi-tool
     mediainfo
+    ffmpeg-bitrate-stats
 
     # downloading
     aria2
@@ -45,5 +49,6 @@
     gucharmap
     wine
     speedtest-cli
+    file
   ];
 }

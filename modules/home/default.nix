@@ -16,7 +16,9 @@
     ./games/lutris.nix
     ./games/mangohud.nix
     ./games/minecraft.nix
+  
 
+    ./rice/default-apps.nix
     ./rice/gtk.nix
     # ./rice/kde.nix
     ./rice/mako.nix

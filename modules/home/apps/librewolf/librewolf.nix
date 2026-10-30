@@ -100,7 +100,7 @@
           };
 
           "nix-packages" = {
-            name = "Nix Packages";
+            name = "NixOS Packages";
             urls = [
               {
                 template = "https://search.nixos.org/packages";
@@ -121,7 +121,7 @@
           };
 
           "nix-options" = {
-            name = "Nix Options";
+            name = "NixOS Options";
             urls = [
               {
                 template = "https://search.nixos.org/options";
@@ -159,7 +159,7 @@
           };
 
           "nix-github" = {
-            name = "Nix GitHub";
+            name = "NixOS GitHub";
             urls = [
               {
                 template = "https://github.com/search";
@@ -184,25 +184,11 @@
           "perplexity".metaData.hidden = true;
           "wikipedia".metaData.hidden = true;
           "policy-DuckDuckGo Lite".metaData.hidden = true;
-          "policy-MetaGer".metaData.hidden = true;
-          "policy-Mojeek".metaData.hidden = true;
-          "policy-Searx Belgium".metaData.hidden = true;
-          "policy-Startpage".metaData.hidden = true;
+          "mojeek".metaData.hidden = true;
+          "startpage".metaData.hidden = true;
         };
       };
     };
   };
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark"; # Required for Firefox auto dark theme in wayland
-
-  # Set LibreWolf as the default browser
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "librewolf.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "x-scheme-handler/about" = "librewolf.desktop";
-      "x-scheme-handler/unknown" = "librewolf.desktop";
-    };
-  };
 }

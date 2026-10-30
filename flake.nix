@@ -18,15 +18,7 @@
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
-    nixcord.url = "github:kaylorben/nixcord";
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs =

@@ -31,7 +31,7 @@
               patternType = "W";
               appliesTo = [ "main_frame" ];
             }
-            {
+            /*{
               description = "Twitter";
               exampleUrl = "https://x.com/User";
               exampleResult = "https://nitter.net/User";
@@ -39,7 +39,7 @@
               redirectUrl = "https://nitter.net/$1";
               patternType = "W";
               appliesTo = [ "main_frame" ];
-            }
+            }*/
           ];
         };
       };
