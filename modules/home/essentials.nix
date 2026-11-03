@@ -7,7 +7,7 @@
     unstable.tux-manager # task manager
     proton-vpn
     mcomix
-    discord
+    unstable.discord
 
     google-chrome
   ];

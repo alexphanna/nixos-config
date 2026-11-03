@@ -5,6 +5,7 @@
     settings = {
       mainBar = {
         height = 32;
+        spacing = 0;
         modules-left = [ "sway/workspaces" ];
         modules-right =
           (
@@ -15,7 +16,9 @@
                 "group/brightness"
               ]
             else
-              [ ]
+              [ 
+                "custom/tv"
+              ]
           )
           ++ [
             "group/audio-out"
@@ -27,6 +30,7 @@
         "custom/clock" = {
           exec = "date +\"%-m/%-d/%-y %-I:%M %p\"";
           interval = 1;
+          tooltip = false;
         };
 
         "group/audio-out" = {
@@ -40,7 +44,7 @@
           ];
         };
         "wireplumber#icon" = {
-          format = "<span rise='-4000' size='large'>{icon}</span>";
+          format = "{icon}";
           on-click = "pavucontrol";
           format-icons = [
             ""
@@ -48,7 +52,7 @@
             ""
             ""
           ];
-          format-muted = "<span rise='-4000' size='large'></span>";
+          format-muted = "";
           max-volume = 200.0;
           scroll-step = 5;
           tooltip = false;
@@ -62,25 +66,24 @@
         };
 
         bluetooth = {
-          format = "<span rise='-4000' size='large'></span>";
-          format-no-controller = "<span rise='-4000' size='large'></span>";
+          format = "";
+          format-no-controller = "";
           tooltip = false;
           on-click = "blueman-manager";
         };
 
         network = {
-          format-linked = "<span rise='-4000' size='large'></span>"; # I think this means I have a vpn
-          format-ethernet = "<span rise='-4000' size='large'></span>";
-          format-wifi = "<span rise='-4000' size='large'>{icon}</span>";
-          format-disconnected = "<span rise='-4000' size='large'></span>";
+          format-linked = ""; # I think this means I have a vpn
+          format-ethernet = "";
+          format-wifi = "{icon}";
+          format-disconnected = "";
           format-icons = [
             ""
             ""
             ""
           ];
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
-	  on-click = "nm-connection-editor";
+          on-click = "nm-connection-editor";
+          tooltip = false;
         };
 
         "group/brightness" = {
@@ -95,7 +98,7 @@
         };
         "backlight#icon" = {
           device = "intel_backlight";
-          format = "<span rise='-4000' size='large'></span>";
+          format = "";
           tooltip = false;
         };
         "backlight#brightness" = {
@@ -116,8 +119,8 @@
         };
         "battery#bat0-icon" = {
           bat = "BAT0";
-          format = "<span rise='-4000' size='large'>{icon}</span>";
-          format-charging = "<span rise='-4000' size='large'></span>";
+          format = "{icon}";
+          format-charging = "";
           format-icons = [
             ""
             ""
@@ -148,8 +151,8 @@
         };
         "battery#bat1-icon" = {
           bat = "BAT1";
-          format = "<span rise='-4000' size='large'>{icon}</span>";
-          format-charging = "<span rise='-4000' size='large'></span>";
+          format = "{icon}";
+          format-charging = "";
           format-icons = [
             ""
             ""
@@ -168,7 +171,7 @@
           tooltip = false;
         };
         "sway/workspaces" = {
-          format = "<span rise='-4000' size='large'>{icon}</span>";
+          format = "{icon}";
           on-click = "activate";
           persistent-workspaces = {
             "1" = [ ];
@@ -181,15 +184,23 @@
             default = "";
           };
         };
+
+        "custom/tv" = {
+          exec = "swaymsg -t get_outputs -r | jq -r 'if any(.[]; .make == \"BBY\" and .model == \"INSIGNIA-TV\" and .serial == \"0x01010101\") then \"\" else \"\" end'";
+          interval = 2;
+          return-type = "text";
+          tooltip = false;
+        };
       };
     };
     style = ''
       * {
         border: none;
         border-radius: 0;
-        font-family: monospace, Material Symbols Rounded;
+        font-family: monospace, Material Symbols Sharp;
         font-size: 16px;
         padding: 0; 
+        margin: 0;
         transition: none;
       }
 
@@ -206,8 +217,8 @@
         padding: 0px 8px 0px 12px;
       }
 
-      #workspaces button {
-        padding: 0 8px;
+      #workspaces, #workspaces button {
+        padding: 0px 4px;
       }
 
       box.module button:hover, #audio-out:hover, #audio-in:hover, #brightness:hover, battery#bat0:hover, battery#bat1:hover {
@@ -215,10 +226,6 @@
         text-shadow: inherit;
         background: inherit;
         color: ${accentColor};
-      }
-
-      tooltip {
-        background: rgba(32, 32, 32, 0.5);
       }
     '';
   };
