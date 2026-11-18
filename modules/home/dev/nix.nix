@@ -10,9 +10,14 @@
       jnoortheen.nix-ide
     ];
     userSettings = {
+      # removes "Request textDocument/definition failed." error when editing nix files
+      # source: https://github.com/nix-community/vscode-nix-ide/issues/482#issuecomment-3014989164
       "[nix]" = {
         "editor.defaultFormatter" = "jnoortheen.nix-ide";
       };
+      "nix.hiddenLanguageServerErrors" = [
+        "textDocument/definition"
+      ];
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
       "nix.serverSettings".nixd = {

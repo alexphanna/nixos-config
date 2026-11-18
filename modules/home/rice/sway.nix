@@ -8,6 +8,16 @@
   foregroundColor,
   ...
 }:
+let
+  # Remove this once I figure out why volume control doesn't work in waybar
+  waybarLogged = pkgs.writeShellScript "waybar-logged" ''
+    echo "===== $(date --iso-8601=seconds) =====" >> /tmp/waybar-boot.log
+
+    exec ${pkgs.waybar}/bin/waybar \
+      --log-level trace \
+      >> /tmp/waybar-boot.log 2>&1
+  '';
+in
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -24,7 +34,7 @@
       terminal = "foot";
       bars = [
         {
-          command = "waybar";
+          command = "${waybarLogged}";
         }
       ];
       colors = {

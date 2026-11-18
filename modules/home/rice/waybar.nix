@@ -217,8 +217,8 @@
         padding: 0px 8px 0px 12px;
       }
 
-      #workspaces, #workspaces button {
-        padding: 0px 4px;
+      #workspaces button {
+        padding: 0px 0px 0px 8px;
       }
 
       box.module button:hover, #audio-out:hover, #audio-in:hover, #brightness:hover, battery#bat0:hover, battery#bat1:hover {

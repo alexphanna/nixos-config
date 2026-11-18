@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./selfhosted/ai.nix
     ./selfhosted/audiobookshelf.nix
-    # ./selfhosted/databases.nix
+    ./selfhosted/databases.nix
     ./selfhosted/freshrss.nix
     ./selfhosted/home-assistant.nix
     ./selfhosted/invidious.nix

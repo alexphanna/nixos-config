@@ -1,6 +1,6 @@
 {
   services.qbittorrent = {
-    enable = true;
+    enable = false;
     serverConfig = {
       BitTorrent.Session = {
         Interface = "proton0";

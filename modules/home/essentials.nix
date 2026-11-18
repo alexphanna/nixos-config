@@ -10,5 +10,6 @@
     unstable.discord
 
     google-chrome
+    easyeffects
   ];
 }

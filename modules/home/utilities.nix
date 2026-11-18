@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   ffmpeg-bitrate-stats = pkgs.python3Packages.callPackage ./../../packages/ffmpeg-bitrate-stats.nix { };
+  dovi-convert = pkgs.python3Packages.callPackage ./../../packages/dovi-convert.nix { };
 in
 {
   home.packages = with pkgs; [
@@ -23,6 +24,8 @@ in
     dovi-tool
     mediainfo
     ffmpeg-bitrate-stats
+    dovi-convert
+    kdePackages.kdenlive
 
     # downloading
     aria2
